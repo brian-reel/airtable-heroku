@@ -1,0 +1,2406 @@
+{
+  "postgres": [
+    {
+      "id": "81",
+      "license_type_id": "1",
+      "employee_id": "1154",
+      "name": null,
+      "expires_on": null,
+      "number": null,
+      "issued_on": null,
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-13T15:02:03.799Z",
+      "status": "Invalid"
+    },
+    {
+      "id": "1320",
+      "license_type_id": "4",
+      "employee_id": "2560",
+      "name": null,
+      "expires_on": "2016-05-02T07:00:00.000Z",
+      "number": "F2015726",
+      "issued_on": null,
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:26.000Z",
+      "updated_at": "2024-12-10T22:21:05.087Z",
+      "status": null
+    },
+    {
+      "id": "642",
+      "license_type_id": "1",
+      "employee_id": "2008",
+      "name": "JASAS, GLENN G",
+      "expires_on": "2011-01-31T08:00:00.000Z",
+      "number": "1623969",
+      "issued_on": "2009-01-08T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:24.000Z",
+      "updated_at": "2024-12-10T21:57:02.520Z",
+      "status": "Revoked"
+    },
+    {
+      "id": "2725",
+      "license_type_id": "1",
+      "employee_id": "4306",
+      "name": "MCKAY, BRIAN KENNETH",
+      "expires_on": "2015-08-31T07:00:00.000Z",
+      "number": "1653730",
+      "issued_on": "2009-08-31T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:30.000Z",
+      "updated_at": "2024-12-10T20:39:43.710Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "2731",
+      "license_type_id": "1",
+      "employee_id": "4314",
+      "name": "WALKER, RANDY CORTEZ",
+      "expires_on": "2021-06-30T07:00:00.000Z",
+      "number": "6320370",
+      "issued_on": "2017-06-12T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:30.000Z",
+      "updated_at": "2024-12-10T20:39:58.968Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "2735",
+      "license_type_id": "1",
+      "employee_id": "4318",
+      "name": "DELONG, ROBERT MAURICE",
+      "expires_on": "2021-11-30T08:00:00.000Z",
+      "number": "1750475",
+      "issued_on": "2011-11-01T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:30.000Z",
+      "updated_at": "2024-12-10T20:40:12.489Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "343",
+      "license_type_id": "1",
+      "employee_id": "1690",
+      "name": null,
+      "expires_on": null,
+      "number": null,
+      "issued_on": null,
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-13T15:02:03.821Z",
+      "status": "Invalid"
+    },
+    {
+      "id": "57",
+      "license_type_id": "1",
+      "employee_id": "1136",
+      "name": null,
+      "expires_on": null,
+      "number": null,
+      "issued_on": null,
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-13T15:02:03.830Z",
+      "status": "Invalid"
+    },
+    {
+      "id": "67",
+      "license_type_id": "1",
+      "employee_id": "1143",
+      "name": null,
+      "expires_on": null,
+      "number": null,
+      "issued_on": null,
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-13T15:02:03.852Z",
+      "status": "Invalid"
+    },
+    {
+      "id": "73",
+      "license_type_id": "1",
+      "employee_id": "1150",
+      "name": null,
+      "expires_on": null,
+      "number": null,
+      "issued_on": null,
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-13T15:02:03.861Z",
+      "status": "Invalid"
+    },
+    {
+      "id": "66",
+      "license_type_id": "1",
+      "employee_id": "1142",
+      "name": null,
+      "expires_on": null,
+      "number": null,
+      "issued_on": null,
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-13T15:02:03.897Z",
+      "status": "Invalid"
+    },
+    {
+      "id": "9",
+      "license_type_id": "2",
+      "employee_id": "2056",
+      "name": null,
+      "expires_on": null,
+      "number": null,
+      "issued_on": null,
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-13T15:02:03.913Z",
+      "status": "Invalid"
+    },
+    {
+      "id": "1163",
+      "license_type_id": "1",
+      "employee_id": "2497",
+      "name": "GARZA, ROBERT JAMES",
+      "expires_on": "2019-04-30T07:00:00.000Z",
+      "number": "1309723",
+      "issued_on": "2001-04-25T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:26.000Z",
+      "updated_at": "2024-12-10T21:18:49.936Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "6",
+      "license_type_id": "2",
+      "employee_id": "1793",
+      "name": "JAFFER, JAMIL A",
+      "expires_on": "2014-03-31T07:00:00.000Z",
+      "number": "314693",
+      "issued_on": "2010-03-09T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:10:24.526Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "12",
+      "license_type_id": "2",
+      "employee_id": "2057",
+      "name": "CORTES, JESSE",
+      "expires_on": "2025-10-31T07:00:00.000Z",
+      "number": "309888",
+      "issued_on": "2009-08-05T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:10:30.849Z",
+      "status": "Current"
+    },
+    {
+      "id": "20",
+      "license_type_id": "2",
+      "employee_id": "2146",
+      "name": "LABLANC, RUSSELL",
+      "expires_on": "2025-04-30T07:00:00.000Z",
+      "number": "307246",
+      "issued_on": "2009-04-30T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:10:38.965Z",
+      "status": "Current"
+    },
+    {
+      "id": "23",
+      "license_type_id": "2",
+      "employee_id": "2159",
+      "name": "EBELHAR, STEPHEN JOSEPH",
+      "expires_on": "2011-07-31T07:00:00.000Z",
+      "number": "309380",
+      "issued_on": "2009-07-20T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:10:43.368Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "34",
+      "license_type_id": "2",
+      "employee_id": "2364",
+      "name": "SMITH, DAVID A",
+      "expires_on": "2025-06-30T07:00:00.000Z",
+      "number": "308397",
+      "issued_on": "2009-06-11T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:10:50.231Z",
+      "status": "Current"
+    },
+    {
+      "id": "37",
+      "license_type_id": "2",
+      "employee_id": "2365",
+      "name": "WILLIAMS, DOMINIQUE",
+      "expires_on": "2024-03-31T07:00:00.000Z",
+      "number": "314734",
+      "issued_on": "2010-03-11T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:10:54.401Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "40",
+      "license_type_id": "2",
+      "employee_id": "2369",
+      "name": "RODRIGUEZ, STEVEN M",
+      "expires_on": "2012-05-31T07:00:00.000Z",
+      "number": "316972",
+      "issued_on": "2010-05-10T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:10:57.909Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "2",
+      "license_type_id": "1",
+      "employee_id": "1160",
+      "name": "CHOKOEV, VESELIN SIMIONOV",
+      "expires_on": "2017-04-30T07:00:00.000Z",
+      "number": "1390039",
+      "issued_on": "2003-04-18T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:22:17.307Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "4",
+      "license_type_id": "1",
+      "employee_id": "2184",
+      "name": "GHARZI, GEORGIK",
+      "expires_on": "2017-04-30T07:00:00.000Z",
+      "number": "1540673",
+      "issued_on": "2007-02-05T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:22:25.028Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "7",
+      "license_type_id": "1",
+      "employee_id": "1793",
+      "name": "JAFFER, JAMIL A",
+      "expires_on": "2016-03-31T07:00:00.000Z",
+      "number": "1538755",
+      "issued_on": "2007-01-17T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:22:28.713Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "10",
+      "license_type_id": "1",
+      "employee_id": "2056",
+      "name": "QUAN, EDDIE W",
+      "expires_on": "2011-06-30T07:00:00.000Z",
+      "number": "1644564",
+      "issued_on": "2009-06-17T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:22:31.991Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "13",
+      "license_type_id": "1",
+      "employee_id": "2057",
+      "name": "CORTES, JESSE",
+      "expires_on": "2025-10-31T07:00:00.000Z",
+      "number": "1642287",
+      "issued_on": "2009-05-29T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:22:34.854Z",
+      "status": "Current"
+    },
+    {
+      "id": "21",
+      "license_type_id": "1",
+      "employee_id": "2146",
+      "name": "LABLANC, RUSSELL",
+      "expires_on": "2025-04-30T07:00:00.000Z",
+      "number": "1623864",
+      "issued_on": "2009-01-07T08:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:22:43.179Z",
+      "status": "Current"
+    },
+    {
+      "id": "24",
+      "license_type_id": "1",
+      "employee_id": "2159",
+      "name": "EBELHAR, STEPHEN JOSEPH",
+      "expires_on": "2011-07-31T07:00:00.000Z",
+      "number": "1648613",
+      "issued_on": "2009-07-16T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:22:47.452Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "30",
+      "license_type_id": "1",
+      "employee_id": "2305",
+      "name": "MONZON, CARLOS HUMBERTO",
+      "expires_on": "2016-05-31T07:00:00.000Z",
+      "number": "1091862",
+      "issued_on": "1996-07-11T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:22:55.240Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "32",
+      "license_type_id": "1",
+      "employee_id": "2321",
+      "name": "KRIKAVA, ROBERT EUGENE",
+      "expires_on": "2018-12-31T08:00:00.000Z",
+      "number": "1340202",
+      "issued_on": "2002-03-11T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:22:59.742Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "35",
+      "license_type_id": "1",
+      "employee_id": "2364",
+      "name": "SMITH, DAVID A",
+      "expires_on": "2025-06-30T07:00:00.000Z",
+      "number": "1591340",
+      "issued_on": "2008-04-29T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:23:03.133Z",
+      "status": "Current"
+    },
+    {
+      "id": "38",
+      "license_type_id": "1",
+      "employee_id": "2365",
+      "name": "WILLIAMS, DOMINIQUE",
+      "expires_on": "2026-03-31T07:00:00.000Z",
+      "number": "1593700",
+      "issued_on": "2008-05-15T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:23:06.915Z",
+      "status": "Current"
+    },
+    {
+      "id": "41",
+      "license_type_id": "1",
+      "employee_id": "2369",
+      "name": "RODRIGUEZ, STEVEN M",
+      "expires_on": "2014-05-31T07:00:00.000Z",
+      "number": "1673015",
+      "issued_on": "2010-03-08T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:23:09.935Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "45",
+      "license_type_id": "1",
+      "employee_id": "2394",
+      "name": "JONES, DEJUAN Q",
+      "expires_on": "2020-08-31T07:00:00.000Z",
+      "number": "1507011",
+      "issued_on": "2006-03-01T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T19:23:18.687Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "49",
+      "license_type_id": "1",
+      "employee_id": "1131",
+      "name": "ABREGO, BENJAMIN",
+      "expires_on": "2016-04-30T07:00:00.000Z",
+      "number": "1510103",
+      "issued_on": "2006-04-03T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:23:26.879Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "51",
+      "license_type_id": "1",
+      "employee_id": "1132",
+      "name": "ABREGO, LUIS",
+      "expires_on": "2018-01-31T08:00:00.000Z",
+      "number": "1502202",
+      "issued_on": "2006-01-17T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:23:29.506Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "53",
+      "license_type_id": "1",
+      "employee_id": "1133",
+      "name": "AGADZHANYAN, KAREN A",
+      "expires_on": "2018-06-30T07:00:00.000Z",
+      "number": "1430158",
+      "issued_on": "2004-02-11T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:23:32.408Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "58",
+      "license_type_id": "1",
+      "employee_id": "1137",
+      "name": "ALVARADO, RAUL",
+      "expires_on": "2015-10-31T07:00:00.000Z",
+      "number": "1568299",
+      "issued_on": "2007-10-10T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:23:41.010Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "60",
+      "license_type_id": "1",
+      "employee_id": "1138",
+      "name": "ALVAREZ, ALVERTO GUADALUPE",
+      "expires_on": "2015-10-31T07:00:00.000Z",
+      "number": "1311177",
+      "issued_on": "2001-05-10T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:23:43.660Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "62",
+      "license_type_id": "1",
+      "employee_id": "1140",
+      "name": "ANDRADE, PEDRO",
+      "expires_on": "2017-05-31T07:00:00.000Z",
+      "number": "1550835",
+      "issued_on": "2007-05-09T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:23:49.016Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "68",
+      "license_type_id": "1",
+      "employee_id": "1144",
+      "name": "ASATURIAN, ARMEN",
+      "expires_on": "2025-06-30T07:00:00.000Z",
+      "number": "1554986",
+      "issued_on": "2007-06-15T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:23:59.076Z",
+      "status": "Current"
+    },
+    {
+      "id": "71",
+      "license_type_id": "1",
+      "employee_id": "1148",
+      "name": "BECKER, PAMELA",
+      "expires_on": "2023-01-31T08:00:00.000Z",
+      "number": "1375837",
+      "issued_on": "2002-12-31T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:24:04.375Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "75",
+      "license_type_id": "1",
+      "employee_id": "1151",
+      "name": "BRACAMONTES, ARMANDO",
+      "expires_on": "2026-01-31T08:00:00.000Z",
+      "number": "1426319",
+      "issued_on": "2004-01-12T08:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:24:14.269Z",
+      "status": "Current"
+    },
+    {
+      "id": "77",
+      "license_type_id": "1",
+      "employee_id": "1152",
+      "name": "BUELNA, MICHAEL",
+      "expires_on": "2014-05-31T07:00:00.000Z",
+      "number": "1352639",
+      "issued_on": "2002-05-13T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:24:17.260Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "79",
+      "license_type_id": "1",
+      "employee_id": "1153",
+      "name": "BUGARIN, NANCY",
+      "expires_on": "2021-12-31T08:00:00.000Z",
+      "number": "1331536",
+      "issued_on": "2001-12-04T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:24:20.229Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "5",
+      "license_type_id": "3",
+      "employee_id": "1160",
+      "name": null,
+      "expires_on": null,
+      "number": "D3860143",
+      "issued_on": null,
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:22.000Z",
+      "updated_at": "2024-12-10T22:18:24.099Z",
+      "status": null
+    },
+    {
+      "id": "1168",
+      "license_type_id": "1",
+      "employee_id": "2483",
+      "name": "LECKBEE, DARRELL D",
+      "expires_on": "2022-11-30T08:00:00.000Z",
+      "number": "1279277",
+      "issued_on": "2000-04-05T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:26.000Z",
+      "updated_at": "2024-12-10T19:58:09.166Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "3560",
+      "license_type_id": "1",
+      "employee_id": "5943",
+      "name": "WALLS, CHRISTOPHER",
+      "expires_on": "2017-01-31T08:00:00.000Z",
+      "number": "1806261",
+      "issued_on": "2013-01-15T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2017-06-18T15:19:39.000Z",
+      "updated_at": "2024-12-13T14:33:12.531Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "1186",
+      "license_type_id": "1",
+      "employee_id": "2489",
+      "name": "BURCIAGA, RUDY",
+      "expires_on": "2017-06-30T07:00:00.000Z",
+      "number": "1622345",
+      "issued_on": "2008-12-22T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:26.000Z",
+      "updated_at": "2024-12-10T19:58:37.569Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "1196",
+      "license_type_id": "1",
+      "employee_id": "2502",
+      "name": "TENEKEGIAN, MICHAEL ANDREW",
+      "expires_on": "2022-04-30T07:00:00.000Z",
+      "number": "1722157",
+      "issued_on": "2011-04-21T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:26.000Z",
+      "updated_at": "2024-12-10T19:58:49.647Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "4140",
+      "license_type_id": "1",
+      "employee_id": "7341",
+      "name": "Nieves, Miguel Angel",
+      "expires_on": "2025-04-25T07:00:00.000Z",
+      "number": "6400078",
+      "issued_on": "2018-10-04T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2019-08-08T23:36:49.000Z",
+      "updated_at": "2024-12-13T14:35:50.210Z",
+      "status": "Current  - Temporary Family Support"
+    },
+    {
+      "id": "2739",
+      "license_type_id": "1",
+      "employee_id": "4322",
+      "name": "DICKEY, ALLISON BROOKE",
+      "expires_on": "2017-03-31T07:00:00.000Z",
+      "number": "1905940",
+      "issued_on": "2015-03-20T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:30.000Z",
+      "updated_at": "2024-12-10T20:40:23.410Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "2794",
+      "license_type_id": "1",
+      "employee_id": "4442",
+      "name": "SOBOLESKE, DESRON FRANK",
+      "expires_on": "2017-06-30T07:00:00.000Z",
+      "number": "1256674",
+      "issued_on": "1999-10-04T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:30.000Z",
+      "updated_at": "2024-12-10T20:40:42.122Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "2803",
+      "license_type_id": "1",
+      "employee_id": "4459",
+      "name": "KIDANE, SEMERE ALEM",
+      "expires_on": "2015-05-31T07:00:00.000Z",
+      "number": "1823159",
+      "issued_on": "2013-05-24T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:30.000Z",
+      "updated_at": "2024-12-10T20:41:00.081Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "2807",
+      "license_type_id": "1",
+      "employee_id": "4473",
+      "name": "CASTILLO, LAURA",
+      "expires_on": "2025-08-31T07:00:00.000Z",
+      "number": "1561497",
+      "issued_on": "2007-08-10T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:30.000Z",
+      "updated_at": "2024-12-10T20:41:12.557Z",
+      "status": "Current"
+    },
+    {
+      "id": "4644",
+      "license_type_id": "1",
+      "employee_id": "8871",
+      "name": "Silva, Eddie Danny",
+      "expires_on": "2025-12-31T08:00:00.000Z",
+      "number": "6353643",
+      "issued_on": "2017-12-27T08:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2021-02-12T01:01:24.000Z",
+      "updated_at": "2024-12-13T14:37:53.042Z",
+      "status": "Current"
+    },
+    {
+      "id": "2819",
+      "license_type_id": "1",
+      "employee_id": "4485",
+      "name": "ROBERTS, TYRONE",
+      "expires_on": "2017-06-30T07:00:00.000Z",
+      "number": "1918775",
+      "issued_on": "2015-06-24T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:31.000Z",
+      "updated_at": "2024-12-10T20:41:29.619Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "2829",
+      "license_type_id": "1",
+      "employee_id": "4499",
+      "name": "MONTEIRO MACKAY, CHRISTOPHER RICHARD",
+      "expires_on": "2027-01-31T08:00:00.000Z",
+      "number": "1805167",
+      "issued_on": "2013-01-09T08:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:31.000Z",
+      "updated_at": "2024-12-10T20:41:50.550Z",
+      "status": "Current"
+    },
+    {
+      "id": "2841",
+      "license_type_id": "1",
+      "employee_id": "4521",
+      "name": "MEDINA, ALVARO NORBERTO JR",
+      "expires_on": "2019-02-28T08:00:00.000Z",
+      "number": "1550802",
+      "issued_on": "2007-05-09T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:31.000Z",
+      "updated_at": "2024-12-10T20:42:22.702Z",
+      "status": "Suspended"
+    },
+    {
+      "id": "2843",
+      "license_type_id": "1",
+      "employee_id": "4523",
+      "name": "BERNAL, ERIC STEVEN",
+      "expires_on": "2026-11-30T08:00:00.000Z",
+      "number": "1534315",
+      "issued_on": "2006-11-27T08:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:31.000Z",
+      "updated_at": "2024-12-10T20:42:27.496Z",
+      "status": "Current"
+    },
+    {
+      "id": "4138",
+      "license_type_id": "1",
+      "employee_id": "7339",
+      "name": "MEJIA, ALEXIS R",
+      "expires_on": "2026-06-30T07:00:00.000Z",
+      "number": "6383476",
+      "issued_on": "2018-06-26T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2019-08-08T23:25:34.000Z",
+      "updated_at": "2024-12-13T14:35:48.385Z",
+      "status": "Current"
+    },
+    {
+      "id": "3564",
+      "license_type_id": "2",
+      "employee_id": "5945",
+      "name": "CORDERO, RENE CASTANON",
+      "expires_on": "2014-06-30T07:00:00.000Z",
+      "number": "299715",
+      "issued_on": "2008-06-27T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2017-06-18T15:25:39.000Z",
+      "updated_at": "2024-12-13T14:33:16.187Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "2844",
+      "license_type_id": "1",
+      "employee_id": "4527",
+      "name": "HINES, SAINTCLAIR",
+      "expires_on": "2018-01-31T08:00:00.000Z",
+      "number": "1757882",
+      "issued_on": "2012-01-11T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:31.000Z",
+      "updated_at": "2024-12-10T20:42:30.183Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "2845",
+      "license_type_id": "1",
+      "employee_id": "4528",
+      "name": "TROTTER, DAMION TRINELL",
+      "expires_on": "2023-07-31T07:00:00.000Z",
+      "number": "1485736",
+      "issued_on": "2005-07-26T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:31.000Z",
+      "updated_at": "2024-12-10T20:42:33.014Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "2846",
+      "license_type_id": "1",
+      "employee_id": "4529",
+      "name": "HINES, D'AUNDRE S",
+      "expires_on": "2017-11-30T08:00:00.000Z",
+      "number": "1675769",
+      "issued_on": "2010-03-29T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:31.000Z",
+      "updated_at": "2024-12-10T20:42:36.119Z",
+      "status": "Suspended"
+    },
+    {
+      "id": "4540",
+      "license_type_id": "1",
+      "employee_id": "8497",
+      "name": "DORZIN, LYVES ROSEMON",
+      "expires_on": "2025-07-31T07:00:00.000Z",
+      "number": "6447091",
+      "issued_on": "2019-07-12T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2020-12-01T18:18:27.000Z",
+      "updated_at": "2024-12-10T21:56:41.487Z",
+      "status": "Current"
+    },
+    {
+      "id": "4560",
+      "license_type_id": "1",
+      "employee_id": "8541",
+      "name": "Smith, Mario",
+      "expires_on": "2021-05-31T07:00:00.000Z",
+      "number": "6436739",
+      "issued_on": "2019-05-14T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2020-12-01T20:13:30.000Z",
+      "updated_at": "2024-12-10T21:57:08.389Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "3770",
+      "license_type_id": "1",
+      "employee_id": "6257",
+      "name": "Johnson, Don",
+      "expires_on": "2025-09-30T07:00:00.000Z",
+      "number": "6336434",
+      "issued_on": "2017-09-12T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2017-09-22T18:04:25.000Z",
+      "updated_at": "2024-12-13T14:34:23.474Z",
+      "status": "Current"
+    },
+    {
+      "id": "4564",
+      "license_type_id": "1",
+      "employee_id": "8555",
+      "name": "MARTIN, JACK RYAN",
+      "expires_on": "2025-09-30T07:00:00.000Z",
+      "number": "1837716",
+      "issued_on": "2013-09-05T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2020-12-01T21:13:50.000Z",
+      "updated_at": "2024-12-10T21:57:18.233Z",
+      "status": "Current"
+    },
+    {
+      "id": "4565",
+      "license_type_id": "1",
+      "employee_id": "8556",
+      "name": "Tyler, Tyreese Ar`Mahn",
+      "expires_on": "2022-07-31T07:00:00.000Z",
+      "number": "6506192",
+      "issued_on": "2020-07-18T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2020-12-01T21:16:12.000Z",
+      "updated_at": "2024-12-10T21:57:21.641Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "4567",
+      "license_type_id": "1",
+      "employee_id": "8560",
+      "name": "parra, luis gerardo",
+      "expires_on": "2026-06-30T07:00:00.000Z",
+      "number": "6502430",
+      "issued_on": "2020-06-18T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2020-12-01T21:29:29.000Z",
+      "updated_at": "2024-12-10T21:57:24.525Z",
+      "status": "Current"
+    },
+    {
+      "id": "3852",
+      "license_type_id": "1",
+      "employee_id": "6356",
+      "name": "Still, Eric Jamal",
+      "expires_on": "2025-09-30T07:00:00.000Z",
+      "number": "6337715",
+      "issued_on": "2017-09-18T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2017-11-21T00:17:04.000Z",
+      "updated_at": "2024-12-13T14:34:29.181Z",
+      "status": "Current"
+    },
+    {
+      "id": "3890",
+      "license_type_id": "1",
+      "employee_id": "6545",
+      "name": "MUNDY, MELODY ROCHELLE",
+      "expires_on": "2026-08-31T07:00:00.000Z",
+      "number": "6274028",
+      "issued_on": "2016-08-01T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2018-03-15T20:25:24.000Z",
+      "updated_at": "2024-12-13T14:34:45.419Z",
+      "status": "Current"
+    },
+    {
+      "id": "2842",
+      "license_type_id": "1",
+      "employee_id": "4522",
+      "name": null,
+      "expires_on": null,
+      "number": "61824244",
+      "issued_on": null,
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:31.000Z",
+      "updated_at": "2024-12-13T15:02:06.051Z",
+      "status": "Invalid"
+    },
+    {
+      "id": "4443",
+      "license_type_id": "1",
+      "employee_id": "8551",
+      "name": "Lake, Zyzygry",
+      "expires_on": "2024-04-30T07:00:00.000Z",
+      "number": "6493461",
+      "issued_on": "2020-04-17T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2020-10-30T20:46:38.000Z",
+      "updated_at": "2024-12-13T14:37:28.688Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "4834",
+      "license_type_id": "1",
+      "employee_id": "9804",
+      "name": "Christopher, Charles W Jr.",
+      "expires_on": "2025-04-30T07:00:00.000Z",
+      "number": "6546989",
+      "issued_on": "2021-04-06T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2021-07-29T17:37:35.000Z",
+      "updated_at": "2024-12-13T14:38:54.975Z",
+      "status": "Current"
+    },
+    {
+      "id": "4867",
+      "license_type_id": "1",
+      "employee_id": "9828",
+      "name": "Juarez, Yenesis Marriet",
+      "expires_on": "2025-11-30T08:00:00.000Z",
+      "number": "6466903",
+      "issued_on": "2019-11-04T08:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2021-08-10T16:47:28.000Z",
+      "updated_at": "2024-12-13T14:39:05.661Z",
+      "status": "Current"
+    },
+    {
+      "id": "5406",
+      "license_type_id": "1",
+      "employee_id": "11839",
+      "name": "Ono, Nyne",
+      "expires_on": "2026-05-31T07:00:00.000Z",
+      "number": "6763911",
+      "issued_on": "2024-05-16T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2024-06-25T18:19:17.500Z",
+      "updated_at": "2024-12-13T14:46:23.431Z",
+      "status": "Current"
+    },
+    {
+      "id": "5432",
+      "license_type_id": "1",
+      "employee_id": "11852",
+      "name": "KALVAN, MAX J",
+      "expires_on": "2026-06-30T07:00:00.000Z",
+      "number": "6770727",
+      "issued_on": "2024-06-19T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2024-07-02T17:40:33.057Z",
+      "updated_at": "2024-12-13T14:46:49.836Z",
+      "status": "Current"
+    },
+    {
+      "id": "86",
+      "license_type_id": "1",
+      "employee_id": "1159",
+      "name": "CHIN, JOLLY",
+      "expires_on": "2013-07-31T07:00:00.000Z",
+      "number": "1248153",
+      "issued_on": "1999-07-26T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:24:34.054Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "89",
+      "license_type_id": "1",
+      "employee_id": "1162",
+      "name": "CONTRERAS, JUAN FRANCISCO",
+      "expires_on": "2020-03-31T07:00:00.000Z",
+      "number": "1435882",
+      "issued_on": "2004-03-29T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:24:39.992Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "91",
+      "license_type_id": "1",
+      "employee_id": "1163",
+      "name": "COURTNEY, DANIEL J",
+      "expires_on": "2012-04-30T07:00:00.000Z",
+      "number": "1590601",
+      "issued_on": "2008-04-24T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:24:43.168Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "94",
+      "license_type_id": "1",
+      "employee_id": "1165",
+      "name": "CRUTCHER, RICHARD A",
+      "expires_on": "2010-08-17T07:00:00.000Z",
+      "number": "1417520",
+      "issued_on": "2003-10-24T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:24:47.980Z",
+      "status": "Family Support Suspension"
+    },
+    {
+      "id": "96",
+      "license_type_id": "1",
+      "employee_id": "1166",
+      "name": "CRUZ, NELSON",
+      "expires_on": "2026-02-28T08:00:00.000Z",
+      "number": "1431754",
+      "issued_on": "2004-02-27T08:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:24:51.875Z",
+      "status": "Current"
+    },
+    {
+      "id": "101",
+      "license_type_id": "1",
+      "employee_id": "1170",
+      "name": "DIAZ, IGNACIO",
+      "expires_on": "2017-08-31T07:00:00.000Z",
+      "number": "1410157",
+      "issued_on": "2003-08-27T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:25:05.664Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "105",
+      "license_type_id": "1",
+      "employee_id": "1173",
+      "name": "DONIS, JAMES ANTHONY",
+      "expires_on": "2025-05-31T07:00:00.000Z",
+      "number": "1393423",
+      "issued_on": "2003-05-07T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:25:16.260Z",
+      "status": "Current"
+    },
+    {
+      "id": "90",
+      "license_type_id": "3",
+      "employee_id": "1162",
+      "name": null,
+      "expires_on": null,
+      "number": "D4699868",
+      "issued_on": null,
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T22:18:33.144Z",
+      "status": null
+    },
+    {
+      "id": "109",
+      "license_type_id": "1",
+      "employee_id": "1178",
+      "name": "EVANS, OTHA LEE",
+      "expires_on": "2017-05-31T07:00:00.000Z",
+      "number": "1310343",
+      "issued_on": "2001-05-02T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:25:27.589Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "110",
+      "license_type_id": "1",
+      "employee_id": "1179",
+      "name": "FIGUEROA, AURELIO J",
+      "expires_on": "2011-04-30T07:00:00.000Z",
+      "number": "1308605",
+      "issued_on": "2001-04-20T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:25:31.008Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "113",
+      "license_type_id": "1",
+      "employee_id": "1181",
+      "name": "FLOWERS, RAYSHAUN M",
+      "expires_on": "2013-05-31T07:00:00.000Z",
+      "number": "1551416",
+      "issued_on": "2007-05-14T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:25:37.305Z",
+      "status": "Suspended"
+    },
+    {
+      "id": "114",
+      "license_type_id": "1",
+      "employee_id": "1182",
+      "name": "FRANCIS, MARK K",
+      "expires_on": "2022-09-30T07:00:00.000Z",
+      "number": "1365718",
+      "issued_on": "2002-09-24T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:25:40.010Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "117",
+      "license_type_id": "1",
+      "employee_id": "1184",
+      "name": "GARCIA, GRISELDA",
+      "expires_on": "2024-09-30T07:00:00.000Z",
+      "number": "1526914",
+      "issued_on": "2006-09-14T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:25:45.757Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "122",
+      "license_type_id": "1",
+      "employee_id": "1188",
+      "name": "GUILLEN, LAURA G",
+      "expires_on": "2009-08-31T07:00:00.000Z",
+      "number": "1563802",
+      "issued_on": "2007-08-30T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:25:57.845Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "126",
+      "license_type_id": "1",
+      "employee_id": "1192",
+      "name": "HAWKIN, RAY",
+      "expires_on": "2020-05-31T07:00:00.000Z",
+      "number": "1414898",
+      "issued_on": "2003-10-03T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:26:06.166Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "131",
+      "license_type_id": "1",
+      "employee_id": "1195",
+      "name": "HERNANDEZ, GUADALUPE",
+      "expires_on": "2026-02-28T08:00:00.000Z",
+      "number": "1431659",
+      "issued_on": "2004-02-26T08:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:26:15.432Z",
+      "status": "Current"
+    },
+    {
+      "id": "133",
+      "license_type_id": "1",
+      "employee_id": "1197",
+      "name": "HOFF, ROBERT JOHN",
+      "expires_on": "2026-06-30T07:00:00.000Z",
+      "number": "1518463",
+      "issued_on": "2006-06-26T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:26:18.632Z",
+      "status": "Current"
+    },
+    {
+      "id": "135",
+      "license_type_id": "1",
+      "employee_id": "1199",
+      "name": "IRWIN, BRUCE EDWARD",
+      "expires_on": "2025-06-30T07:00:00.000Z",
+      "number": "1399272",
+      "issued_on": "2003-06-13T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:26:22.421Z",
+      "status": "Current"
+    },
+    {
+      "id": "137",
+      "license_type_id": "1",
+      "employee_id": "1202",
+      "name": "JOHNSON, KENNETH RAYNARD",
+      "expires_on": "2025-09-30T07:00:00.000Z",
+      "number": "1400818",
+      "issued_on": "2003-06-23T07:00:00.000Z",
+      "state": "CA",
+      "active": true,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:26:28.667Z",
+      "status": "Current"
+    },
+    {
+      "id": "142",
+      "license_type_id": "1",
+      "employee_id": "1206",
+      "name": "KIERNEY, TYDE",
+      "expires_on": "2016-11-30T08:00:00.000Z",
+      "number": "1341529",
+      "issued_on": "2002-03-15T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:26:40.342Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "146",
+      "license_type_id": "1",
+      "employee_id": "1208",
+      "name": "KASHKARYAN, GRIGOR",
+      "expires_on": "2021-08-31T07:00:00.000Z",
+      "number": "1471019",
+      "issued_on": "2005-03-01T08:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:26:47.306Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "149",
+      "license_type_id": "1",
+      "employee_id": "1212",
+      "name": "LLOYD, ANTHONY BRIAN",
+      "expires_on": "2010-05-31T07:00:00.000Z",
+      "number": "1592155",
+      "issued_on": "2008-05-07T07:00:00.000Z",
+      "state": "CA",
+      "active": false,
+      "created_at": "2015-11-03T19:25:23.000Z",
+      "updated_at": "2024-12-10T19:26:56.324Z",
+      "status": "Cancelled"
+    }
+  ],
+  "airtable": [
+    {
+      "id": "rec01YFO4TwI2ndRw",
+      "fields": {
+        "RSC Emp ID": "1305",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "1305"
+    },
+    {
+      "id": "rec0Ya0lTFSbFMjGb",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec0byvs7y2wEFhDz",
+      "fields": {
+        "RSC Emp ID": "11119",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11119"
+    },
+    {
+      "id": "rec0jFgR7kCoPZVRt",
+      "fields": {
+        "RSC Emp ID": "6938",
+        "Guard Card from Scheduling": "6403704",
+        "Guard Card Exp Date - RSPG": "10/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "6938"
+    },
+    {
+      "id": "rec0kR6cQqoQEijvD",
+      "fields": {
+        "RSC Emp ID": "11698",
+        "Guard Card from Scheduling": "PSE-20-00728",
+        "Guard Card Exp Date - RSPG": "03/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11698"
+    },
+    {
+      "id": "rec0x6XzFefUQypMS",
+      "fields": {
+        "RSC Emp ID": "6914",
+        "Guard Card from Scheduling": "1864753",
+        "Guard Card Exp Date - RSPG": "04/30/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "6914"
+    },
+    {
+      "id": "rec0y9xvDQMsXNmYE",
+      "fields": {
+        "RSC Emp ID": "11678",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11678"
+    },
+    {
+      "id": "rec0zMDonnNWE4izD",
+      "fields": {
+        "RSC Emp ID": "3735",
+        "Guard Card from Scheduling": "4963",
+        "Guard Card Exp Date - RSPG": "06/18/2016",
+        "license_type_id-sche": "1"
+      },
+      "empId": "3735"
+    },
+    {
+      "id": "rec10hMztgIGHPqMu",
+      "fields": {
+        "RSC Emp ID": "11720",
+        "Guard Card from Scheduling": "6693400",
+        "Guard Card Exp Date - RSPG": "06/30/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11720"
+    },
+    {
+      "id": "rec159kslT4JPv2n2",
+      "fields": {
+        "RSC Emp ID": "11748",
+        "Guard Card from Scheduling": "PSE-22-04324",
+        "Guard Card Exp Date - RSPG": "03/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11748"
+    },
+    {
+      "id": "rec15TBFnyT4wACJk",
+      "fields": {
+        "RSC Emp ID": "7525",
+        "Guard Card from Scheduling": "6250612",
+        "Guard Card Exp Date - RSPG": "02/28/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "7525"
+    },
+    {
+      "id": "rec160DRTUa3e2gJC",
+      "fields": {
+        "RSC Emp ID": "11455",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11455"
+    },
+    {
+      "id": "rec1AUwun3126W47h",
+      "fields": {
+        "RSC Emp ID": "10807",
+        "Guard Card from Scheduling": "6645225",
+        "Guard Card Exp Date - RSPG": "09/30/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "10807"
+    },
+    {
+      "id": "rec1CSjuwQVmGULtm",
+      "fields": {
+        "RSC Emp ID": "11478",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11478"
+    },
+    {
+      "id": "rec1CZUZtWkB0vpop",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec1J9bS0zyxUXKQq",
+      "fields": {
+        "RSC Emp ID": "11409",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11409"
+    },
+    {
+      "id": "rec1JT78ppMiEBwpT",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec1NMrXWcH2Xag3I",
+      "fields": {
+        "RSC Emp ID": "11552",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11552"
+    },
+    {
+      "id": "rec1RPyA69VvgfT2R",
+      "fields": {
+        "RSC Emp ID": "11483",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11483"
+    },
+    {
+      "id": "rec1YuuspqcRxXILV",
+      "fields": {
+        "RSC Emp ID": "11609",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11609"
+    },
+    {
+      "id": "rec1fIusvnbBBpOL5",
+      "fields": {
+        "RSC Emp ID": "9550",
+        "Guard Card from Scheduling": "PSE-21-02810",
+        "Guard Card Exp Date - RSPG": "03/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "9550"
+    },
+    {
+      "id": "rec1iVCYcQ3na3QWI",
+      "fields": {
+        "RSC Emp ID": "11487",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11487"
+    },
+    {
+      "id": "rec1qGyJbDP35UBbH",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec25sgq1dngk5KLr",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec2DcTLoJDwQjrWf",
+      "fields": {
+        "RSC Emp ID": "11939",
+        "Guard Card from Scheduling": "6588393",
+        "Guard Card Exp Date - RSPG": "12/31/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11939"
+    },
+    {
+      "id": "rec2ImkXSf56mFiNF",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec2OgsB9KIB2OO3R",
+      "fields": {
+        "RSC Emp ID": "11558",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11558"
+    },
+    {
+      "id": "rec2P3mBbIQeq1YTS",
+      "fields": {
+        "RSC Emp ID": "11656",
+        "Guard Card from Scheduling": "6749501",
+        "Guard Card Exp Date - RSPG": "03/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11656"
+    },
+    {
+      "id": "rec2QthTwey1DS3TW",
+      "fields": {
+        "RSC Emp ID": "5727",
+        "Guard Card from Scheduling": "1416607",
+        "Guard Card Exp Date - RSPG": "10/31/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "5727"
+    },
+    {
+      "id": "rec2RtDAlXeI2dDMm",
+      "fields": {
+        "RSC Emp ID": "11746",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11746"
+    },
+    {
+      "id": "rec2arciqu8H10EHp",
+      "fields": {
+        "RSC Emp ID": "11485",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11485"
+    },
+    {
+      "id": "rec2iZjLjENNG3kuw",
+      "fields": {
+        "RSC Emp ID": "11925",
+        "Guard Card from Scheduling": "6426383",
+        "Guard Card Exp Date - RSPG": "03/31/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11925"
+    },
+    {
+      "id": "rec2mVBuWxrareIkQ",
+      "fields": {
+        "RSC Emp ID": "11685",
+        "Guard Card from Scheduling": "6748727",
+        "Guard Card Exp Date - RSPG": "03/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11685"
+    },
+    {
+      "id": "rec2rgmV75XFmVKU2",
+      "fields": {
+        "RSC Emp ID": "11499",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11499"
+    },
+    {
+      "id": "rec2txFWZ0cpIJXTV",
+      "fields": {
+        "RSC Emp ID": "11397",
+        "Guard Card from Scheduling": "6663345",
+        "Guard Card Exp Date - RSPG": "01/31/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11397"
+    },
+    {
+      "id": "rec2utzsAkwUZMafI",
+      "fields": {
+        "RSC Emp ID": "11473",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11473"
+    },
+    {
+      "id": "rec2vA4sdBbEiP807",
+      "fields": {
+        "RSC Emp ID": "6783",
+        "Guard Card from Scheduling": "6341903",
+        "Guard Card Exp Date - RSPG": "10/31/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "6783"
+    },
+    {
+      "id": "rec2vgydr6V4BTkmz",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec2wCmpl6Dip2WUk",
+      "fields": {
+        "RSC Emp ID": "11780",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11780"
+    },
+    {
+      "id": "rec2waYdQHcRLv4nJ",
+      "fields": {
+        "RSC Emp ID": "7389",
+        "Guard Card from Scheduling": "6445984",
+        "Guard Card Exp Date - RSPG": "07/31/2023",
+        "license_type_id-sche": "1"
+      },
+      "empId": "7389"
+    },
+    {
+      "id": "rec3EEZBpqJhUExeG",
+      "fields": {
+        "RSC Emp ID": "11745",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11745"
+    },
+    {
+      "id": "rec3OPar0UFlBinzY",
+      "fields": {
+        "RSC Emp ID": "11936",
+        "Guard Card from Scheduling": "6776725",
+        "Guard Card Exp Date - RSPG": "07/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11936"
+    },
+    {
+      "id": "rec3PtpANxPmbgPgi",
+      "fields": {
+        "RSC Emp ID": "11663",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11663"
+    },
+    {
+      "id": "rec3TrnRuaAUiR3Gi",
+      "fields": {
+        "RSC Emp ID": "11930",
+        "Guard Card from Scheduling": "6729971",
+        "Guard Card Exp Date - RSPG": "12/31/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11930"
+    },
+    {
+      "id": "rec3eFeHsSNRym0OC",
+      "fields": {
+        "RSC Emp ID": "5855",
+        "Guard Card from Scheduling": "6259709",
+        "Guard Card Exp Date - RSPG": "04/30/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "5855"
+    },
+    {
+      "id": "rec3fEQA5zQ2tI64x",
+      "fields": {
+        "RSC Emp ID": "11653",
+        "Guard Card from Scheduling": "6488861",
+        "Guard Card Exp Date - RSPG": "03/31/2024",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11653"
+    },
+    {
+      "id": "rec3gqh8GzO2Aulbc",
+      "fields": {
+        "RSC Emp ID": "11755",
+        "Guard Card from Scheduling": "6661291",
+        "Guard Card Exp Date - RSPG": "12/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11755"
+    },
+    {
+      "id": "rec3omxtTh0GWLV2S",
+      "fields": {
+        "RSC Emp ID": "11642",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11642"
+    },
+    {
+      "id": "rec3tgHMMaWqoVcts",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec3vCZSRfJbom1rB",
+      "fields": {
+        "RSC Emp ID": "11211",
+        "Guard Card from Scheduling": "6618647",
+        "Guard Card Exp Date - RSPG": "05/31/2024",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11211"
+    },
+    {
+      "id": "rec3vq9D2Y6yPYeqX",
+      "fields": {
+        "RSC Emp ID": "11833",
+        "Guard Card from Scheduling": "PSE-24-03589",
+        "Guard Card Exp Date - RSPG": "03/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11833"
+    },
+    {
+      "id": "rec45Wpf2Hiw93d9g",
+      "fields": {
+        "RSC Emp ID": "11568",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11568"
+    },
+    {
+      "id": "rec4EaDNsULeD7SZd",
+      "fields": {
+        "RSC Emp ID": "11437",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11437"
+    },
+    {
+      "id": "rec4Gl95094hPu9rP",
+      "fields": {
+        "RSC Emp ID": "7652",
+        "Guard Card from Scheduling": "6407161",
+        "Guard Card Exp Date - RSPG": "11/30/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "7652"
+    },
+    {
+      "id": "rec4Hhlg2OmuMO3HZ",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec4JY2h4Pf98GDSV",
+      "fields": {
+        "RSC Emp ID": "11669",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11669"
+    },
+    {
+      "id": "rec4L7PEsgrcSfAXM",
+      "fields": {
+        "RSC Emp ID": "11615",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11615"
+    },
+    {
+      "id": "rec4VrdzkPn8pbpcU",
+      "fields": {
+        "RSC Emp ID": "11620",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11620"
+    },
+    {
+      "id": "rec4gbcijmTzkMhPv",
+      "fields": {
+        "RSC Emp ID": "11722",
+        "Guard Card from Scheduling": "6752063",
+        "Guard Card Exp Date - RSPG": "03/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11722"
+    },
+    {
+      "id": "rec4ij49TjpTCbFBN",
+      "fields": {
+        "RSC Emp ID": "11730",
+        "Guard Card from Scheduling": "6661431",
+        "Guard Card Exp Date - RSPG": "12/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11730"
+    },
+    {
+      "id": "rec4nTbCph5lYdDf7",
+      "fields": {
+        "RSC Emp ID": "11430",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11430"
+    },
+    {
+      "id": "rec4uha0zL38yEOf0",
+      "fields": {
+        "RSC Emp ID": "11563",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11563"
+    },
+    {
+      "id": "rec4y6vb3IURmw4Gk",
+      "fields": {
+        "RSC Emp ID": "11607",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11607"
+    },
+    {
+      "id": "rec50zCqhWS94Dtut",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec55WSc9Wg2biJGX",
+      "fields": {
+        "RSC Emp ID": "11510",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11510"
+    },
+    {
+      "id": "rec5AJbnq6tVaxo8x",
+      "fields": {
+        "RSC Emp ID": "11482",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11482"
+    },
+    {
+      "id": "rec5JxJ1XA8b3EHin",
+      "fields": {
+        "RSC Emp ID": "11646",
+        "Guard Card from Scheduling": "6550846",
+        "Guard Card Exp Date - RSPG": "04/30/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11646"
+    },
+    {
+      "id": "rec5KzfGTayrA0HL9",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec5gAuapNHshNnG5",
+      "fields": {
+        "RSC Emp ID": "11709",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11709"
+    },
+    {
+      "id": "rec5hhR7fs9f4QA3K",
+      "fields": {
+        "RSC Emp ID": "11627",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11627"
+    },
+    {
+      "id": "rec5ikK1BjiTu3pYm",
+      "fields": {
+        "RSC Emp ID": "11642",
+        "Guard Card from Scheduling": "6621030",
+        "Guard Card Exp Date - RSPG": "05/31/2024",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11642"
+    },
+    {
+      "id": "rec5y54yowJ5GPsOT",
+      "fields": {
+        "RSC Emp ID": "11608",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11608"
+    },
+    {
+      "id": "rec61OP7ELAWfJsrQ",
+      "fields": {
+        "RSC Emp ID": "5904",
+        "Guard Card from Scheduling": "1324452",
+        "Guard Card Exp Date - RSPG": "10/31/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "5904"
+    },
+    {
+      "id": "rec6II5GTC3evaUa7",
+      "fields": {
+        "RSC Emp ID": "11071",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11071"
+    },
+    {
+      "id": "rec6M4GKhsbk6d48H",
+      "fields": {
+        "RSC Emp ID": "11607",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11607"
+    },
+    {
+      "id": "rec6NjwF1pMJ4dXHv",
+      "fields": {
+        "RSC Emp ID": "11696",
+        "Guard Card from Scheduling": "PSE-24-03139",
+        "Guard Card Exp Date - RSPG": "03/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11696"
+    },
+    {
+      "id": "rec6PJ3yKCpIjzRCg",
+      "fields": {
+        "RSC Emp ID": "11740",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11740"
+    },
+    {
+      "id": "rec6TSeCQPNtDHROp",
+      "fields": {
+        "RSC Emp ID": "11588",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11588"
+    },
+    {
+      "id": "rec6VWQ9VEyjPgRq4",
+      "fields": {
+        "RSC Emp ID": "11777",
+        "Guard Card from Scheduling": "PSE-24-02792",
+        "Guard Card Exp Date - RSPG": "03/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11777"
+    },
+    {
+      "id": "rec6ilbQmO8gpX3cB",
+      "fields": {
+        "RSC Emp ID": "10241",
+        "Guard Card from Scheduling": "6580489",
+        "Guard Card Exp Date - RSPG": "10/31/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "10241"
+    },
+    {
+      "id": "rec6oKAlZYChupOfP",
+      "fields": {
+        "RSC Emp ID": "7943",
+        "Guard Card from Scheduling": "6314319",
+        "Guard Card Exp Date - RSPG": "05/31/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "7943"
+    },
+    {
+      "id": "rec6rcwmztGhkCOix",
+      "fields": {
+        "RSC Emp ID": "11452",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11452"
+    },
+    {
+      "id": "rec6rofYIybRYYpKn",
+      "fields": {
+        "RSC Emp ID": "11441",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11441"
+    },
+    {
+      "id": "rec6wmpdOG7KKYgHC",
+      "fields": {
+        "RSC Emp ID": "11586",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11586"
+    },
+    {
+      "id": "rec6ziLE2kgdy0QnH",
+      "fields": {
+        "RSC Emp ID": "11536",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11536"
+    },
+    {
+      "id": "rec75yDwTN60VYlfp",
+      "fields": {
+        "RSC Emp ID": "11635",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11635"
+    },
+    {
+      "id": "rec799SgWO8ke4kbc",
+      "fields": {
+        "RSC Emp ID": "11506",
+        "Guard Card from Scheduling": "PSE-22-04825",
+        "Guard Card Exp Date - RSPG": "03/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11506"
+    },
+    {
+      "id": "rec7EWn5dIFdxB32z",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec7HYflN4FJFBR5Y",
+      "fields": {
+        "RSC Emp ID": "5834",
+        "Guard Card from Scheduling": "1564936",
+        "Guard Card Exp Date - RSPG": "12/31/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "5834"
+    },
+    {
+      "id": "rec7IAhlTpmt8wXEy",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec7RH0xLGGa7GE3M",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec7RHkXgbOtBI278",
+      "fields": {
+        "RSC Emp ID": "11791",
+        "Guard Card from Scheduling": "6754944",
+        "Guard Card Exp Date - RSPG": "04/30/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11791"
+    },
+    {
+      "id": "rec7W88SP5sc6gHxJ",
+      "fields": {
+        "RSC Emp ID": "",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": ""
+    },
+    {
+      "id": "rec7Y5EvpZoIfTeGj",
+      "fields": {
+        "RSC Emp ID": "11717",
+        "Guard Card from Scheduling": "1881632",
+        "Guard Card Exp Date - RSPG": "08/31/2026",
+        "license_type_id-sche": "1"
+      },
+      "empId": "11717"
+    },
+    {
+      "id": "rec7cI31IRvEwlQzK",
+      "fields": {
+        "RSC Emp ID": "11533",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11533"
+    },
+    {
+      "id": "rec7cqF9sjsDY0Sv5",
+      "fields": {
+        "RSC Emp ID": "9156",
+        "Guard Card from Scheduling": "1884777",
+        "Guard Card Exp Date - RSPG": "09/30/2022",
+        "license_type_id-sche": "1"
+      },
+      "empId": "9156"
+    },
+    {
+      "id": "rec7gxIKKT2j7jiB7",
+      "fields": {
+        "RSC Emp ID": "11525",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11525"
+    },
+    {
+      "id": "rec7hSlk7lyfY9Mc2",
+      "fields": {
+        "RSC Emp ID": "11703",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11703"
+    },
+    {
+      "id": "rec7kTW4hLgY9rUql",
+      "fields": {
+        "RSC Emp ID": "5760",
+        "Guard Card from Scheduling": "1899014",
+        "Guard Card Exp Date - RSPG": "01/31/2025",
+        "license_type_id-sche": "1"
+      },
+      "empId": "5760"
+    },
+    {
+      "id": "rec7mimERvxVc11Cr",
+      "fields": {
+        "RSC Emp ID": "11579",
+        "Guard Card from Scheduling": "",
+        "Guard Card Exp Date - RSPG": "",
+        "license_type_id-sche": ""
+      },
+      "empId": "11579"
+    }
+  ]
+}

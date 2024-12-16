@@ -1,16 +1,14 @@
 {
-  "name": "airtable-heroku",
+  "name": "sync-employees",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sync data between PostgreSQL and Airtable",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "airtable": "^0.12.2",
-    "express": "^4.21.1"
+    "airtable": "^0.11.4",
+    "dotenv": "^16.0.0",
+    "pg": "^8.8.0"
   }
 }
