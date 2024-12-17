@@ -20,7 +20,19 @@ const pgTableName = process.env.PG_TABLE_NAME || 'employee_licenses'; // Default
 // Fetch employees from PostgreSQL
 async function getEmployeesFromPostgres() {
   try {
-    const result = await pool.query(`SELECT * FROM ${pgTableName}`);
+    const result = await pool.query(`
+      WITH RankedLicenses AS (
+        SELECT *,
+          ROW_NUMBER() OVER (
+            PARTITION BY employee_id 
+            ORDER BY expires_on DESC NULLS LAST
+          ) as rn
+        FROM ${pgTableName}
+        WHERE license_type_id = '1'
+      )
+      SELECT * FROM RankedLicenses 
+      WHERE rn = 1
+    `);
     return result.rows;
   } catch (error) {
     console.error('Error querying Postgres:', error);
@@ -73,21 +85,6 @@ async function updateAirtableRecord(recordId, updatedFields) {
 
 // Sync data from PostgreSQL to Airtable
 const fs = require('fs'); // For writing data to a file
-
-// Add this function before syncPostgresToAirtable
-async function confirmAndProceed() {
-  const readline = require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-
-  return new Promise((resolve) => {
-    readline.question('Review the matched_data.json file. Type "yes" to proceed with updates: ', (answer) => {
-      readline.close();
-      resolve(answer.toLowerCase() === 'yes');
-    });
-  });
-}
 
 async function syncPostgresToAirtable() {
     try {
@@ -159,7 +156,11 @@ async function syncPostgresToAirtable() {
             });
 
             const needsUpdate = 
-              // Only update if PG has actual data that's different from Airtable
+              // Update if PG has data and Airtable is blank
+              (pgEmployee.number && !currentGuardCard) ||
+              (pgEmployee.expires_on && !currentExpDate) ||
+              (pgEmployee.license_type_id && !currentLicenseType) ||
+              // Or if both have data but it's different
               (pgEmployee.number && currentGuardCard && currentGuardCard.trim() !== pgEmployee.number.trim()) ||
               (pgEmployee.expires_on && currentExpDate && currentExpDate.trim() !== formattedExpDate.trim()) ||
               (pgEmployee.license_type_id && currentLicenseType && currentLicenseType !== pgEmployee.license_type_id);
@@ -224,6 +225,9 @@ async function syncPostgresToAirtable() {
       console.log(`Found ${matchedData.length} total matches`);
       console.log(`Found ${recordsNeedingUpdate.length} records that need updating`);
   
+      // Add this line
+      writeUpdateReport(recordsNeedingUpdate);
+  
       // Save all matched data to file
       fs.writeFileSync('matched_data.json', JSON.stringify(matchedData, null, 2));
       console.log('All matched data saved to matched_data.json');
@@ -233,14 +237,7 @@ async function syncPostgresToAirtable() {
         return;
       }
   
-      // Continue with user confirmation and updates only for records that need updating
-      const confirmed = await confirmAndProceed();
-      if (!confirmed) {
-        console.log('Aborting updates...');
-        return;
-      }
-  
-      console.log('Updating Airtable records...');
+      console.log('Proceeding with updates...');
       const errors = [];
       let successCount = 0;
 
@@ -284,6 +281,34 @@ async function syncPostgresToAirtable() {
       console.error('Fatal error during sync:', error);
       throw error;
     }
+}
+
+// Add this function near the top with other file operations
+function writeUpdateReport(recordsNeedingUpdate) {
+  const report = recordsNeedingUpdate.map(record => ({
+    employeeId: record.postgres.employee_id,
+    name: record.postgres.name,
+    changes: {
+      guardCard: {
+        needsUpdate: record.currentValues.guardCard !== (record.postgres.number || 'BLANK'),
+        current: record.currentValues.guardCard,
+        new: record.postgres.number || 'BLANK'
+      },
+      expDate: {
+        needsUpdate: record.currentValues.expDate !== (record.updateFields['Guard Card Exp Date - RSPG'] || 'BLANK'),
+        current: record.currentValues.expDate,
+        new: record.updateFields['Guard Card Exp Date - RSPG'] || 'BLANK'
+      },
+      licenseType: {
+        needsUpdate: record.currentValues.licenseType !== record.postgres.license_type_id,
+        current: record.currentValues.licenseType,
+        new: record.postgres.license_type_id
+      }
+    }
+  }));
+
+  fs.writeFileSync('update_report.json', JSON.stringify(report, null, 2));
+  console.log('Update report saved to update_report.json');
 }
 
 module.exports = { syncPostgresToAirtable };
