@@ -15,7 +15,7 @@ const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process
 const tableName = process.env.AIRTABLE_TABLE_NAME || 'Employees_dev'; // Default to 'Employees' if not set
 
 // Add this near the other configuration constants
-const pgTableName = process.env.PG_TABLE_NAME || 'employee_licenses'; // Default to 'employees' if not set
+const pgTableName = process.env.PG_TABLE_NAME_1 || 'employee_licenses'; // Default to 'employees' if not set
 
 // Fetch employees from PostgreSQL
 async function getEmployeesFromPostgres() {
@@ -46,7 +46,7 @@ async function getEmployeesFromAirtable() {
   try {
     await base(tableName)
       .select({
-        fields: ['RSC Emp ID', 'Guard Card from Scheduling', 'Guard Card Exp Date - RSPG', 'license_type_id-sche']
+        fields: ['RSC Emp ID', 'GC - RSPG', 'GC Exp Date - RSPG', 'license type id - RSPG']
       })
       .eachPage((pageRecords, fetchNextPage) => {
         records.push(...pageRecords);
@@ -56,14 +56,14 @@ async function getEmployeesFromAirtable() {
       id: record.id,
       fields: {
         'RSC Emp ID': record.fields['RSC Emp ID'] || '',
-        'Guard Card from Scheduling': record.fields['Guard Card from Scheduling'] || '',
-        'Guard Card Exp Date - RSPG': record.fields['Guard Card Exp Date - RSPG'] 
+        'GC - RSPG': record.fields['GC - RSPG'] || '',
+        'GC Exp Date - RSPG': record.fields['GC Exp Date - RSPG'] 
           ? (() => {
-              const [year, month, day] = record.fields['Guard Card Exp Date - RSPG'].split('-');
+              const [year, month, day] = record.fields['GC Exp Date - RSPG'].split('-');
               return `${month}/${day}/${year}`; // Rearrange to MM/DD/YYYY
             })()
           : '',
-        'license_type_id-sche': record.fields['license_type_id-sche'] || ''
+        'license type id - RSPG': record.fields['license type id - RSPG'] || ''
       }
     }));
   } catch (error) {
@@ -141,12 +141,12 @@ async function syncPostgresToAirtable() {
                 })()
               : ''; // Return empty string if expires_on is null
             
-            const currentGuardCard = matchingAirtableRecord.fields['Guard Card from Scheduling'] || '';
+            const currentGuardCard = matchingAirtableRecord.fields['GC - RSPG'] || '';
             // Get the Airtable date and ensure it's in MM/DD/YYYY format
-            const currentExpDate = matchingAirtableRecord.fields['Guard Card Exp Date - RSPG'] 
-              ? matchingAirtableRecord.fields['Guard Card Exp Date - RSPG'].replace(/-/g, '/') // Replace any hyphens with slashes
+            const currentExpDate = matchingAirtableRecord.fields['GC Exp Date - RSPG'] 
+              ? matchingAirtableRecord.fields['GC Exp Date - RSPG'].replace(/-/g, '/') // Replace any hyphens with slashes
               : '';
-            const currentLicenseType = matchingAirtableRecord.fields['license_type_id-sche'] || '';
+            const currentLicenseType = matchingAirtableRecord.fields['license type id - RSPG'] || '';
 
             // Debug log to see the actual formats
             console.log(`Date formats for employee ${pgEmployee.employee_id}:`, {
@@ -203,11 +203,11 @@ async function syncPostgresToAirtable() {
               airtable: matchingAirtableRecord.fields,
               needsUpdate,
               updateFields: {
-                'Guard Card from Scheduling': pgEmployee.number || '',
+                'GC - RSPG': pgEmployee.number || '',
                 ...(pgEmployee.expires_on === null 
-                  ? { 'Guard Card Exp Date - RSPG': null }  // Set to null if PG is null
-                  : { 'Guard Card Exp Date - RSPG': formattedExpDate }), // Otherwise use formatted date
-                'license_type_id-sche': pgEmployee.license_type_id
+                  ? { 'GC Exp Date - RSPG': null }  // Set to null if PG is null
+                  : { 'GC Exp Date - RSPG': formattedExpDate }), // Otherwise use formatted date
+                'license type id - RSPG': pgEmployee.license_type_id
               },
               currentValues: {
                 guardCard: currentGuardCard || 'BLANK',
@@ -295,9 +295,9 @@ function writeUpdateReport(recordsNeedingUpdate) {
         new: record.postgres.number || 'BLANK'
       },
       expDate: {
-        needsUpdate: record.currentValues.expDate !== (record.updateFields['Guard Card Exp Date - RSPG'] || 'BLANK'),
+        needsUpdate: record.currentValues.expDate !== (record.updateFields['GC Exp Date - RSPG'] || 'BLANK'),
         current: record.currentValues.expDate,
-        new: record.updateFields['Guard Card Exp Date - RSPG'] || 'BLANK'
+        new: record.updateFields['GC Exp Date - RSPG'] || 'BLANK'
       },
       licenseType: {
         needsUpdate: record.currentValues.licenseType !== record.postgres.license_type_id,
