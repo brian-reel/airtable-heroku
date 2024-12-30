@@ -1,2 +1,17 @@
+
+# Node modules
 node_modules/
+
+# Environment variables
 .env
+
+# Report files
+src/reports/
+src/reports/*.json
+
+# Logs
+*.log
+
+# IDE specific files
+.vscode/
+.idea/
