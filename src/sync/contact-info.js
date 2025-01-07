@@ -25,12 +25,13 @@ function writeEmailMatchReport(matches) {
 async function getEmailsFromPostgres() {
   try {
     const result = await pool.query(`
-      SELECT e.emailable_id, e.address, emp.mobile_phone, emp.active 
+      SELECT e.emailable_id, e.address, emp.mobile_phone, emp.active, emp.created_at
       FROM ${pgEmailsTable} e
       LEFT JOIN ${pgEmployeesTable} emp ON e.emailable_id = emp.id
       WHERE e.emailable_type = 'Employee' 
       AND e.address IS NOT NULL
       AND e."primary" = true
+      ORDER BY emp.created_at DESC
     `);
     console.log(`Fetched ${result.rows.length} email records from Postgres`);
     return result.rows;
@@ -43,12 +44,13 @@ async function getEmailsFromPostgres() {
 async function getPhoneNumbersFromPostgres() {
   try {
     const result = await pool.query(`
-      SELECT emp.id, emp.mobile_phone, emp.active, e.address as email
+      SELECT emp.id, emp.mobile_phone, emp.active, emp.created_at, e.address as email
       FROM ${pgEmployeesTable} emp
       LEFT JOIN ${pgEmailsTable} e ON emp.id = e.emailable_id 
       AND e.emailable_type = 'Employee' 
       AND e."primary" = true
       WHERE emp.mobile_phone IS NOT NULL
+      ORDER BY emp.created_at DESC
     `);
     console.log(`Fetched ${result.rows.length} phone records from Postgres`);
     return result.rows;
@@ -233,11 +235,18 @@ async function matchAndUpdatePhones() {
     const matches = [];
     let phoneMatchCount = 0;
 
-    // Create lookup object for PG phones
+    // Create lookup object for PG phones - only keep the most recent record for each phone
     const pgPhoneMap = pgPhones.reduce((acc, row) => {
       const standardizedPhone = standardizePhoneNumber(row.mobile_phone);
       if (standardizedPhone) {
-        acc[standardizedPhone] = row.id;
+        if (!acc[standardizedPhone] || new Date(row.created_at) > new Date(acc[standardizedPhone].created_at)) {
+          acc[standardizedPhone] = {
+            id: row.id,
+            email: row.email,
+            active: row.active,
+            created_at: row.created_at
+          };
+        }
       }
       return acc;
     }, {});
@@ -247,7 +256,7 @@ async function matchAndUpdatePhones() {
       const airtablePhone = standardizePhoneNumber(record.fields['Phone']);
       
       if (airtablePhone && pgPhoneMap[airtablePhone]) {
-        const pgRecord = pgPhones.find(r => standardizePhoneNumber(r.mobile_phone) === airtablePhone);
+        const pgRecord = pgPhoneMap[airtablePhone];
         const updates = determineUpdates(record.fields, pgRecord);
         
         if (Object.values(updates).some(Boolean)) {
@@ -259,7 +268,8 @@ async function matchAndUpdatePhones() {
             pgEmail: pgRecord.email,
             currentFields: record.fields,
             updates,
-            isActive: pgRecord.active
+            isActive: pgRecord.active,
+            created_at: pgRecord.created_at
           });
         }
       }

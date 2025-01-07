@@ -963,7 +963,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2020-12-02T18:42:32.000Z",
-      "updated_at": "2024-12-30T14:30:05.976Z",
+      "updated_at": "2025-01-07T14:30:07.472Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1473,7 +1473,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-07T23:28:32.000Z",
-      "updated_at": "2024-12-30T14:30:14.773Z",
+      "updated_at": "2025-01-07T14:30:14.031Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1507,7 +1507,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-07T23:44:20.000Z",
-      "updated_at": "2024-12-30T14:30:16.926Z",
+      "updated_at": "2025-01-07T14:30:16.181Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1575,7 +1575,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-09T17:16:02.000Z",
-      "updated_at": "2024-12-30T14:30:38.059Z",
+      "updated_at": "2025-01-07T14:30:43.611Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1609,7 +1609,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-10T00:01:55.000Z",
-      "updated_at": "2024-12-30T14:30:58.743Z",
+      "updated_at": "2025-01-07T14:31:06.806Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1643,7 +1643,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-10T00:19:43.000Z",
-      "updated_at": "2024-12-30T14:31:00.527Z",
+      "updated_at": "2025-01-07T14:31:09.631Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1677,7 +1677,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-10T00:42:13.000Z",
-      "updated_at": "2024-12-30T14:31:11.870Z",
+      "updated_at": "2025-01-07T14:31:20.496Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1709,10 +1709,10 @@
       "number": "1893093",
       "issued_on": "2014-12-01T08:00:00.000Z",
       "state": "CA",
-      "active": true,
+      "active": false,
       "created_at": "2017-06-12T20:08:47.000Z",
-      "updated_at": "2024-12-30T14:31:19.484Z",
-      "status": "Current",
+      "updated_at": "2025-01-07T14:31:26.153Z",
+      "status": "Expired",
       "rn": "1"
     },
     "airtable": {
@@ -1745,7 +1745,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-12T22:30:53.000Z",
-      "updated_at": "2024-12-30T14:31:28.851Z",
+      "updated_at": "2025-01-07T14:31:46.726Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1779,7 +1779,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-13T00:49:00.000Z",
-      "updated_at": "2024-12-30T14:31:36.256Z",
+      "updated_at": "2025-01-07T14:31:54.155Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1813,7 +1813,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-13T23:53:02.000Z",
-      "updated_at": "2024-12-30T14:32:02.499Z",
+      "updated_at": "2025-01-07T14:32:13.701Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1847,7 +1847,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-14T00:36:45.000Z",
-      "updated_at": "2024-12-30T14:32:06.190Z",
+      "updated_at": "2025-01-07T14:32:17.363Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1881,7 +1881,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2017-06-14T00:38:58.000Z",
-      "updated_at": "2024-12-30T14:32:09.070Z",
+      "updated_at": "2025-01-07T14:32:19.446Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -1915,7 +1915,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-14T17:48:59.000Z",
-      "updated_at": "2024-12-30T14:32:17.423Z",
+      "updated_at": "2025-01-07T14:32:29.003Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1949,7 +1949,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-14T22:54:50.000Z",
-      "updated_at": "2024-12-30T14:32:26.017Z",
+      "updated_at": "2025-01-07T14:32:39.222Z",
       "status": "Current",
       "rn": "1"
     },
@@ -1983,7 +1983,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-16T18:08:11.000Z",
-      "updated_at": "2024-12-30T14:33:11.183Z",
+      "updated_at": "2025-01-07T14:33:27.151Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2017,7 +2017,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-18T17:45:37.000Z",
-      "updated_at": "2024-12-30T14:33:35.826Z",
+      "updated_at": "2025-01-07T14:33:55.628Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2051,7 +2051,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-06-22T00:18:48.000Z",
-      "updated_at": "2024-12-30T14:33:40.515Z",
+      "updated_at": "2025-01-07T14:34:00.620Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2085,7 +2085,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2017-06-28T19:22:45.000Z",
-      "updated_at": "2024-12-30T14:33:47.970Z",
+      "updated_at": "2025-01-07T14:34:10.831Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -2119,7 +2119,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-07-06T23:42:20.000Z",
-      "updated_at": "2024-12-30T14:33:52.945Z",
+      "updated_at": "2025-01-07T14:34:15.784Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2153,7 +2153,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-07-07T16:46:32.000Z",
-      "updated_at": "2024-12-30T14:33:56.333Z",
+      "updated_at": "2025-01-07T14:34:17.721Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2187,7 +2187,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-07-12T22:20:29.000Z",
-      "updated_at": "2024-12-30T14:33:58.412Z",
+      "updated_at": "2025-01-07T14:34:20.035Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2221,7 +2221,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-07-26T22:01:12.000Z",
-      "updated_at": "2024-12-30T14:34:05.170Z",
+      "updated_at": "2025-01-07T14:34:25.715Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2289,7 +2289,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-08-24T23:06:38.000Z",
-      "updated_at": "2024-12-30T14:34:20.961Z",
+      "updated_at": "2025-01-07T14:34:41.655Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2323,7 +2323,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-09-15T20:04:41.000Z",
-      "updated_at": "2024-12-30T14:34:23.442Z",
+      "updated_at": "2025-01-07T14:34:43.527Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2357,7 +2357,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-09-22T18:04:25.000Z",
-      "updated_at": "2024-12-30T14:34:31.462Z",
+      "updated_at": "2025-01-07T14:34:50.325Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2425,7 +2425,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-11-21T00:17:04.000Z",
-      "updated_at": "2024-12-30T14:34:39.963Z",
+      "updated_at": "2025-01-07T14:34:56.750Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2459,7 +2459,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2017-10-27T20:32:45.000Z",
-      "updated_at": "2024-12-30T14:34:48.440Z",
+      "updated_at": "2025-01-07T14:35:04.745Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2493,7 +2493,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2018-02-20T23:01:37.000Z",
-      "updated_at": "2024-12-30T14:34:50.616Z",
+      "updated_at": "2025-01-07T14:35:06.671Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2527,7 +2527,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2018-03-15T20:28:38.000Z",
-      "updated_at": "2024-12-30T14:34:59.884Z",
+      "updated_at": "2025-01-07T14:35:15.271Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2561,7 +2561,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2018-03-15T20:31:44.000Z",
-      "updated_at": "2024-12-30T14:35:02.729Z",
+      "updated_at": "2025-01-07T14:35:17.092Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2629,7 +2629,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2018-03-26T21:33:19.000Z",
-      "updated_at": "2024-12-30T14:35:05.018Z",
+      "updated_at": "2025-01-07T14:35:19.012Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2663,7 +2663,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2018-06-28T22:47:21.000Z",
-      "updated_at": "2024-12-30T14:35:12.047Z",
+      "updated_at": "2025-01-07T14:35:24.440Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2697,7 +2697,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-18T22:57:01.890Z",
-      "updated_at": "2024-12-30T14:35:17.809Z",
+      "updated_at": "2025-01-07T14:35:31.851Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2731,7 +2731,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2018-08-07T22:47:39.000Z",
-      "updated_at": "2024-12-30T14:35:19.576Z",
+      "updated_at": "2025-01-07T14:35:34.215Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2799,7 +2799,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2018-08-24T00:47:25.000Z",
-      "updated_at": "2024-12-30T14:35:23.092Z",
+      "updated_at": "2025-01-07T14:35:38.941Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -2833,7 +2833,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2018-09-19T20:35:01.000Z",
-      "updated_at": "2024-12-30T14:35:30.309Z",
+      "updated_at": "2025-01-07T14:35:45.905Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2867,7 +2867,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2018-09-28T16:07:17.000Z",
-      "updated_at": "2024-12-30T14:35:34.735Z",
+      "updated_at": "2025-01-07T14:35:49.733Z",
       "status": "Current",
       "rn": "1"
     },
@@ -2901,7 +2901,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2018-09-26T20:04:29.000Z",
-      "updated_at": "2024-12-30T14:35:36.790Z",
+      "updated_at": "2025-01-07T14:35:53.369Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -2969,7 +2969,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2018-10-31T23:52:50.000Z",
-      "updated_at": "2024-12-30T14:35:49.584Z",
+      "updated_at": "2025-01-07T14:36:01.175Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3003,7 +3003,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-18T23:49:33.761Z",
-      "updated_at": "2024-12-30T14:35:52.779Z",
+      "updated_at": "2025-01-07T14:36:03.120Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3037,7 +3037,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2018-12-05T18:42:23.000Z",
-      "updated_at": "2024-12-30T14:35:56.530Z",
+      "updated_at": "2025-01-07T14:36:07.033Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3071,7 +3071,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2019-08-08T22:53:21.000Z",
-      "updated_at": "2024-12-30T14:36:00.511Z",
+      "updated_at": "2025-01-07T14:36:10.774Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3105,7 +3105,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2019-08-15T22:41:16.000Z",
-      "updated_at": "2024-12-30T14:36:09.620Z",
+      "updated_at": "2025-01-07T14:36:23.286Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3139,7 +3139,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2019-08-28T17:03:32.000Z",
-      "updated_at": "2024-12-30T14:36:20.829Z",
+      "updated_at": "2025-01-07T14:36:30.587Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3173,7 +3173,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2019-09-06T00:46:47.000Z",
-      "updated_at": "2024-12-30T14:36:22.813Z",
+      "updated_at": "2025-01-07T14:36:32.531Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -3207,7 +3207,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2019-09-24T23:24:10.000Z",
-      "updated_at": "2024-12-30T14:36:25.795Z",
+      "updated_at": "2025-01-07T14:36:34.276Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3241,7 +3241,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2019-10-03T22:52:49.000Z",
-      "updated_at": "2024-12-30T14:36:39.404Z",
+      "updated_at": "2025-01-07T14:36:46.138Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3275,7 +3275,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2019-10-03T23:07:57.000Z",
-      "updated_at": "2024-12-30T14:36:42.060Z",
+      "updated_at": "2025-01-07T14:36:48.078Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3309,7 +3309,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2019-10-03T23:08:38.000Z",
-      "updated_at": "2024-12-30T14:36:43.831Z",
+      "updated_at": "2025-01-07T14:36:49.918Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3343,7 +3343,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2019-10-15T23:22:58.000Z",
-      "updated_at": "2024-12-30T14:36:51.737Z",
+      "updated_at": "2025-01-07T14:37:04.738Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3411,7 +3411,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2019-11-05T21:44:41.000Z",
-      "updated_at": "2024-12-30T14:36:58.929Z",
+      "updated_at": "2025-01-07T14:37:10.712Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3445,7 +3445,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2019-11-20T21:40:27.000Z",
-      "updated_at": "2024-12-30T14:37:02.423Z",
+      "updated_at": "2025-01-07T14:37:16.092Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3547,7 +3547,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2020-02-19T17:12:16.000Z",
-      "updated_at": "2024-12-30T14:37:14.533Z",
+      "updated_at": "2025-01-07T14:37:30.051Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3581,7 +3581,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2020-02-19T17:22:33.000Z",
-      "updated_at": "2024-12-30T14:37:18.049Z",
+      "updated_at": "2025-01-07T14:37:34.860Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3615,7 +3615,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2020-12-01T00:56:46.000Z",
-      "updated_at": "2024-12-30T14:37:23.606Z",
+      "updated_at": "2025-01-07T14:37:45.911Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3649,7 +3649,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2020-12-01T01:04:26.000Z",
-      "updated_at": "2024-12-30T14:37:25.894Z",
+      "updated_at": "2025-01-07T14:37:47.820Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -3717,7 +3717,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2020-12-01T18:21:18.000Z",
-      "updated_at": "2024-12-30T14:37:30.117Z",
+      "updated_at": "2025-01-07T14:37:52.176Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3751,7 +3751,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2020-12-01T19:52:03.000Z",
-      "updated_at": "2024-12-30T14:37:32.679Z",
+      "updated_at": "2025-01-07T14:37:54.472Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3785,7 +3785,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2020-11-30T22:19:27.000Z",
-      "updated_at": "2024-12-30T14:37:34.958Z",
+      "updated_at": "2025-01-07T14:37:57.107Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3819,7 +3819,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2020-12-01T20:08:15.000Z",
-      "updated_at": "2024-12-30T14:37:36.711Z",
+      "updated_at": "2025-01-07T14:37:59.824Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3853,7 +3853,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2020-12-01T20:16:14.000Z",
-      "updated_at": "2024-12-30T14:37:38.580Z",
+      "updated_at": "2025-01-07T14:38:02.934Z",
       "status": "Current",
       "rn": "1"
     },
@@ -3887,7 +3887,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2020-10-30T20:46:38.000Z",
-      "updated_at": "2024-12-30T14:37:42.138Z",
+      "updated_at": "2025-01-07T14:38:04.731Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -3921,7 +3921,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2020-12-01T21:37:53.000Z",
-      "updated_at": "2024-12-30T14:37:43.925Z",
+      "updated_at": "2025-01-07T14:38:08.239Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -3989,7 +3989,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2020-12-04T19:17:22.000Z",
-      "updated_at": "2024-12-30T14:37:51.955Z",
+      "updated_at": "2025-01-07T14:38:17.080Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4023,7 +4023,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2021-03-24T15:52:27.000Z",
-      "updated_at": "2024-12-30T14:38:22.483Z",
+      "updated_at": "2025-01-07T14:38:46.218Z",
       "status": "Suspended",
       "rn": "1"
     },
@@ -4057,7 +4057,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2021-04-06T17:34:26.000Z",
-      "updated_at": "2024-12-30T14:38:24.773Z",
+      "updated_at": "2025-01-07T14:38:48.338Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4091,7 +4091,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2021-04-07T19:02:19.000Z",
-      "updated_at": "2024-12-30T14:38:27.408Z",
+      "updated_at": "2025-01-07T14:38:50.237Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -4125,7 +4125,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2021-04-13T21:34:46.000Z",
-      "updated_at": "2024-12-30T14:38:34.619Z",
+      "updated_at": "2025-01-07T14:38:58.264Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4193,7 +4193,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2021-05-13T21:27:11.000Z",
-      "updated_at": "2024-12-30T14:38:41.624Z",
+      "updated_at": "2025-01-07T14:39:07.406Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4295,7 +4295,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2021-05-20T17:33:37.000Z",
-      "updated_at": "2024-12-30T14:38:47.045Z",
+      "updated_at": "2025-01-07T14:39:11.116Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4329,7 +4329,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2021-05-25T17:49:13.000Z",
-      "updated_at": "2024-12-30T14:38:52.400Z",
+      "updated_at": "2025-01-07T14:39:15.078Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4465,7 +4465,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2021-06-30T20:55:11.000Z",
-      "updated_at": "2024-12-30T14:39:08.660Z",
+      "updated_at": "2025-01-07T14:39:28.144Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -4533,7 +4533,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2021-08-09T17:38:31.000Z",
-      "updated_at": "2024-12-30T14:39:28.635Z",
+      "updated_at": "2025-01-07T14:39:43.345Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4567,7 +4567,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2021-08-10T16:47:28.000Z",
-      "updated_at": "2024-12-30T14:39:30.511Z",
+      "updated_at": "2025-01-07T14:39:45.232Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4635,7 +4635,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2021-08-18T16:58:22.000Z",
-      "updated_at": "2024-12-30T14:39:39.019Z",
+      "updated_at": "2025-01-07T14:39:53.793Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4669,7 +4669,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2021-08-25T16:59:25.000Z",
-      "updated_at": "2024-12-30T14:39:43.406Z",
+      "updated_at": "2025-01-07T14:39:58.820Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4737,7 +4737,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2021-09-16T17:33:29.000Z",
-      "updated_at": "2024-12-30T14:39:57.366Z",
+      "updated_at": "2025-01-07T14:40:12.962Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4771,7 +4771,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2022-01-20T22:14:34.982Z",
-      "updated_at": "2024-12-30T14:40:10.484Z",
+      "updated_at": "2025-01-07T14:40:32.393Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4805,7 +4805,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2022-03-23T17:29:36.510Z",
-      "updated_at": "2024-12-30T14:40:15.618Z",
+      "updated_at": "2025-01-07T14:40:36.727Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4975,7 +4975,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2022-07-22T21:04:56.931Z",
-      "updated_at": "2024-12-30T14:40:21.758Z",
+      "updated_at": "2025-01-07T14:40:43.193Z",
       "status": "Current",
       "rn": "1"
     },
@@ -4999,6 +4999,40 @@
   },
   {
     "postgres": {
+      "id": "5264",
+      "license_type_id": "1",
+      "employee_id": "10579",
+      "name": null,
+      "expires_on": "2025-03-31T07:00:00.000Z",
+      "number": "PSE-22-04524",
+      "issued_on": null,
+      "state": "LA",
+      "active": false,
+      "created_at": "2023-10-10T15:55:51.895Z",
+      "updated_at": "2023-10-10T15:56:49.267Z",
+      "status": null,
+      "rn": "1"
+    },
+    "airtable": {
+      "RSC Emp ID": "10579",
+      "GC - RSPG": "PSE-22-04524",
+      "GC Exp Date - RSPG": "03/31/2025",
+      "license type id - RSPG": "1"
+    },
+    "needsUpdate": false,
+    "updateFields": {
+      "GC - RSPG": "PSE-22-04524",
+      "GC Exp Date - RSPG": "03/31/2025",
+      "license type id - RSPG": "1"
+    },
+    "currentValues": {
+      "guardCard": "PSE-22-04524",
+      "expDate": "03/31/2025",
+      "licenseType": "1"
+    }
+  },
+  {
+    "postgres": {
       "id": "4994",
       "license_type_id": "1",
       "employee_id": "10615",
@@ -5009,7 +5043,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2022-08-18T19:18:02.816Z",
-      "updated_at": "2024-12-30T14:40:33.243Z",
+      "updated_at": "2025-01-07T14:40:53.741Z",
       "status": "Current",
       "rn": "1"
     },
@@ -5111,7 +5145,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2022-10-06T21:48:24.853Z",
-      "updated_at": "2024-12-30T14:40:45.438Z",
+      "updated_at": "2025-01-07T14:41:17.470Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -5145,7 +5179,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2022-10-13T19:04:10.737Z",
-      "updated_at": "2024-12-30T14:40:49.908Z",
+      "updated_at": "2025-01-07T14:41:21.878Z",
       "status": "Current",
       "rn": "1"
     },
@@ -5179,7 +5213,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2022-10-20T18:53:56.201Z",
-      "updated_at": "2024-12-30T14:40:56.266Z",
+      "updated_at": "2025-01-07T14:41:28.902Z",
       "status": "Current",
       "rn": "1"
     },
@@ -5245,10 +5279,10 @@
       "number": "6658198",
       "issued_on": "2022-12-05T08:00:00.000Z",
       "state": "CA",
-      "active": true,
+      "active": false,
       "created_at": "2023-01-31T20:12:31.381Z",
-      "updated_at": "2024-12-30T14:42:12.301Z",
-      "status": "Current",
+      "updated_at": "2025-01-07T14:42:49.820Z",
+      "status": "Expired",
       "rn": "1"
     },
     "airtable": {
@@ -5281,7 +5315,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2023-03-07T20:05:25.874Z",
-      "updated_at": "2024-12-30T14:42:31.093Z",
+      "updated_at": "2025-01-07T14:43:10.566Z",
       "status": "Expired",
       "rn": "1"
     },
@@ -5689,8 +5723,8 @@
       "state": "CA",
       "active": false,
       "created_at": "2023-07-12T17:55:43.518Z",
-      "updated_at": "2024-12-30T14:42:52.764Z",
-      "status": "Expired",
+      "updated_at": "2025-01-07T14:43:32.474Z",
+      "status": "Cancelled",
       "rn": "1"
     },
     "airtable": {
@@ -5717,31 +5751,31 @@
       "license_type_id": "1",
       "employee_id": "11401",
       "name": "Master, Wil",
-      "expires_on": "2025-01-31T08:00:00.000Z",
+      "expires_on": "2027-01-31T08:00:00.000Z",
       "number": "6663091",
       "issued_on": "2023-01-03T08:00:00.000Z",
       "state": "CA",
       "active": true,
       "created_at": "2023-07-12T17:59:22.318Z",
-      "updated_at": "2024-12-30T14:42:59.670Z",
+      "updated_at": "2025-01-07T14:43:39.504Z",
       "status": "Current",
       "rn": "1"
     },
     "airtable": {
       "RSC Emp ID": "11401",
       "GC - RSPG": "6663091",
-      "GC Exp Date - RSPG": "01/31/2025",
+      "GC Exp Date - RSPG": "01/31/2027",
       "license type id - RSPG": "1"
     },
     "needsUpdate": false,
     "updateFields": {
       "GC - RSPG": "6663091",
-      "GC Exp Date - RSPG": "01/31/2025",
+      "GC Exp Date - RSPG": "01/31/2027",
       "license type id - RSPG": "1"
     },
     "currentValues": {
       "guardCard": "6663091",
-      "expDate": "01/31/2025",
+      "expDate": "01/31/2027",
       "licenseType": "1"
     }
   },
@@ -5819,31 +5853,31 @@
       "license_type_id": "1",
       "employee_id": "11411",
       "name": "Anderson, Rocaya",
-      "expires_on": "2025-04-30T07:00:00.000Z",
+      "expires_on": "2027-04-30T07:00:00.000Z",
       "number": "6311568",
       "issued_on": "2017-04-18T07:00:00.000Z",
       "state": "CA",
       "active": true,
       "created_at": "2024-04-08T20:16:45.662Z",
-      "updated_at": "2024-12-30T14:43:01.482Z",
+      "updated_at": "2025-01-07T14:43:41.325Z",
       "status": "Current",
       "rn": "1"
     },
     "airtable": {
       "RSC Emp ID": "11411",
       "GC - RSPG": "6311568",
-      "GC Exp Date - RSPG": "04/30/2025",
+      "GC Exp Date - RSPG": "04/30/2027",
       "license type id - RSPG": "1"
     },
     "needsUpdate": false,
     "updateFields": {
       "GC - RSPG": "6311568",
-      "GC Exp Date - RSPG": "04/30/2025",
+      "GC Exp Date - RSPG": "04/30/2027",
       "license type id - RSPG": "1"
     },
     "currentValues": {
       "guardCard": "6311568",
-      "expDate": "04/30/2025",
+      "expDate": "04/30/2027",
       "licenseType": "1"
     }
   },
@@ -5859,7 +5893,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-30T16:29:26.953Z",
-      "updated_at": "2024-12-30T14:43:04.290Z",
+      "updated_at": "2025-01-07T14:43:43.753Z",
       "status": "Current",
       "rn": "1"
     },
@@ -5961,7 +5995,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-22T22:03:22.768Z",
-      "updated_at": "2024-12-30T14:43:06.630Z",
+      "updated_at": "2025-01-07T14:43:46.556Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6063,7 +6097,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2024-04-12T23:39:42.923Z",
-      "updated_at": "2024-12-30T14:43:08.607Z",
+      "updated_at": "2025-01-07T14:43:48.590Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -6097,7 +6131,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-12T23:56:51.334Z",
-      "updated_at": "2024-12-30T14:43:10.427Z",
+      "updated_at": "2025-01-07T14:43:51.208Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6165,7 +6199,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-02-27T23:42:26.061Z",
-      "updated_at": "2024-12-30T14:43:13.034Z",
+      "updated_at": "2025-01-07T14:43:53.497Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6199,7 +6233,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2024-04-16T07:28:40.674Z",
-      "updated_at": "2024-12-30T22:13:38.525Z",
+      "updated_at": "2025-01-07T21:00:23.113Z",
       "status": "Invalid",
       "rn": "1"
     },
@@ -6233,7 +6267,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-16T17:09:18.779Z",
-      "updated_at": "2024-12-30T14:43:16.003Z",
+      "updated_at": "2025-01-07T14:43:57.553Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6301,7 +6335,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-03-22T22:55:02.387Z",
-      "updated_at": "2024-12-30T14:43:17.913Z",
+      "updated_at": "2025-01-07T14:43:59.927Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6335,7 +6369,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-03-22T21:54:58.729Z",
-      "updated_at": "2024-12-30T14:43:20.828Z",
+      "updated_at": "2025-01-07T14:44:03.909Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6369,7 +6403,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2024-03-22T22:16:38.036Z",
-      "updated_at": "2024-12-30T14:43:23.005Z",
+      "updated_at": "2025-01-07T14:44:05.760Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -6403,7 +6437,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-03-22T22:59:34.990Z",
-      "updated_at": "2024-12-30T14:43:25.499Z",
+      "updated_at": "2025-01-07T14:44:07.611Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6437,7 +6471,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-03-22T22:07:52.815Z",
-      "updated_at": "2024-12-30T14:43:27.330Z",
+      "updated_at": "2025-01-07T14:44:09.462Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6505,7 +6539,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-03-22T22:01:40.766Z",
-      "updated_at": "2024-12-30T14:43:30.068Z",
+      "updated_at": "2025-01-07T14:44:11.331Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6641,7 +6675,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-03-27T18:50:59.882Z",
-      "updated_at": "2024-12-30T14:43:32.038Z",
+      "updated_at": "2025-01-07T14:44:13.472Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6675,7 +6709,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-03-27T18:52:06.757Z",
-      "updated_at": "2024-12-30T14:43:34.111Z",
+      "updated_at": "2025-01-07T14:44:15.382Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6709,7 +6743,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2024-03-27T18:55:36.274Z",
-      "updated_at": "2024-12-30T14:43:36.682Z",
+      "updated_at": "2025-01-07T14:44:17.086Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -6743,7 +6777,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-03-27T19:01:13.035Z",
-      "updated_at": "2024-12-30T14:43:38.523Z",
+      "updated_at": "2025-01-07T14:44:18.924Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6777,7 +6811,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-03-27T19:00:09.123Z",
-      "updated_at": "2024-12-30T14:43:40.289Z",
+      "updated_at": "2025-01-07T14:44:20.724Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6811,7 +6845,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-03-27T18:56:39.132Z",
-      "updated_at": "2024-12-30T14:43:42.136Z",
+      "updated_at": "2025-01-07T14:44:22.692Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6845,7 +6879,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-04T18:56:35.189Z",
-      "updated_at": "2024-12-30T16:51:00.762Z",
+      "updated_at": "2025-01-07T14:44:25.198Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6877,10 +6911,10 @@
       "number": "6659110",
       "issued_on": "2022-12-08T08:00:00.000Z",
       "state": "CA",
-      "active": true,
+      "active": false,
       "created_at": "2024-04-04T19:00:03.895Z",
-      "updated_at": "2024-12-30T14:43:44.644Z",
-      "status": "Current",
+      "updated_at": "2025-01-07T14:44:26.998Z",
+      "status": "Expired",
       "rn": "1"
     },
     "airtable": {
@@ -6947,7 +6981,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-04T19:06:03.207Z",
-      "updated_at": "2024-12-30T14:43:46.572Z",
+      "updated_at": "2025-01-07T14:44:29.210Z",
       "status": "Current",
       "rn": "1"
     },
@@ -6981,7 +7015,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-04T19:08:40.157Z",
-      "updated_at": "2024-12-30T14:43:48.393Z",
+      "updated_at": "2025-01-07T14:44:32.033Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7015,7 +7049,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-11T18:59:04.033Z",
-      "updated_at": "2024-12-30T14:43:53.215Z",
+      "updated_at": "2025-01-07T14:44:36.232Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7049,7 +7083,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-11T19:02:19.568Z",
-      "updated_at": "2024-12-30T14:43:55.546Z",
+      "updated_at": "2025-01-07T14:44:39.307Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7083,7 +7117,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-11T19:05:24.547Z",
-      "updated_at": "2024-12-30T14:43:57.440Z",
+      "updated_at": "2025-01-07T14:44:41.691Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7117,7 +7151,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-11T19:09:34.128Z",
-      "updated_at": "2024-12-30T14:44:00.364Z",
+      "updated_at": "2025-01-07T14:44:44.207Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7151,7 +7185,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-17T17:43:39.324Z",
-      "updated_at": "2024-12-30T14:44:05.072Z",
+      "updated_at": "2025-01-07T14:44:48.264Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7185,7 +7219,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-17T18:10:19.875Z",
-      "updated_at": "2024-12-30T14:44:06.871Z",
+      "updated_at": "2025-01-07T14:44:50.305Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7219,7 +7253,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-04-17T18:13:33.343Z",
-      "updated_at": "2024-12-30T14:44:09.481Z",
+      "updated_at": "2025-01-07T14:44:54.662Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7457,7 +7491,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-01T17:57:59.360Z",
-      "updated_at": "2024-12-30T14:44:11.389Z",
+      "updated_at": "2025-01-07T14:44:57.257Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7491,7 +7525,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-01T18:05:49.080Z",
-      "updated_at": "2024-12-30T14:44:13.404Z",
+      "updated_at": "2025-01-07T14:44:59.376Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7525,7 +7559,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-01T18:12:07.711Z",
-      "updated_at": "2024-12-30T14:44:15.327Z",
+      "updated_at": "2025-01-07T14:45:01.200Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7627,7 +7661,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-02T18:29:58.479Z",
-      "updated_at": "2024-12-30T14:44:17.618Z",
+      "updated_at": "2025-01-07T14:45:03.162Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7661,7 +7695,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-02T18:34:10.796Z",
-      "updated_at": "2024-12-30T14:44:19.455Z",
+      "updated_at": "2025-01-06T15:02:33.232Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7695,7 +7729,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-02T18:37:59.413Z",
-      "updated_at": "2024-12-30T14:44:21.331Z",
+      "updated_at": "2025-01-07T14:45:05.691Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7729,7 +7763,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-02T18:40:27.188Z",
-      "updated_at": "2024-12-30T14:44:23.106Z",
+      "updated_at": "2025-01-07T14:45:08.011Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7763,7 +7797,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-02T18:45:47.758Z",
-      "updated_at": "2024-12-30T14:44:24.937Z",
+      "updated_at": "2025-01-07T14:45:09.834Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7797,7 +7831,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-02T19:10:21.162Z",
-      "updated_at": "2024-12-30T14:44:30.577Z",
+      "updated_at": "2025-01-07T14:45:11.677Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7831,7 +7865,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-02T19:23:22.805Z",
-      "updated_at": "2024-12-30T14:44:32.326Z",
+      "updated_at": "2025-01-07T14:45:14.089Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7865,7 +7899,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-02T19:27:43.609Z",
-      "updated_at": "2024-12-30T14:44:34.350Z",
+      "updated_at": "2025-01-07T14:45:16.684Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7899,7 +7933,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-07T17:37:29.283Z",
-      "updated_at": "2024-12-30T14:44:36.260Z",
+      "updated_at": "2025-01-07T14:45:19.004Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7933,7 +7967,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-07T17:42:52.225Z",
-      "updated_at": "2024-12-30T14:44:39.003Z",
+      "updated_at": "2025-01-07T14:45:21.885Z",
       "status": "Current",
       "rn": "1"
     },
@@ -7967,7 +8001,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-07T17:46:16.247Z",
-      "updated_at": "2024-12-30T14:44:41.073Z",
+      "updated_at": "2025-01-07T14:45:23.722Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8001,7 +8035,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-07T17:50:17.455Z",
-      "updated_at": "2024-12-30T14:44:42.923Z",
+      "updated_at": "2025-01-07T14:45:25.916Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8035,7 +8069,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-07T17:53:26.088Z",
-      "updated_at": "2024-12-30T14:44:44.812Z",
+      "updated_at": "2025-01-07T14:45:29.210Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8069,7 +8103,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-07T17:55:59.537Z",
-      "updated_at": "2024-12-30T14:44:47.102Z",
+      "updated_at": "2025-01-07T14:45:31.509Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8137,7 +8171,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-09T17:55:31.900Z",
-      "updated_at": "2024-12-30T14:44:49.470Z",
+      "updated_at": "2025-01-07T14:45:33.377Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8171,7 +8205,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-09T17:58:19.436Z",
-      "updated_at": "2024-12-30T14:44:51.297Z",
+      "updated_at": "2025-01-07T14:45:35.245Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8205,7 +8239,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-09T18:02:02.282Z",
-      "updated_at": "2024-12-30T14:44:53.159Z",
+      "updated_at": "2025-01-07T14:45:38.604Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8239,7 +8273,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-09T18:13:19.697Z",
-      "updated_at": "2024-12-30T14:44:54.957Z",
+      "updated_at": "2025-01-07T14:45:40.507Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8273,7 +8307,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-09T18:18:38.300Z",
-      "updated_at": "2024-12-30T14:44:57.373Z",
+      "updated_at": "2025-01-07T14:45:43.433Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8307,7 +8341,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-09T18:21:23.911Z",
-      "updated_at": "2024-12-30T14:44:59.204Z",
+      "updated_at": "2025-01-07T14:45:45.413Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8341,7 +8375,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-09T18:28:35.445Z",
-      "updated_at": "2024-12-30T14:45:04.426Z",
+      "updated_at": "2025-01-07T14:45:50.415Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8409,7 +8443,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-13T20:33:20.504Z",
-      "updated_at": "2024-12-30T14:45:06.589Z",
+      "updated_at": "2025-01-07T14:45:52.531Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8477,7 +8511,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-14T18:29:47.786Z",
-      "updated_at": "2024-12-30T14:45:08.824Z",
+      "updated_at": "2025-01-07T14:45:54.697Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8511,7 +8545,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-14T18:33:11.298Z",
-      "updated_at": "2024-12-30T14:45:10.483Z",
+      "updated_at": "2025-01-07T14:45:57.117Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8545,7 +8579,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-14T18:35:32.263Z",
-      "updated_at": "2024-12-30T14:45:12.457Z",
+      "updated_at": "2025-01-07T14:45:59.269Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8579,7 +8613,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-14T18:41:20.725Z",
-      "updated_at": "2024-12-30T14:45:14.207Z",
+      "updated_at": "2025-01-07T14:46:01.638Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8613,7 +8647,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-14T18:44:22.465Z",
-      "updated_at": "2024-12-30T14:45:16.570Z",
+      "updated_at": "2025-01-07T14:46:03.879Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8647,7 +8681,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-14T18:46:48.673Z",
-      "updated_at": "2024-12-30T14:45:18.537Z",
+      "updated_at": "2025-01-07T14:46:06.590Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8743,31 +8777,31 @@
       "license_type_id": "1",
       "employee_id": "11750",
       "name": "BURNETT, DAKARAI ANANDO",
-      "expires_on": "2025-01-31T08:00:00.000Z",
+      "expires_on": "2027-01-31T08:00:00.000Z",
       "number": "6664082",
       "issued_on": "2023-01-09T08:00:00.000Z",
       "state": "CA",
       "active": true,
       "created_at": "2024-05-16T17:28:28.158Z",
-      "updated_at": "2024-12-30T14:45:20.322Z",
+      "updated_at": "2025-01-07T14:46:08.693Z",
       "status": "Current",
       "rn": "1"
     },
     "airtable": {
       "RSC Emp ID": "11750",
       "GC - RSPG": "6664082",
-      "GC Exp Date - RSPG": "01/31/2025",
+      "GC Exp Date - RSPG": "01/31/2027",
       "license type id - RSPG": "1"
     },
     "needsUpdate": false,
     "updateFields": {
       "GC - RSPG": "6664082",
-      "GC Exp Date - RSPG": "01/31/2025",
+      "GC Exp Date - RSPG": "01/31/2027",
       "license type id - RSPG": "1"
     },
     "currentValues": {
       "guardCard": "6664082",
-      "expDate": "01/31/2025",
+      "expDate": "01/31/2027",
       "licenseType": "1"
     }
   },
@@ -8777,31 +8811,31 @@
       "license_type_id": "1",
       "employee_id": "11751",
       "name": "Cruz, Angelo M",
-      "expires_on": "2024-10-31T07:00:00.000Z",
+      "expires_on": "2026-10-31T07:00:00.000Z",
       "number": "6521707",
       "issued_on": "2020-10-21T07:00:00.000Z",
       "state": "CA",
-      "active": false,
+      "active": true,
       "created_at": "2024-05-16T17:54:37.007Z",
-      "updated_at": "2024-12-30T14:45:22.694Z",
-      "status": "Expired",
+      "updated_at": "2025-01-07T14:46:12.209Z",
+      "status": "Current",
       "rn": "1"
     },
     "airtable": {
       "RSC Emp ID": "11751",
       "GC - RSPG": "6521707",
-      "GC Exp Date - RSPG": "10/31/2024",
+      "GC Exp Date - RSPG": "10/31/2026",
       "license type id - RSPG": "1"
     },
     "needsUpdate": false,
     "updateFields": {
       "GC - RSPG": "6521707",
-      "GC Exp Date - RSPG": "10/31/2024",
+      "GC Exp Date - RSPG": "10/31/2026",
       "license type id - RSPG": "1"
     },
     "currentValues": {
       "guardCard": "6521707",
-      "expDate": "10/31/2024",
+      "expDate": "10/31/2026",
       "licenseType": "1"
     }
   },
@@ -8817,7 +8851,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-16T17:56:44.364Z",
-      "updated_at": "2024-12-30T14:45:24.855Z",
+      "updated_at": "2025-01-07T14:46:14.083Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8851,7 +8885,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-16T18:00:01.168Z",
-      "updated_at": "2024-12-30T14:45:26.638Z",
+      "updated_at": "2025-01-07T14:46:16.582Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8885,7 +8919,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-16T18:02:14.168Z",
-      "updated_at": "2024-12-30T14:45:28.488Z",
+      "updated_at": "2025-01-07T14:46:18.672Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8919,7 +8953,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-16T18:05:01.320Z",
-      "updated_at": "2024-12-30T14:45:31.761Z",
+      "updated_at": "2025-01-07T14:46:20.969Z",
       "status": "Current",
       "rn": "1"
     },
@@ -8953,7 +8987,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-16T18:07:23.590Z",
-      "updated_at": "2024-12-30T14:45:33.578Z",
+      "updated_at": "2025-01-07T14:46:22.868Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9021,7 +9055,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-21T18:07:05.994Z",
-      "updated_at": "2024-12-30T14:45:36.171Z",
+      "updated_at": "2025-01-07T14:46:24.819Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9055,7 +9089,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-21T18:10:30.926Z",
-      "updated_at": "2024-12-30T14:45:38.018Z",
+      "updated_at": "2025-01-07T14:46:26.707Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9123,7 +9157,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-21T18:19:04.376Z",
-      "updated_at": "2024-12-30T14:45:40.733Z",
+      "updated_at": "2025-01-07T14:46:28.674Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9157,7 +9191,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-21T18:21:45.735Z",
-      "updated_at": "2024-12-30T14:45:42.913Z",
+      "updated_at": "2025-01-07T14:46:31.096Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9225,7 +9259,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-21T18:26:45.324Z",
-      "updated_at": "2024-12-30T14:45:44.641Z",
+      "updated_at": "2025-01-07T14:46:34.998Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9361,7 +9395,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-23T18:06:08.694Z",
-      "updated_at": "2024-12-30T14:45:48.102Z",
+      "updated_at": "2025-01-07T14:46:37.147Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9395,7 +9429,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-23T18:10:03.153Z",
-      "updated_at": "2024-12-30T14:45:50.110Z",
+      "updated_at": "2025-01-07T14:46:39.374Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9429,7 +9463,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-23T18:13:17.628Z",
-      "updated_at": "2024-12-30T14:45:52.023Z",
+      "updated_at": "2025-01-07T14:46:42.623Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9463,7 +9497,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-23T18:18:44.681Z",
-      "updated_at": "2024-12-30T14:45:53.842Z",
+      "updated_at": "2025-01-07T14:46:44.437Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9497,7 +9531,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-23T18:26:08.383Z",
-      "updated_at": "2024-12-30T14:45:57.427Z",
+      "updated_at": "2025-01-07T14:46:46.367Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9531,7 +9565,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-23T18:37:37.291Z",
-      "updated_at": "2024-12-30T14:45:59.447Z",
+      "updated_at": "2025-01-07T14:46:49.266Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9565,7 +9599,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-23T18:41:22.686Z",
-      "updated_at": "2024-12-30T14:46:02.246Z",
+      "updated_at": "2025-01-07T14:46:52.215Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9701,7 +9735,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-29T18:01:00.998Z",
-      "updated_at": "2024-12-30T14:46:04.066Z",
+      "updated_at": "2025-01-07T14:46:54.107Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9735,7 +9769,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-29T18:04:47.468Z",
-      "updated_at": "2024-12-30T14:46:05.911Z",
+      "updated_at": "2025-01-07T14:46:57.363Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9769,7 +9803,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-29T18:09:19.162Z",
-      "updated_at": "2024-12-30T14:46:09.551Z",
+      "updated_at": "2025-01-07T14:47:04.803Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9871,7 +9905,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2024-05-30T18:01:19.355Z",
-      "updated_at": "2024-12-30T14:46:11.779Z",
+      "updated_at": "2025-01-07T14:47:06.715Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -9905,7 +9939,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-30T18:04:02.114Z",
-      "updated_at": "2024-12-30T14:46:14.791Z",
+      "updated_at": "2025-01-07T14:47:09.115Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9939,7 +9973,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-30T18:08:29.978Z",
-      "updated_at": "2024-12-30T14:46:17.168Z",
+      "updated_at": "2025-01-07T14:47:11.313Z",
       "status": "Current",
       "rn": "1"
     },
@@ -9973,7 +10007,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-30T18:16:48.818Z",
-      "updated_at": "2024-12-30T14:46:19.041Z",
+      "updated_at": "2025-01-07T14:47:13.963Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10007,7 +10041,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-30T18:19:48.342Z",
-      "updated_at": "2024-12-30T14:46:23.247Z",
+      "updated_at": "2025-01-07T14:47:16.840Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10041,7 +10075,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-31T18:25:38.706Z",
-      "updated_at": "2024-12-30T14:46:24.997Z",
+      "updated_at": "2025-01-07T14:47:20.953Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10075,7 +10109,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-05-31T18:29:00.877Z",
-      "updated_at": "2024-12-30T14:46:26.814Z",
+      "updated_at": "2025-01-07T14:47:22.854Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10415,7 +10449,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-13T18:15:15.637Z",
-      "updated_at": "2024-12-30T14:46:28.627Z",
+      "updated_at": "2025-01-07T14:47:25.762Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10449,7 +10483,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-13T18:19:57.760Z",
-      "updated_at": "2024-12-30T14:46:31.727Z",
+      "updated_at": "2025-01-07T14:47:28.635Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10483,7 +10517,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-13T18:22:28.399Z",
-      "updated_at": "2024-12-30T14:46:33.810Z",
+      "updated_at": "2025-01-07T14:47:30.584Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10551,7 +10585,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-13T18:42:24.323Z",
-      "updated_at": "2024-12-30T14:46:35.559Z",
+      "updated_at": "2025-01-07T14:47:32.627Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10585,7 +10619,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-13T18:47:06.943Z",
-      "updated_at": "2024-12-30T14:46:37.730Z",
+      "updated_at": "2025-01-07T14:47:34.833Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10619,7 +10653,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-13T18:51:27.042Z",
-      "updated_at": "2024-12-30T14:46:40.017Z",
+      "updated_at": "2025-01-07T14:47:37.282Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10653,7 +10687,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-13T18:54:09.613Z",
-      "updated_at": "2024-12-30T14:46:42.467Z",
+      "updated_at": "2025-01-07T14:47:39.811Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10721,7 +10755,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-14T19:31:04.226Z",
-      "updated_at": "2024-12-30T14:46:44.774Z",
+      "updated_at": "2025-01-07T14:47:41.777Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10925,7 +10959,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-20T17:27:46.690Z",
-      "updated_at": "2024-12-30T14:46:47.032Z",
+      "updated_at": "2025-01-07T14:47:43.650Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10959,7 +10993,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-20T17:30:48.040Z",
-      "updated_at": "2024-12-30T14:46:54.583Z",
+      "updated_at": "2025-01-07T14:47:45.531Z",
       "status": "Current",
       "rn": "1"
     },
@@ -10993,7 +11027,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-25T18:16:13.034Z",
-      "updated_at": "2024-12-30T14:46:56.642Z",
+      "updated_at": "2025-01-07T14:47:47.431Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11027,7 +11061,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-25T18:19:17.500Z",
-      "updated_at": "2024-12-30T14:46:59.424Z",
+      "updated_at": "2025-01-07T14:47:49.420Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11061,7 +11095,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2024-06-25T18:28:20.854Z",
-      "updated_at": "2024-12-30T14:47:01.416Z",
+      "updated_at": "2025-01-07T14:47:51.878Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -11095,7 +11129,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-25T18:35:53.646Z",
-      "updated_at": "2024-12-30T14:47:04.462Z",
+      "updated_at": "2025-01-07T14:47:54.354Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11129,7 +11163,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-25T18:38:47.483Z",
-      "updated_at": "2024-12-30T14:47:06.875Z",
+      "updated_at": "2025-01-07T14:47:56.687Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11163,7 +11197,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-25T18:41:09.568Z",
-      "updated_at": "2024-12-30T14:47:10.088Z",
+      "updated_at": "2025-01-07T14:47:58.562Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11197,7 +11231,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-25T18:44:41.172Z",
-      "updated_at": "2024-12-30T14:47:12.043Z",
+      "updated_at": "2025-01-07T14:48:01.811Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11231,7 +11265,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-27T18:15:05.984Z",
-      "updated_at": "2024-12-30T14:47:15.380Z",
+      "updated_at": "2025-01-07T14:48:03.788Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11265,7 +11299,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-27T18:17:39.926Z",
-      "updated_at": "2024-12-30T14:47:17.616Z",
+      "updated_at": "2025-01-07T14:48:05.725Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11299,7 +11333,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-27T18:28:58.178Z",
-      "updated_at": "2024-12-30T14:47:25.144Z",
+      "updated_at": "2025-01-07T14:48:07.831Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11333,7 +11367,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-27T18:31:14.301Z",
-      "updated_at": "2024-12-30T14:47:26.904Z",
+      "updated_at": "2025-01-07T14:48:09.801Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11367,7 +11401,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-27T18:33:31.420Z",
-      "updated_at": "2024-12-30T14:47:28.889Z",
+      "updated_at": "2025-01-07T14:48:11.550Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11401,7 +11435,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-06-27T18:37:13.622Z",
-      "updated_at": "2024-12-30T14:47:30.688Z",
+      "updated_at": "2025-01-07T14:48:14.494Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11435,7 +11469,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-07-02T17:40:33.057Z",
-      "updated_at": "2024-12-30T14:47:32.899Z",
+      "updated_at": "2025-01-07T14:48:16.335Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11469,7 +11503,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-07-02T17:43:06.621Z",
-      "updated_at": "2024-12-30T14:47:34.643Z",
+      "updated_at": "2025-01-07T14:48:18.054Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11503,7 +11537,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2024-07-02T17:45:52.307Z",
-      "updated_at": "2024-12-30T14:47:36.956Z",
+      "updated_at": "2025-01-07T14:48:19.968Z",
       "status": "Cancelled",
       "rn": "1"
     },
@@ -11605,7 +11639,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-07-09T17:46:03.317Z",
-      "updated_at": "2024-12-30T14:47:39.858Z",
+      "updated_at": "2025-01-07T14:48:21.781Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11843,7 +11877,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-07-11T18:22:57.823Z",
-      "updated_at": "2024-12-30T14:47:42.055Z",
+      "updated_at": "2025-01-07T14:48:23.759Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11877,7 +11911,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-07-11T18:24:55.486Z",
-      "updated_at": "2024-12-30T14:47:44.112Z",
+      "updated_at": "2025-01-07T14:48:26.890Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11911,7 +11945,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-07-11T18:27:27.426Z",
-      "updated_at": "2024-12-30T14:47:47.153Z",
+      "updated_at": "2025-01-07T14:48:29.726Z",
       "status": "Current",
       "rn": "1"
     },
@@ -11945,7 +11979,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-07-30T19:34:56.252Z",
-      "updated_at": "2024-12-30T14:47:49.226Z",
+      "updated_at": "2025-01-07T14:48:31.582Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12013,7 +12047,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-07-31T23:17:33.817Z",
-      "updated_at": "2024-12-30T14:47:52.679Z",
+      "updated_at": "2025-01-07T14:48:33.482Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12047,7 +12081,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-07-30T19:05:56.020Z",
-      "updated_at": "2024-12-30T14:47:54.413Z",
+      "updated_at": "2025-01-07T14:48:35.713Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12081,7 +12115,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-09T20:31:39.476Z",
-      "updated_at": "2024-12-30T14:47:56.275Z",
+      "updated_at": "2025-01-07T14:48:37.494Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12115,7 +12149,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-09T20:35:42.197Z",
-      "updated_at": "2024-12-30T14:47:59.255Z",
+      "updated_at": "2025-01-07T17:00:10.906Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12149,7 +12183,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-09T20:36:34.722Z",
-      "updated_at": "2024-12-30T14:48:01.630Z",
+      "updated_at": "2025-01-07T14:48:39.687Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12183,7 +12217,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-09T20:33:31.935Z",
-      "updated_at": "2024-12-30T14:48:04.567Z",
+      "updated_at": "2025-01-07T14:48:41.576Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12217,7 +12251,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-09T20:34:37.068Z",
-      "updated_at": "2024-12-30T14:48:07.578Z",
+      "updated_at": "2025-01-07T14:48:44.113Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12251,7 +12285,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-09T20:37:25.782Z",
-      "updated_at": "2024-12-30T14:48:09.372Z",
+      "updated_at": "2025-01-07T14:48:45.985Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12285,7 +12319,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-15T17:39:32.488Z",
-      "updated_at": "2024-12-30T14:48:11.656Z",
+      "updated_at": "2025-01-07T14:48:48.079Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12319,7 +12353,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-15T17:42:29.279Z",
-      "updated_at": "2024-12-30T14:48:13.582Z",
+      "updated_at": "2025-01-07T14:48:49.846Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12353,7 +12387,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-15T17:49:14.959Z",
-      "updated_at": "2024-12-30T14:48:15.525Z",
+      "updated_at": "2025-01-07T14:48:52.173Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12387,7 +12421,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-15T17:53:24.025Z",
-      "updated_at": "2024-12-30T14:48:18.923Z",
+      "updated_at": "2025-01-07T14:48:55.289Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12421,7 +12455,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-15T18:00:28.650Z",
-      "updated_at": "2024-12-30T14:48:20.727Z",
+      "updated_at": "2025-01-07T14:48:57.711Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12455,7 +12489,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-16T17:34:14.083Z",
-      "updated_at": "2024-12-30T14:48:22.641Z",
+      "updated_at": "2025-01-07T14:49:00.429Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12489,7 +12523,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-16T17:38:42.529Z",
-      "updated_at": "2024-12-30T14:48:24.439Z",
+      "updated_at": "2025-01-07T14:49:02.987Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12523,7 +12557,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-16T17:43:03.131Z",
-      "updated_at": "2024-12-30T14:48:26.276Z",
+      "updated_at": "2025-01-07T14:49:04.863Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12557,7 +12591,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-16T17:46:53.381Z",
-      "updated_at": "2024-12-30T14:48:28.576Z",
+      "updated_at": "2025-01-07T14:49:06.846Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12591,7 +12625,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-16T17:50:25.993Z",
-      "updated_at": "2024-12-30T14:48:30.470Z",
+      "updated_at": "2025-01-07T14:49:08.637Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12625,7 +12659,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-16T17:57:01.913Z",
-      "updated_at": "2024-12-30T14:48:32.502Z",
+      "updated_at": "2025-01-07T14:49:11.145Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12659,7 +12693,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-16T18:00:16.763Z",
-      "updated_at": "2024-12-30T14:48:34.794Z",
+      "updated_at": "2025-01-07T14:49:13.563Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12693,7 +12727,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-16T18:04:37.591Z",
-      "updated_at": "2024-12-30T14:48:36.758Z",
+      "updated_at": "2025-01-07T14:49:15.378Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12725,10 +12759,10 @@
       "number": "6658222",
       "issued_on": "2022-12-05T08:00:00.000Z",
       "state": "CA",
-      "active": true,
+      "active": false,
       "created_at": "2024-10-16T18:09:26.165Z",
-      "updated_at": "2024-12-30T14:48:39.682Z",
-      "status": "Current",
+      "updated_at": "2025-01-07T14:49:17.423Z",
+      "status": "Expired",
       "rn": "1"
     },
     "airtable": {
@@ -12761,7 +12795,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-17T17:46:06.466Z",
-      "updated_at": "2024-12-30T14:48:41.516Z",
+      "updated_at": "2025-01-07T14:49:19.751Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12829,7 +12863,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-29T18:10:01.531Z",
-      "updated_at": "2024-12-30T14:48:43.847Z",
+      "updated_at": "2025-01-07T14:49:22.112Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12863,7 +12897,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-29T18:13:20.505Z",
-      "updated_at": "2024-12-30T14:48:45.935Z",
+      "updated_at": "2025-01-07T14:49:24.155Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12897,7 +12931,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-29T18:17:08.270Z",
-      "updated_at": "2024-12-30T14:48:48.450Z",
+      "updated_at": "2025-01-07T14:49:27.364Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12931,7 +12965,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-29T18:20:38.945Z",
-      "updated_at": "2024-12-30T14:48:50.505Z",
+      "updated_at": "2025-01-07T14:49:29.883Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12965,7 +12999,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-29T18:23:47.396Z",
-      "updated_at": "2024-12-30T14:48:53.160Z",
+      "updated_at": "2025-01-07T14:49:32.707Z",
       "status": "Current",
       "rn": "1"
     },
@@ -12999,7 +13033,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-30T18:24:51.452Z",
-      "updated_at": "2024-12-30T14:48:55.260Z",
+      "updated_at": "2025-01-07T14:49:34.770Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13033,7 +13067,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-30T18:27:25.750Z",
-      "updated_at": "2024-12-30T16:50:36.859Z",
+      "updated_at": "2025-01-07T14:49:36.797Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13067,7 +13101,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-30T18:30:33.243Z",
-      "updated_at": "2024-12-30T14:48:58.641Z",
+      "updated_at": "2025-01-07T14:49:39.023Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13101,7 +13135,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-30T18:36:04.142Z",
-      "updated_at": "2024-12-30T14:49:01.667Z",
+      "updated_at": "2025-01-07T14:49:41.291Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13169,7 +13203,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-30T18:41:22.743Z",
-      "updated_at": "2024-12-30T14:49:04.020Z",
+      "updated_at": "2025-01-07T14:49:43.189Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13203,7 +13237,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-10-30T18:44:08.100Z",
-      "updated_at": "2024-12-30T14:49:06.327Z",
+      "updated_at": "2025-01-07T14:49:45.318Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13237,7 +13271,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-06T18:50:22.026Z",
-      "updated_at": "2024-12-30T14:49:08.694Z",
+      "updated_at": "2025-01-07T14:49:49.057Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13271,7 +13305,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-06T18:53:31.834Z",
-      "updated_at": "2024-12-30T14:49:10.563Z",
+      "updated_at": "2025-01-07T14:49:50.804Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13305,7 +13339,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-06T18:58:28.133Z",
-      "updated_at": "2024-12-30T14:49:12.539Z",
+      "updated_at": "2025-01-07T14:49:54.531Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13339,7 +13373,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-06T19:01:21.065Z",
-      "updated_at": "2024-12-30T14:49:14.609Z",
+      "updated_at": "2025-01-07T14:49:57.505Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13373,7 +13407,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-06T19:04:59.307Z",
-      "updated_at": "2024-12-30T14:49:17.127Z",
+      "updated_at": "2025-01-07T14:49:59.971Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13407,7 +13441,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-06T19:08:06.514Z",
-      "updated_at": "2024-12-30T14:49:18.935Z",
+      "updated_at": "2025-01-07T14:50:01.953Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13441,7 +13475,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-06T19:10:24.109Z",
-      "updated_at": "2024-12-30T14:49:21.481Z",
+      "updated_at": "2025-01-07T14:50:03.871Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13475,7 +13509,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-06T19:13:03.456Z",
-      "updated_at": "2024-12-30T14:49:23.645Z",
+      "updated_at": "2025-01-07T14:50:06.059Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13509,7 +13543,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-07T18:38:54.683Z",
-      "updated_at": "2024-12-30T14:49:25.759Z",
+      "updated_at": "2025-01-07T14:50:08.143Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13543,7 +13577,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-07T18:46:04.537Z",
-      "updated_at": "2024-12-30T14:49:27.590Z",
+      "updated_at": "2025-01-07T14:50:10.521Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13577,7 +13611,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-07T18:53:44.340Z",
-      "updated_at": "2024-12-30T14:49:29.451Z",
+      "updated_at": "2025-01-07T14:50:12.457Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13645,7 +13679,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-07T19:02:52.342Z",
-      "updated_at": "2024-12-30T14:49:33.366Z",
+      "updated_at": "2025-01-07T14:50:15.115Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13679,7 +13713,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-13T19:12:08.653Z",
-      "updated_at": "2024-12-30T14:49:35.577Z",
+      "updated_at": "2025-01-07T14:50:17.627Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13713,7 +13747,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-13T19:15:41.575Z",
-      "updated_at": "2024-12-30T14:49:37.487Z",
+      "updated_at": "2025-01-07T14:50:19.669Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13747,7 +13781,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-14T18:27:54.586Z",
-      "updated_at": "2024-12-30T14:49:39.240Z",
+      "updated_at": "2025-01-07T14:50:21.524Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13781,7 +13815,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-14T18:31:35.557Z",
-      "updated_at": "2024-12-30T14:49:41.902Z",
+      "updated_at": "2025-01-07T14:50:23.772Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13815,7 +13849,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-11-20T19:12:54.249Z",
-      "updated_at": "2024-12-30T14:49:44.221Z",
+      "updated_at": "2025-01-07T14:50:25.599Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13849,7 +13883,7 @@
       "state": "CA",
       "active": false,
       "created_at": "2024-11-20T19:18:26.548Z",
-      "updated_at": "2024-12-30T14:49:46.212Z",
+      "updated_at": "2025-01-07T14:50:27.535Z",
       "status": "Current  - Temporary Family Support",
       "rn": "1"
     },
@@ -13883,7 +13917,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-04T18:56:43.103Z",
-      "updated_at": "2024-12-30T14:49:48.115Z",
+      "updated_at": "2025-01-07T14:50:29.669Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13917,7 +13951,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-04T19:05:06.741Z",
-      "updated_at": "2024-12-30T14:49:51.217Z",
+      "updated_at": "2025-01-07T14:50:32.137Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13951,7 +13985,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-04T19:08:54.214Z",
-      "updated_at": "2024-12-30T14:49:53.191Z",
+      "updated_at": "2025-01-07T14:50:35.928Z",
       "status": "Current",
       "rn": "1"
     },
@@ -13985,7 +14019,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-04T19:16:32.651Z",
-      "updated_at": "2024-12-30T14:49:55.346Z",
+      "updated_at": "2025-01-07T14:50:37.860Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14019,7 +14053,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-04T19:19:32.959Z",
-      "updated_at": "2024-12-30T14:49:57.576Z",
+      "updated_at": "2025-01-07T14:50:39.705Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14053,7 +14087,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-05T18:12:24.711Z",
-      "updated_at": "2024-12-30T14:49:59.709Z",
+      "updated_at": "2025-01-07T14:50:41.895Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14087,7 +14121,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-05T18:15:53.631Z",
-      "updated_at": "2024-12-30T14:50:01.629Z",
+      "updated_at": "2025-01-07T14:50:43.724Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14121,7 +14155,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-05T18:19:09.995Z",
-      "updated_at": "2024-12-30T14:50:03.757Z",
+      "updated_at": "2025-01-07T14:50:45.613Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14155,7 +14189,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-10T18:30:43.441Z",
-      "updated_at": "2024-12-30T14:50:05.720Z",
+      "updated_at": "2025-01-07T14:50:47.538Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14189,7 +14223,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-10T18:33:26.221Z",
-      "updated_at": "2024-12-30T14:50:08.078Z",
+      "updated_at": "2025-01-07T16:59:53.771Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14223,7 +14257,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-10T18:36:14.084Z",
-      "updated_at": "2024-12-30T14:50:09.988Z",
+      "updated_at": "2025-01-07T16:59:55.925Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14257,7 +14291,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-10T18:41:47.091Z",
-      "updated_at": "2024-12-30T14:50:12.186Z",
+      "updated_at": "2025-01-07T14:50:51.913Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14291,7 +14325,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-10T18:48:06.692Z",
-      "updated_at": "2024-12-30T14:50:14.915Z",
+      "updated_at": "2025-01-07T14:50:55.457Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14325,7 +14359,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-10T18:51:05.810Z",
-      "updated_at": "2024-12-30T14:50:16.669Z",
+      "updated_at": "2025-01-07T14:50:57.172Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14359,7 +14393,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-10T18:53:52.409Z",
-      "updated_at": "2024-12-30T14:50:18.583Z",
+      "updated_at": "2025-01-07T14:50:59.111Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14393,7 +14427,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-10T18:57:16.344Z",
-      "updated_at": "2024-12-30T14:50:22.174Z",
+      "updated_at": "2025-01-07T14:51:01.094Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14427,7 +14461,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-19T21:21:15.297Z",
-      "updated_at": "2024-12-30T14:50:24.104Z",
+      "updated_at": "2025-01-07T14:51:02.915Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14461,7 +14495,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-19T21:50:12.758Z",
-      "updated_at": "2024-12-30T14:50:27.032Z",
+      "updated_at": "2025-01-07T14:51:06.650Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14495,7 +14529,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-19T21:57:14.334Z",
-      "updated_at": "2024-12-30T14:50:29.311Z",
+      "updated_at": "2025-01-07T14:51:08.508Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14529,7 +14563,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-19T22:22:02.526Z",
-      "updated_at": "2024-12-30T14:50:31.142Z",
+      "updated_at": "2025-01-07T14:51:10.658Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14563,7 +14597,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-19T22:57:16.180Z",
-      "updated_at": "2024-12-30T14:50:34.420Z",
+      "updated_at": "2025-01-07T14:51:12.718Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14597,7 +14631,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-19T00:59:15.337Z",
-      "updated_at": "2024-12-30T14:50:36.501Z",
+      "updated_at": "2025-01-07T14:51:15.681Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14631,7 +14665,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-19T23:27:37.559Z",
-      "updated_at": "2024-12-30T14:50:38.322Z",
+      "updated_at": "2025-01-07T14:51:19.004Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14665,7 +14699,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-19T19:55:27.300Z",
-      "updated_at": "2024-12-30T14:50:40.126Z",
+      "updated_at": "2025-01-07T14:51:20.925Z",
       "status": "Current",
       "rn": "1"
     },
@@ -14699,7 +14733,7 @@
       "state": "CA",
       "active": true,
       "created_at": "2024-12-19T19:59:12.826Z",
-      "updated_at": "2024-12-30T14:50:42.886Z",
+      "updated_at": "2025-01-07T14:51:23.571Z",
       "status": "Current",
       "rn": "1"
     },
