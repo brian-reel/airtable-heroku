@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "airtable": "^0.11.6",
-    "axios": "^1.7.9",
     "dotenv": "^16.0.0",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "axios": "^0.21.1"
   },
   "engines": {
     "node": "v16.17.0",

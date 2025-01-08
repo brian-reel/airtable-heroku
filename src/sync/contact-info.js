@@ -25,13 +25,25 @@ function writeEmailMatchReport(matches) {
 async function getEmailsFromPostgres() {
   try {
     const result = await pool.query(`
-      SELECT e.emailable_id, e.address, emp.mobile_phone, emp.active, emp.created_at
-      FROM ${pgEmailsTable} e
-      LEFT JOIN ${pgEmployeesTable} emp ON e.emailable_id = emp.id
-      WHERE e.emailable_type = 'Employee' 
-      AND e.address IS NOT NULL
-      AND e."primary" = true
-      ORDER BY emp.created_at DESC
+      WITH RankedEmails AS (
+        SELECT 
+          e.emailable_id,
+          e.address,
+          emp.mobile_phone,
+          emp.active,
+          emp.created_at,
+          ROW_NUMBER() OVER (
+            PARTITION BY e.address 
+            ORDER BY emp.active DESC, emp.created_at DESC
+          ) as rn
+        FROM ${pgEmailsTable} e
+        LEFT JOIN ${pgEmployeesTable} emp ON e.emailable_id = emp.id
+        WHERE e.emailable_type = 'Employee' 
+        AND e.address IS NOT NULL
+        AND e."primary" = true
+      )
+      SELECT * FROM RankedEmails WHERE rn = 1
+      ORDER BY active DESC, created_at DESC
     `);
     console.log(`Fetched ${result.rows.length} email records from Postgres`);
     return result.rows;
@@ -44,13 +56,25 @@ async function getEmailsFromPostgres() {
 async function getPhoneNumbersFromPostgres() {
   try {
     const result = await pool.query(`
-      SELECT emp.id, emp.mobile_phone, emp.active, emp.created_at, e.address as email
-      FROM ${pgEmployeesTable} emp
-      LEFT JOIN ${pgEmailsTable} e ON emp.id = e.emailable_id 
-      AND e.emailable_type = 'Employee' 
-      AND e."primary" = true
-      WHERE emp.mobile_phone IS NOT NULL
-      ORDER BY emp.created_at DESC
+      WITH RankedPhones AS (
+        SELECT 
+          emp.id,
+          emp.mobile_phone,
+          emp.active,
+          emp.created_at,
+          e.address as email,
+          ROW_NUMBER() OVER (
+            PARTITION BY emp.mobile_phone 
+            ORDER BY emp.active DESC, emp.created_at DESC
+          ) as rn
+        FROM ${pgEmployeesTable} emp
+        LEFT JOIN ${pgEmailsTable} e ON emp.id = e.emailable_id 
+        AND e.emailable_type = 'Employee' 
+        AND e."primary" = true
+        WHERE emp.mobile_phone IS NOT NULL
+      )
+      SELECT * FROM RankedPhones WHERE rn = 1
+      ORDER BY active DESC, created_at DESC
     `);
     console.log(`Fetched ${result.rows.length} phone records from Postgres`);
     return result.rows;
@@ -113,9 +137,17 @@ async function matchAndUpdateEmails() {
     let blankEmpIdCount = 0;
     let emailMatchCount = 0;
 
-    // Create lookup object for PG emails
+    // Create lookup object for PG emails - only keep the most recent record for each email
     const pgEmailMap = pgEmails.reduce((acc, row) => {
-      acc[row.address.toLowerCase()] = row.emailable_id;
+      const email = row.address.toLowerCase();
+      if (!acc[email] || new Date(row.created_at) > new Date(acc[email].created_at)) {
+        acc[email] = {
+          emailable_id: row.emailable_id,
+          mobile_phone: row.mobile_phone,
+          active: row.active,
+          created_at: row.created_at
+        };
+      }
       return acc;
     }, {});
 
@@ -124,7 +156,7 @@ async function matchAndUpdateEmails() {
       const airtableEmail = record.fields['Email']?.toLowerCase();
       
       if (airtableEmail && pgEmailMap[airtableEmail]) {
-        const pgRecord = pgEmails.find(r => r.address.toLowerCase() === airtableEmail);
+        const pgRecord = pgEmailMap[airtableEmail];
         const updates = determineUpdates(record.fields, pgRecord);
         
         if (Object.values(updates).some(Boolean)) {
@@ -136,7 +168,8 @@ async function matchAndUpdateEmails() {
             pgPhone: pgRecord.mobile_phone,
             currentFields: record.fields,
             updates,
-            isActive: pgRecord.active
+            isActive: pgRecord.active,
+            created_at: pgRecord.created_at
           });
         }
       }
