@@ -2,10 +2,15 @@ require('dotenv').config();
 const { pool, base, AIRTABLE_TABLE } = require('../config/database');
 const { clearReportFiles, writeJsonReport } = require('../utils/logging');
 const fs = require('fs');
+const { updateAirtableRecord } = require('../services/airtable');
 
 const tableName = process.env.AIRTABLE_TABLE_NAME || 'Employees_dev';
 const pgEmailsTable = process.env.PG_TABLE_NAME_2 || 'emails'; // Default to 'emails' if not set
 const pgEmployeesTable = process.env.PG_TABLE_NAME_3 || 'employees';
+
+async function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function writeEmailMatchReport(matches) {
   const report = matches.map(match => ({
@@ -90,7 +95,7 @@ async function getAirtableRecords() {
   try {
     await base(tableName)
       .select({
-        fields: ['RSC Emp ID', 'Email', 'Phone', 'Status-RSPG', 'Status']
+        fields: ['RSC Emp ID', 'Email', 'Phone', 'Status-RSPG', 'Status', 'Name']
       })
       .eachPage((pageRecords, fetchNextPage) => {
         records.push(...pageRecords);
@@ -110,8 +115,30 @@ function determineUpdates(airtableFields, pgRecord) {
     needsPhone: !airtableFields['Phone'] && pgRecord.mobile_phone,
     needsEmail: !airtableFields['Email'] && pgRecord.email,
     needsStatusRSPG: airtableFields['Status-RSPG'] !== (pgRecord.active ? 'Active' : 'Inactive'),
-    needsStatus: airtableFields['Status'] !== (pgRecord.active ? 'Hired' : 'Separated')
+    needsStatus: airtableFields['Status'] !== (pgRecord.active ? 'Hired' : 'Separated'),
+    needsName: airtableFields['Name'] !== pgRecord.name
   };
+}
+
+// Add at the top with other functions
+async function updateWithRetry(recordId, fields) {
+  try {
+    await updateAirtableRecord(recordId, fields);
+    await sleep(250); // Rate limit between updates
+    return true;
+  } catch (error) {
+    console.error(`Failed to update record ${recordId}:`, error);
+    return false;
+  }
+}
+
+// Helper function to standardize date format (add at top of file)
+function formatDateToString(date) {
+  if (!date) return '';
+  // Ensure we're working with a date object
+  const d = new Date(date);
+  // Use UTC methods to avoid timezone shifts
+  return `${(d.getUTCMonth() + 1).toString().padStart(2, '0')}/${d.getUTCDate().toString().padStart(2, '0')}/${d.getUTCFullYear()}`;
 }
 
 // Update the matchAndUpdateEmails function
@@ -130,7 +157,11 @@ async function matchAndUpdateEmails() {
     const pgEmails = await getEmailsFromPostgres();
     
     console.log('Fetching records from Airtable...');
-    const airtableRecords = await getAirtableRecords();
+    const airtableRecords = await base(AIRTABLE_TABLE)
+      .select({
+        fields: ['RSC Emp ID', 'Phone', 'Email', 'Status-RSPG', 'Status', 'Name', 'RSC Hire Date']
+      })
+      .all();
 
     const matches = [];
     const updates = [];
@@ -204,15 +235,15 @@ async function matchAndUpdateEmails() {
         if (match.updates.needsPhone) updateFields['Phone'] = match.pgPhone;
         if (match.updates.needsStatusRSPG) updateFields['Status-RSPG'] = match.isActive ? 'Active' : 'Inactive';
         if (match.updates.needsStatus) updateFields['Status'] = match.isActive ? 'Hired' : 'Separated';
+        if (match.updates.needsName) updateFields['Name'] = match.name;
+        if (match.updates.needsHireDate) updateFields['RSC Hire Date'] = match.hireDate;
 
         if (Object.keys(updateFields).length > 0) {
-          await base(AIRTABLE_TABLE).update(match.airtableId, updateFields);
-          successCount++;
-          updates.push({
-            success: true,
-            email: match.airtableEmail,
-            pgEmployeeId: match.pgEmployeeId
-          });
+          const success = await updateWithRetry(match.airtableId, updateFields);
+          if (success) {
+            successCount++;
+            console.log(`Updated record ${match.airtableId} with:`, updateFields);
+          }
         }
       } catch (error) {
         console.error(`Failed to update record for email ${match.airtableEmail}:`, error);
@@ -261,7 +292,7 @@ async function matchAndUpdatePhones() {
     console.log('Fetching records from Airtable...');
     const airtableRecords = await base(AIRTABLE_TABLE)
       .select({
-        fields: ['RSC Emp ID', 'Phone', 'Email', 'Status-RSPG', 'Status']
+        fields: ['RSC Emp ID', 'Phone', 'Email', 'Status-RSPG', 'Status', 'Name', 'RSC Hire Date']
       })
       .all();
 
@@ -326,6 +357,7 @@ async function matchAndUpdatePhones() {
         if (match.updates.needsEmail) updateFields['Email'] = match.pgEmail;
         if (match.updates.needsStatusRSPG) updateFields['Status-RSPG'] = match.isActive ? 'Active' : 'Inactive';
         if (match.updates.needsStatus) updateFields['Status'] = match.isActive ? 'Hired' : 'Separated';
+        if (match.updates.needsName) updateFields['Name'] = match.name;
 
         if (Object.keys(updateFields).length > 0) {
           await base(AIRTABLE_TABLE).update(match.airtableId, updateFields);
@@ -380,6 +412,7 @@ async function addNewEmployees() {
           emp.tenant_id,
           emp.active,
           emp.mobile_phone,
+          emp.hire_date,
           e.address as email,
           ROW_NUMBER() OVER (PARTITION BY emp.id ORDER BY emp.created_at DESC) as rn
         FROM ${pgEmployeesTable} emp
@@ -401,9 +434,15 @@ async function addNewEmployees() {
             'SS-D-%',
             'AVS-N-%',
             'AVS-D-%',
-            'DF-N-%'
+            'DF-N-%',
+            'East%',
+            'Eastern',
+            'Mountain',
+            'Central'
           ])
           OR emp.last_name = 'SUB'
+          OR emp.last_name = 'Tester'
+          OR emp.last_name ILIKE '%Tester%'
         )
       )
       SELECT * FROM RankedEmails WHERE rn = 1
@@ -434,6 +473,14 @@ async function addNewEmployees() {
 
     for (const emp of newEmployees) {
       try {
+        const formattedHireDate = emp.hire_date 
+          ? new Date(emp.hire_date).toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: 'numeric'
+            })
+          : '';
+
         const newRecord = {
           'Name': emp.name,
           'RSC Emp ID': emp.employee_id.toString(),
@@ -441,7 +488,8 @@ async function addNewEmployees() {
           'Status-RSPG': emp.active ? 'Active' : 'Inactive',
           'Status': emp.active ? 'Hired' : 'Separated',
           'Email': emp.email || '',
-          'Phone': emp.mobile_phone || ''
+          'Phone': emp.mobile_phone || '',
+          'RSC Hire Date': formattedHireDate
         };
 
         await base(AIRTABLE_TABLE).create(newRecord);
@@ -472,4 +520,164 @@ async function addNewEmployees() {
   }
 }
 
-module.exports = { matchAndUpdateEmails, matchAndUpdatePhones, addNewEmployees }; 
+async function syncEmployeeData() {
+  try {
+    console.log('Starting employee data sync...');
+    
+    // 1. Get all active employees from PG
+    const pgEmployees = await pool.query(`
+      SELECT 
+        emp.id as employee_id,
+        emp.first_name || ' ' || emp.last_name as name,
+        emp.tenant_id,
+        emp.active,
+        emp.mobile_phone,
+        emp.hire_date,
+        emp.last_name,
+        e.address as email
+      FROM ${pgEmployeesTable} emp
+      LEFT JOIN ${pgEmailsTable} e ON emp.id = e.emailable_id 
+      AND e.emailable_type = 'Employee' 
+      AND e."primary" = true
+      WHERE emp.active = true
+      AND NOT (
+        emp.first_name ILIKE ANY(ARRAY[
+          'SER-N-%', 'SER-D-%', 'ESP-D-%', 'ESP-N-%',
+          'PRONE-D-%', 'DF-D-%', 'ULT-N-%', 'ULT-D-%',
+          'SS-N-%', 'SS-D-%', 'AVS-N-%', 'AVS-D-%',
+          'DF-N-%', 'East%', 'Eastern', 'Mountain', 'Central'
+        ])
+        OR emp.last_name = 'SUB'
+        OR emp.last_name ILIKE '%Tester%'
+        OR emp.last_name ILIKE '%test%'
+      )
+    `);
+
+    // 2. Get all Airtable records
+    const airtableRecords = await base(AIRTABLE_TABLE)
+      .select({
+        fields: ['RSC Emp ID', 'Email', 'Phone', 'Status-RSPG', 'Status', 'Name', 'RSC Hire Date']
+      })
+      .all();
+
+    // 3. Create lookup maps
+    const pgEmployeeMap = pgEmployees.rows.reduce((acc, emp) => {
+      acc[emp.employee_id] = emp;
+      if (emp.email) acc[emp.email.toLowerCase()] = emp;
+      if (emp.mobile_phone) acc[standardizePhoneNumber(emp.mobile_phone)] = emp;
+      return acc;
+    }, {});
+
+    // 4. Find matches and determine updates
+    const updates = [];
+    for (const record of airtableRecords) {
+      let pgMatch = null;
+      
+      // Try to match by RSC Emp ID first
+      if (record.fields['RSC Emp ID']) {
+        pgMatch = pgEmployeeMap[record.fields['RSC Emp ID']];
+      }
+      
+      // If no match, try email
+      if (!pgMatch && record.fields['Email']) {
+        pgMatch = pgEmployeeMap[record.fields['Email'].toLowerCase()];
+      }
+      
+      // If still no match, try phone
+      if (!pgMatch && record.fields['Phone']) {
+        const standardizedPhone = standardizePhoneNumber(record.fields['Phone']);
+        pgMatch = pgEmployeeMap[standardizedPhone];
+      }
+
+      if (pgMatch) {
+        const updateFields = {};
+        
+        // Compare and add fields that need updating
+        if (record.fields['Name'] !== pgMatch.name) {
+          updateFields['Name'] = pgMatch.name;
+        }
+        if (record.fields['Status-RSPG'] !== (pgMatch.active ? 'Active' : 'Inactive')) {
+          updateFields['Status-RSPG'] = pgMatch.active ? 'Active' : 'Inactive';
+        }
+        if (record.fields['Status'] !== (pgMatch.active ? 'Hired' : 'Separated')) {
+          updateFields['Status'] = pgMatch.active ? 'Hired' : 'Separated';
+        }
+        
+        // Only update hire date if it's different or missing
+        if (pgMatch.hire_date) {
+          const pgDate = formatDateToString(pgMatch.hire_date);
+          const airtableDate = formatDateToString(record.fields['RSC Hire Date']);
+          
+          // Only update if dates are actually different (ignoring format)
+          if (!record.fields['RSC Hire Date'] || pgDate !== airtableDate) {
+            // Log the actual difference for verification
+            console.log(`Hire date difference for ${record.fields['Name']}:`, {
+              original: {
+                pg: pgMatch.hire_date,
+                airtable: record.fields['RSC Hire Date']
+              },
+              formatted: {
+                pg: pgDate,
+                airtable: airtableDate
+              }
+            });
+            
+            // Only add to updateFields if truly different
+            if (pgDate !== airtableDate) {
+              updateFields['RSC Hire Date'] = pgDate;
+            }
+          }
+        }
+
+        if (Object.keys(updateFields).length > 0) {
+          updates.push({
+            recordId: record.id,
+            fields: updateFields
+          });
+        }
+      }
+    }
+
+    // 5. Perform updates with rate limiting
+    console.log(`Found ${updates.length} records that need updating`);
+    let successCount = 0;
+    const errors = [];
+
+    for (const update of updates) {
+      try {
+        await updateAirtableRecord(update.recordId, update.fields);
+        await sleep(250); // Rate limit
+        successCount++;
+        console.log(`Updated record ${update.recordId}:`, update.fields);
+      } catch (error) {
+        console.error(`Failed to update record ${update.recordId}:`, error);
+        errors.push({
+          recordId: update.recordId,
+          error: error.message
+        });
+      }
+    }
+
+    // 6. Final summary
+    console.log('\nSync Summary:');
+    console.log(`Total records processed: ${airtableRecords.length}`);
+    console.log(`Updates needed: ${updates.length}`);
+    console.log(`Successful updates: ${successCount}`);
+    console.log(`Failed updates: ${errors.length}`);
+
+    if (errors.length > 0) {
+      writeJsonReport('sync_errors.json', errors);
+    }
+
+  } catch (error) {
+    console.error('Error in employee sync:', error);
+    throw error;
+  }
+}
+
+module.exports = {
+  matchAndUpdateEmails,
+  matchAndUpdatePhones,
+  addNewEmployees,
+  syncEmployeeData
+}; 

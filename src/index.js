@@ -1,18 +1,12 @@
 require('dotenv').config();
+const { syncEmployeeData } = require('./sync/contact-info');
 const { syncPostgresToAirtable } = require('./sync/guard-cards');
-const { matchAndUpdateEmails, matchAndUpdatePhones, addNewEmployees } = require('./sync/contact-info');
 
 (async () => {
-  console.log('Starting new employee addition process...');
-  await addNewEmployees();
+  console.log('Starting employee data sync...');
+  await syncEmployeeData();
   
-  console.log('\nStarting email matching process...');
-  await matchAndUpdateEmails();
-  
-  console.log('\nStarting phone matching process...');
-  await matchAndUpdatePhones();
-  
-  console.log('\nStarting guard card sync process...');
+  console.log('\nStarting guard card sync...');
   await syncPostgresToAirtable();
   
   console.log('All processes complete!');
