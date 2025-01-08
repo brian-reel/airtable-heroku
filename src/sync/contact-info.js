@@ -357,4 +357,119 @@ async function matchAndUpdatePhones() {
   }
 }
 
-module.exports = { matchAndUpdateEmails, matchAndUpdatePhones }; 
+function getTenantState(tenantId) {
+  const stateMap = {
+    '2': 'CA',
+    '3': 'LA',
+    '4': 'GA',
+    '5': 'NM',
+    '6': 'CA',
+    '13': 'UK'
+  };
+  return stateMap[tenantId.toString()] || 'Unknown';
+}
+
+async function addNewEmployees() {
+  try {
+    console.log('Fetching active employees from Postgres...');
+    const result = await pool.query(`
+      WITH RankedEmails AS (
+        SELECT 
+          emp.id as employee_id,
+          emp.first_name || ' ' || emp.last_name as name,
+          emp.tenant_id,
+          emp.active,
+          emp.mobile_phone,
+          e.address as email,
+          ROW_NUMBER() OVER (PARTITION BY emp.id ORDER BY emp.created_at DESC) as rn
+        FROM ${pgEmployeesTable} emp
+        LEFT JOIN ${pgEmailsTable} e ON emp.id = e.emailable_id 
+        AND e.emailable_type = 'Employee' 
+        AND e."primary" = true
+        WHERE emp.active = true
+        AND NOT (
+          emp.first_name ILIKE ANY(ARRAY[
+            'SER-N-%',
+            'SER-D-%',
+            'ESP-D-%',
+            'ESP-N-%',
+            'PRONE-D-%',
+            'DF-D-%',
+            'ULT-N-%',
+            'ULT-D-%',
+            'SS-N-%',
+            'SS-D-%',
+            'AVS-N-%',
+            'AVS-D-%',
+            'DF-N-%'
+          ])
+          OR emp.last_name = 'SUB'
+        )
+      )
+      SELECT * FROM RankedEmails WHERE rn = 1
+    `);
+    
+    console.log('Fetching existing Airtable records...');
+    const airtableRecords = await base(AIRTABLE_TABLE)
+      .select({
+        fields: ['RSC Emp ID']
+      })
+      .all();
+    
+    // Create set of existing RSC Emp IDs in Airtable
+    const existingEmpIds = new Set(
+      airtableRecords
+        .map(record => record.fields['RSC Emp ID'])
+        .filter(Boolean)
+    );
+
+    // Filter for new employees
+    const newEmployees = result.rows.filter(emp => !existingEmpIds.has(emp.employee_id.toString()));
+    
+    console.log(`Found ${newEmployees.length} new active employees to add`);
+
+    // Add new employees to Airtable
+    let successCount = 0;
+    const errors = [];
+
+    for (const emp of newEmployees) {
+      try {
+        const newRecord = {
+          'Name': emp.name,
+          'RSC Emp ID': emp.employee_id.toString(),
+          'Region': getTenantState(emp.tenant_id),
+          'Status-RSPG': emp.active ? 'Active' : 'Inactive',
+          'Status': emp.active ? 'Hired' : 'Separated',
+          'Email': emp.email || '',
+          'Phone': emp.mobile_phone || ''
+        };
+
+        await base(AIRTABLE_TABLE).create(newRecord);
+        successCount++;
+        console.log(`Added new employee: ${emp.name} (${emp.employee_id})`);
+      } catch (error) {
+        console.error(`Failed to add employee ${emp.employee_id}:`, error);
+        errors.push({
+          employeeId: emp.employee_id,
+          name: emp.name,
+          error: error.message
+        });
+      }
+    }
+
+    console.log(`\nNew Employee Addition Summary:`);
+    console.log(`Successfully added: ${successCount}`);
+    console.log(`Failed to add: ${errors.length}`);
+
+    if (errors.length > 0) {
+      writeJsonReport('new_employee_errors.json', errors);
+    }
+
+    return successCount > 0;
+  } catch (error) {
+    console.error('Error in addNewEmployees:', error);
+    throw error;
+  }
+}
+
+module.exports = { matchAndUpdateEmails, matchAndUpdatePhones, addNewEmployees }; 

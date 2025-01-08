@@ -1,9 +1,12 @@
 require('dotenv').config();
 const { syncPostgresToAirtable } = require('./sync/guard-cards');
-const { matchAndUpdateEmails, matchAndUpdatePhones } = require('./sync/contact-info');
+const { matchAndUpdateEmails, matchAndUpdatePhones, addNewEmployees } = require('./sync/contact-info');
 
 (async () => {
-  console.log('Starting email matching process...');
+  console.log('Starting new employee addition process...');
+  await addNewEmployees();
+  
+  console.log('\nStarting email matching process...');
   await matchAndUpdateEmails();
   
   console.log('\nStarting phone matching process...');
