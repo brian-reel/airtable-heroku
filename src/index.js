@@ -1,21 +1,35 @@
 require('dotenv').config();
+const fs = require('fs');
 const { syncEmployeeData } = require('./sync/contact-info');
 const { syncPostgresToAirtable } = require('./sync/guard-cards');
 const { syncEmployeeRoles } = require('./sync/roles');
 const { flagDuplicateRecords } = require('./sync/duplicates');
 
+async function logToFile(message) {
+  const timestamp = new Date().toISOString();
+  const logMessage = `${timestamp}: ${message}\n`;
+  fs.appendFileSync('sync_history.log', logMessage);
+}
+
 (async () => {
-  console.log('Starting employee data sync...');
-  await syncEmployeeData();
+  await logToFile('Starting nightly sync process...');
   
-  console.log('\nStarting guard card sync...');
-  await syncPostgresToAirtable();
-  
-  console.log('\nStarting employee roles sync...');
-  await syncEmployeeRoles();
-  
-  console.log('\nStarting duplicate detection...');
-  await flagDuplicateRecords();
-  
-  console.log('All processes complete!');
+  try {
+    await logToFile('Starting employee data sync...');
+    await syncEmployeeData();
+    
+    await logToFile('Starting guard card sync...');
+    await syncPostgresToAirtable();
+    
+    await logToFile('Starting employee roles sync...');
+    await syncEmployeeRoles();
+    
+    await logToFile('Starting duplicate detection...');
+    await flagDuplicateRecords();
+    
+    await logToFile('All processes complete!');
+  } catch (error) {
+    await logToFile(`Error in sync process: ${error.message}`);
+    throw error;
+  }
 })(); 
