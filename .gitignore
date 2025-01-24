@@ -14,4 +14,4 @@ src/reports/*.json
 
 # IDE specific files
 .vscode/
-.idea/
+.idea/src/sync/temp.js

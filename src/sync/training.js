@@ -59,13 +59,8 @@ function formatCourseData(courses) {
   if (!courses || courses.length === 0) {
     return 'No courses enrolled';
   }
-
-  const filteredCourses = courses.filter(course => course.id === "142");
-  if (filteredCourses.length === 0) {
-    return 'No relevant courses found';
-  }
-
-  return filteredCourses.map(course => {
+  
+  return courses.map(course => {
     // Safely convert timestamps to dates
     let enrolledDate = '';
     let completedDate = '';
@@ -89,6 +84,7 @@ function formatCourseData(courses) {
     }
 
     return {
+      course_id: String(course.id || ''),
       name: String(course.name || ''),
       role: String(course.role || ''),
       enrolled_on: String(enrolledDate),
@@ -117,31 +113,162 @@ async function updateAirtableRecord(recordId, lmsCourseData) {
   }
 }
 
-(async () => {
+// Add this function to check if update is needed
+function needsUpdate(existingData, newData) {
+  if (!existingData || existingData === 'No courses enrolled') {
+    return true;
+  }
+
   try {
-    console.log('Fetching LMS users...');
-    const lmsUsers = await fetchLMSUsers();
-    console.log(`Fetched ${lmsUsers.length} users from LMS.`);
+    const currentData = JSON.parse(existingData);
+    // If lengths are different, update is needed
+    if (!Array.isArray(currentData) || currentData.length !== newData.length) {
+      return true;
+    }
 
-    console.log('Fetching Airtable records...');
-    const airtableRecords = await fetchAirtableRecords();
-    console.log(`Fetched ${airtableRecords.length} records from Airtable.`);
+    // Create maps of current and new data by course_id for easy comparison
+    const currentMap = new Map(currentData.map(course => [course.course_id, course]));
+    const newMap = new Map(newData.map(course => [course.course_id, course]));
 
-    let updateCount = 0;
-    for (const record of airtableRecords) {
-      const lmsUserId = record.fields['LMS_id'];
-      if (lmsUserId) {
-        const lmsCourseData = await fetchUserCourses(lmsUserId);
-        if (lmsCourseData) {
-          await updateAirtableRecord(record.id, lmsCourseData);
-          updateCount++;
-          console.log(`Updated record ${record.id} with LMS course data.`);
-        }
+    // Check if any courses have different data
+    for (const [courseId, newCourse] of newMap) {
+      const currentCourse = currentMap.get(courseId);
+      if (!currentCourse) return true;
+
+      // Compare relevant fields
+      if (
+        newCourse.completion_status !== currentCourse.completion_status ||
+        newCourse.completion_percentage !== currentCourse.completion_percentage ||
+        newCourse.completed_on_timestamp !== currentCourse.completed_on_timestamp
+      ) {
+        return true;
       }
     }
 
-    console.log(`Total records updated with course data: ${updateCount}`);
+    return false;
   } catch (error) {
-    console.error('Error in sync process:', error);
+    console.error('Error parsing existing course data:', error);
+    return true; // If we can't parse the existing data, update it
   }
-})();
+}
+
+// Add this function to match and set LMS IDs
+async function matchAndSetLMSIds(lmsUsers, airtableRecords) {
+  console.log('Matching LMS users to Airtable records...');
+  let updateCount = 0;
+  let skippedCount = 0;
+
+  // Create map of LMS users by email
+  const lmsUserMap = lmsUsers.reduce((acc, user) => {
+    if (user.email) {
+      acc[user.email.toLowerCase()] = user;
+    }
+    return acc;
+  }, {});
+
+  for (const record of airtableRecords) {
+    const airtableEmail = record.fields['Email']?.toLowerCase();
+    
+    if (airtableEmail && lmsUserMap[airtableEmail]) {
+      const lmsUser = lmsUserMap[airtableEmail];
+      
+      // Only update if LMS_id is missing or different
+      if (!record.fields['LMS_id'] || record.fields['LMS_id'] !== lmsUser.id.toString()) {
+        try {
+          await base(AIRTABLE_TABLE).update(record.id, {
+            'LMS_id': lmsUser.id.toString()
+          });
+          updateCount++;
+          console.log(`Updated LMS_id for record ${record.id} (${airtableEmail})`);
+        } catch (error) {
+          console.error(`Failed to update LMS_id for record ${record.id}:`, error);
+        }
+      } else {
+        skippedCount++;
+      }
+    }
+  }
+
+  console.log('\nLMS ID Matching Summary:');
+  console.log(`Updated: ${updateCount} records`);
+  console.log(`Skipped: ${skippedCount} records`);
+  console.log(`Total processed: ${updateCount + skippedCount} records`);
+}
+
+async function syncTrainingData() {
+  try {
+    console.log('Starting LMS training sync...');
+    
+    // Step 1: Fetch all data
+    console.log('\nFetching data...');
+    const [lmsUsers, airtableRecords] = await Promise.all([
+      fetchLMSUsers(),
+      fetchAirtableRecords()
+    ]);
+    console.log(`- Fetched ${lmsUsers.length} LMS users`);
+    console.log(`- Fetched ${airtableRecords.length} Airtable records`);
+
+    // Step 2: Match and set LMS IDs
+    console.log('\nMatching LMS users to Airtable records...');
+    await matchAndSetLMSIds(lmsUsers, airtableRecords);
+
+    // Step 3: Fetch fresh Airtable data to get updated LMS IDs
+    console.log('\nFetching updated Airtable records...');
+    const updatedAirtableRecords = await fetchAirtableRecords();
+    console.log(`Fetched ${updatedAirtableRecords.length} updated records`);
+
+    // Step 4: Update course data for matched records
+    console.log('\nUpdating course data...');
+    let courseUpdateCount = 0;
+    let courseSkippedCount = 0;
+
+    // Process records that have an LMS_id
+    const recordsWithLmsId = updatedAirtableRecords.filter(record => record.fields['LMS_id']);
+    console.log(`Found ${recordsWithLmsId.length} records with LMS IDs`);
+
+    for (const record of recordsWithLmsId) {
+      const lmsUserId = record.fields['LMS_id'];
+      try {
+        const lmsCourseData = await fetchUserCourses(lmsUserId);
+        if (lmsCourseData) {
+          const formattedData = formatCourseData(lmsCourseData);
+          if (needsUpdate(record.fields['LMS_course_data'], formattedData)) {
+            await updateAirtableRecord(record.id, lmsCourseData);
+            courseUpdateCount++;
+            console.log(`Updated course data for record ${record.id} (${record.fields['Email']})`);
+          } else {
+            courseSkippedCount++;
+            console.log(`Skipped course update for record ${record.id} - no changes needed`);
+          }
+        }
+      } catch (error) {
+        console.error(`Error processing course data for record ${record.id}:`, error);
+      }
+    }
+
+    // Final Summary
+    console.log('\nSync Complete!');
+    console.log(`Course Data Updates:`);
+    console.log(`- Updated: ${courseUpdateCount} records`);
+    console.log(`- Skipped: ${courseSkippedCount} records`);
+    console.log(`- Total Processed: ${courseUpdateCount + courseSkippedCount} records`);
+
+  } catch (error) {
+    console.error('Error in training sync:', error);
+    throw error;
+  }
+}
+
+// Update the execution block
+if (require.main === module) {
+  (async () => {
+    try {
+      await syncTrainingData();
+    } catch (error) {
+      console.error('Error running training sync:', error);
+      process.exit(1);
+    }
+  })();
+}
+
+module.exports = { syncTrainingData };
