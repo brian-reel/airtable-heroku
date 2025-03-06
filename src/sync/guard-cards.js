@@ -130,13 +130,6 @@ async function syncPostgresToAirtable() {
             : '';
           const currentLicenseType = matchingAirtableRecord.fields['license type id - RSPG'] || '';
 
-          // Debug log to see the actual formats
-          console.log(`Date formats for employee ${pgEmployee.employee_id}:`, {
-            rawPgDate: pgEmployee.expires_on,
-            formattedPgDate: formattedExpDate,
-            airtableDate: currentExpDate
-          });
-
           const needsUpdate = 
             // Update if PG has data and Airtable is blank
             (pgEmployee.number && !currentGuardCard) ||
@@ -147,36 +140,24 @@ async function syncPostgresToAirtable() {
             (pgEmployee.expires_on && currentExpDate && currentExpDate.trim() !== formattedExpDate.trim()) ||
             (pgEmployee.license_type_id && currentLicenseType && currentLicenseType !== pgEmployee.license_type_id);
 
-          // Add debug logging for exact comparison values
-          if (currentExpDate && formattedExpDate && currentExpDate !== formattedExpDate) {
-            console.log(`Date mismatch for employee ${pgEmployee.employee_id}:`, {
-              currentExpDate: `"${currentExpDate}"`,
-              formattedExpDate: `"${formattedExpDate}"`,
-              currentLength: currentExpDate.length,
-              formattedLength: formattedExpDate.length
-            });
-          }
-
           if (needsUpdate) {
-            console.log(`Update needed for employee ${pgEmployee.employee_id}:`, {
-              reason: {
-                blankGuardCard: !currentGuardCard && pgEmployee.number,
-                blankExpDate: !currentExpDate && pgEmployee.expires_on,
-                guardCardMismatch: currentGuardCard !== pgEmployee.number,
-                expDateMismatch: currentExpDate !== formattedExpDate,
-                licenseTypeMismatch: currentLicenseType !== pgEmployee.license_type_id
+            return {
+              postgres: pgEmployee,
+              airtable: matchingAirtableRecord.fields,
+              needsUpdate,
+              updateFields: {
+                'GC - RSPG': pgEmployee.number || '',
+                ...(pgEmployee.expires_on === null 
+                  ? { 'GC Exp Date - RSPG': null }  // Set to null if PG is null
+                  : { 'GC Exp Date - RSPG': formattedExpDate }), // Otherwise use formatted date
+                'license type id - RSPG': pgEmployee.license_type_id
               },
-              current: {
+              currentValues: {
                 guardCard: currentGuardCard || 'BLANK',
                 expDate: currentExpDate || 'BLANK',
                 licenseType: currentLicenseType || 'BLANK'
-              },
-              new: {
-                guardCard: pgEmployee.number || 'BLANK',
-                expDate: formattedExpDate || 'BLANK',
-                licenseType: pgEmployee.license_type_id || 'BLANK'
               }
-            });
+            };
           }
 
           // Always return the match, but include whether it needs updating
@@ -291,6 +272,32 @@ function writeUpdateReport(recordsNeedingUpdate) {
 
   fs.writeFileSync('update_report.json', JSON.stringify(report, null, 2));
   console.log('Update report saved to update_report.json');
+}
+
+// This is likely in the formatDate function or where dates are being processed
+function formatDate(date) {
+  if (!date) return '';
+  
+  try {
+    const pgDate = new Date(date);
+    const formattedDate = pgDate.toLocaleDateString('en-US', {
+      month: '2-digit',
+      day: '2-digit',
+      year: 'numeric'
+    });
+    
+    return formattedDate;
+  } catch (error) {
+    console.error('Error formatting date:', error);
+    return '';
+  }
+}
+
+// ... or it might be in the comparison function
+function needsUpdate(airtableRecord, pgData) {
+  // ... existing code ...
+  
+  // ... rest of function
 }
 
 module.exports = { syncPostgresToAirtable };
