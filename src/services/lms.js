@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { handleError, tryCatch } = require('../utils/error-handler');
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path'); // Import path module for handling file paths
@@ -7,6 +8,11 @@ const LMS_API_URL_USERS = process.env.LMS_API_URL_USERS; // e.g., https://reel.t
 const LMS_API_URL_COURSES = process.env.LMS_API_URL_COURSES; // e.g., https://reel.talentlms.com/api/v1/courses
 const LMS_API_KEY = process.env.LMS_API_KEY; // Your API key
 
+/**
+ * fetchLMSData
+ * @param {any}  - Description of parameters
+ * @returns {Promise<any>} - Description of return value
+ */
 async function fetchLMSData() {
   try {
     // Create Basic Auth header
@@ -36,7 +42,7 @@ async function fetchLMSData() {
     fs.writeFileSync(path.join(__dirname, '../reports/lms_courses_data.json'), JSON.stringify(coursesData, null, 2));
     console.log('LMS courses data saved to reports/lms_courses_data.json');
   } catch (error) {
-    console.error('Error fetching data from LMS API:', error.message);
+    handleError(error, 'Error fetching data from LMS API:');
     if (error.response) {
       console.error('Response data:', error.response.data);
       console.error('Response status:', error.response.status);
@@ -45,5 +51,6 @@ async function fetchLMSData() {
   }
 }
 
-// Call the function to fetch data
-fetchLMSData();
+module.exports = {
+  fetchLMSData
+};

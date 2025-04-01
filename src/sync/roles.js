@@ -1,14 +1,23 @@
 require('dotenv').config();
 const { pool, base, AIRTABLE_TABLE } = require('../config/database');
-const { clearReportFiles, writeJsonReport } = require('../utils/logging');
+const { clearReportFiles, writeJsonReport, logSyncStart, logSyncEnd, logToHistory } = require('../utils/logging');
 const fs = require('fs');
+const { executeQuery } = require('../services/postgres');
+const { getAirtableRecords, updateAirtableRecord, createAirtableRecord } = require('../services/airtable');
+const { validateUpdateFields } = require('../utils/validation');
+const { handleError, tryCatch } = require('../utils/error-handler');
+const config = require('../config/config');
+const { AIRTABLE_ROLES_TABLE } = require('../config/database');
 
 // Table names
-const AIRTABLE_ROLES_TABLE = process.env.AIRTABLE_TABLE_NAME_2 || 'Employee_Roles';
 const PG_ROLE_TYPES_TABLE = process.env.PG_TABLE_NAME_4 || 'role_types';
 const PG_EMPLOYEE_ROLES_TABLE = process.env.PG_TABLE_NAME_5 || 'employee_roles';
 const PG_EMPLOYEES_TABLE = process.env.PG_TABLE_NAME_3 || 'employees';
 
+/**
+ * Get Airtable Employee Map
+ * @returns {Promise<any>} - Description of return value
+ */
 async function getAirtableEmployeeMap() {
   const records = await base(AIRTABLE_TABLE)
     .select({
@@ -25,6 +34,10 @@ async function getAirtableEmployeeMap() {
   }, {});
 }
 
+/**
+ * Get Airtable Role Map
+ * @returns {Promise<any>} - Description of return value
+ */
 async function getAirtableRoleMap() {
   const records = await base(process.env.AIRTABLE_TABLE_NAME_3)
     .select({
@@ -40,159 +53,200 @@ async function getAirtableRoleMap() {
   }, {});
 }
 
+/**
+ * Sync employee roles from PostgreSQL to Airtable
+ */
 async function syncEmployeeRoles() {
-  try {
-    // Clear previous files
-    console.log('Clearing previous data files...');
-    clearReportFiles([
-      'roles_data.json',
-      'role_sync_errors.json'
-    ]);
-    
+  return tryCatch(async () => {
+    await logToHistory('Starting employee roles sync...');
     console.log('Starting employee roles sync...');
     
-    // Get both maps first
-    console.log('Fetching Airtable employee and role records...');
-    const [airtableEmployeeMap, airtableRoleMap] = await Promise.all([
-      getAirtableEmployeeMap(),
-      getAirtableRoleMap()
+    // Clear previous report files
+    clearReportFiles([
+      'roles_sync.json',
+      'roles_errors.json'
     ]);
-
-    // Rest of the PostgreSQL query remains the same...
-    const result = await pool.query(`
-      WITH RankedRoles AS (
-        SELECT 
-          emp.first_name || ' ' || emp.last_name as employee_name,
-          rt.title as role_title,
-          er.created_at,
-          ROW_NUMBER() OVER (
-            PARTITION BY er.employee_id, er.role_type_id 
-            ORDER BY er.created_at DESC
-          ) as rn
-        FROM ${PG_EMPLOYEE_ROLES_TABLE} er
-        JOIN ${PG_EMPLOYEES_TABLE} emp ON er.employee_id = emp.id
-        JOIN ${PG_ROLE_TYPES_TABLE} rt ON er.role_type_id = rt.id
-        WHERE emp.active = true
-        AND NOT (
-          emp.first_name ILIKE ANY(ARRAY[
-            'SER-N-%', 'SER-D-%', 'ESP-D-%', 'ESP-N-%',
-            'PRONE-D-%', 'DF-D-%', 'ULT-N-%', 'ULT-D-%',
-            'SS-N-%', 'SS-D-%', 'AVS-N-%', 'AVS-D-%',
-            'DF-N-%', 'East%', 'Eastern', 'Mountain', 'Central'
-          ])
-          OR emp.last_name = 'SUB'
-          OR emp.last_name ILIKE '%test%'
-        )
-      )
-      SELECT 
-        employee_name,
-        role_title
-      FROM RankedRoles
-      WHERE rn = 1
-      ORDER BY employee_name, role_title
-    `);
-
-    // Write the raw data to a file with more detailed information
-    writeJsonReport('roles_data.json', {
-      postgresData: result.rows,
-      airtableEmployeeMap: Object.entries(airtableEmployeeMap).map(([name, id]) => ({
-        employeeName: name,
-        airtableId: id
-      })),
-      airtableRoleMap: Object.entries(airtableRoleMap).map(([name, id]) => ({
-        roleName: name,
-        airtableId: id
-      })),
-      employeeRoleCombinations: result.rows.map(row => ({
-        employeeName: row.employee_name,
-        matchFound: !!airtableEmployeeMap[row.employee_name.trim()],
-        roleMatchFound: !!airtableRoleMap[row.role_title.trim()],
-        airtableFields: {
-          current: {
-            Employee: [],
-            Role: []
-          },
-          toCreate: {
-            Employee: [airtableEmployeeMap[row.employee_name.trim()]],
-            Role: [airtableRoleMap[row.role_title.trim()]]
+    
+    logSyncStart('employee roles sync');
+    
+    // 1. Get employee roles from PostgreSQL
+    const pgRoles = await getEmployeeRolesFromPostgres();
+    
+    // 2. Get existing Airtable records
+    const airtableRecords = await getAirtableRecords(AIRTABLE_ROLES_TABLE, [
+      'RSC Emp ID', 'Role', 'Department', 'Status'
+    ]);
+    
+    // 3. Create lookup map for Airtable records
+    const airtableMap = {};
+    for (const record of airtableRecords) {
+      if (record.fields['RSC Emp ID']) {
+        const employeeId = record.fields['RSC Emp ID'];
+        if (!airtableMap[employeeId]) {
+          airtableMap[employeeId] = [];
+        }
+        airtableMap[employeeId].push(record);
+      }
+    }
+    
+    // 4. Process updates and new records
+    const updates = [];
+    const newRecords = [];
+    
+    for (const role of pgRoles) {
+      const employeeId = role.employee_id.toString();
+      const airtableEmployeeRoles = airtableMap[employeeId] || [];
+      
+      // Try to find a matching role record
+      const matchingRole = airtableEmployeeRoles.find(record => 
+        record.fields['Role'] === role.role_name && 
+        record.fields['Department'] === role.department_name
+      );
+      
+      if (matchingRole) {
+        // Check if update is needed
+        const updateFields = {};
+        
+        // Update status if needed
+        const currentStatus = matchingRole.fields['Status'];
+        const desiredStatus = role.active ? 'Active' : 'Inactive';
+        
+        if (currentStatus !== desiredStatus) {
+          updateFields['Status'] = desiredStatus;
+        }
+        
+        if (Object.keys(updateFields).length > 0) {
+          // Validate update fields
+          const validation = validateUpdateFields(updateFields);
+          if (validation.isValid) {
+            updates.push({
+              recordId: matchingRole.id,
+              fields: updateFields
+            });
+          } else {
+            console.warn(`Skipping invalid update for ${matchingRole.id}:`, validation.errors);
           }
         }
-      }))
-    });
-
-    console.log('Raw roles data saved to roles_data.json');
-
-    // Get existing role records
-    const airtableRoles = await base(AIRTABLE_ROLES_TABLE)
-      .select({
-        fields: ['Employee', 'Role']
-      })
-      .all();
-
-    // Create set of existing employee+role combinations using record IDs
-    const existingCombos = new Set(
-      airtableRoles.map(record => {
-        const employeeId = record.fields['Employee']?.[0] || '';
-        const roleId = record.fields['Role']?.[0] || '';
-        return `${employeeId}|${roleId}`;
-      })
-    );
-
-    // Filter for new combinations
-    const newRoles = result.rows.filter(row => {
-      const employeeId = airtableEmployeeMap[row.employee_name.trim()];
-      const roleId = airtableRoleMap[row.role_title.trim()];
-      return employeeId && roleId && !existingCombos.has(`${employeeId}|${roleId}`);
-    });
-
-    console.log(`Found ${newRoles.length} new employee role combinations to add`);
-
-    // Add new records to Airtable
-    let successCount = 0;
-    const errors = [];
-
-    for (const role of newRoles) {
-      try {
-        const employeeId = airtableEmployeeMap[role.employee_name.trim()];
-        if (!employeeId) {
-          throw new Error('No matching Airtable record found for employee');
-        }
-
-        await base(AIRTABLE_ROLES_TABLE).create({
-          'Employee': [employeeId],
-          'Role': [airtableRoleMap[role.role_title.trim()]]
+      } else if (role.active) {
+        // Create new record if role is active
+        newRecords.push({
+          'RSC Emp ID': employeeId,
+          'Role': role.role_name,
+          'Department': role.department_name,
+          'Status': 'Active'
         });
-        successCount++;
-        console.log(`Added role for ${role.employee_name}: ${role.role_title}`);
-        await new Promise(resolve => setTimeout(resolve, 250)); // Rate limiting
+      }
+    }
+    
+    // 5. Perform updates
+    console.log(`Found ${updates.length} roles that need updating`);
+    let updateSuccessCount = 0;
+    const updateErrors = [];
+    
+    for (const update of updates) {
+      try {
+        await updateAirtableRecord(AIRTABLE_ROLES_TABLE, update.recordId, update.fields);
+        updateSuccessCount++;
+        console.log(`Updated role record ${update.recordId}`);
       } catch (error) {
-        console.error(`Failed to add role for ${role.employee_name}:`, error);
-        errors.push({
-          employee: role.employee_name,
-          role: role.role_title,
+        handleError(error, 'role_update', { recordId: update.recordId, fields: update.fields });
+        updateErrors.push({
+          recordId: update.recordId,
           error: error.message
         });
       }
     }
-
-    // Final summary
-    console.log('\nSync Summary:');
-    console.log(`Total PG records: ${result.rows.length}`);
-    console.log(`New combinations to add: ${newRoles.length}`);
-    console.log(`Successfully added: ${successCount}`);
-    console.log(`Failed: ${errors.length}`);
-
-    if (errors.length > 0) {
-      writeJsonReport('reports/role_sync_errors.json', errors);
+    
+    // 6. Create new records
+    console.log(`Found ${newRecords.length} new roles to add`);
+    let createSuccessCount = 0;
+    const createErrors = [];
+    
+    for (const newRecord of newRecords) {
+      try {
+        await createAirtableRecord(AIRTABLE_ROLES_TABLE, newRecord);
+        createSuccessCount++;
+        console.log(`Added new role for employee ${newRecord['RSC Emp ID']}: ${newRecord['Role']}`);
+      } catch (error) {
+        handleError(error, 'role_create', { 
+          employeeId: newRecord['RSC Emp ID'], 
+          role: newRecord['Role'] 
+        });
+        createErrors.push({
+          employeeId: newRecord['RSC Emp ID'],
+          role: newRecord['Role'],
+          error: error.message
+        });
+      }
     }
-
-  } catch (error) {
-    console.error('Error in employee roles sync:', error);
-    return {
-      success: false,
-      error: error.message
-    };
-  }
+    
+    // 7. Write reports
+    if (updateErrors.length > 0 || createErrors.length > 0) {
+      writeJsonReport('roles_errors.json', {
+        updateErrors,
+        createErrors
+      });
+    }
+    
+    // 8. Log summary
+    logSyncEnd('employee roles sync', {
+      'Total roles processed': pgRoles.length,
+      'Updates needed': updates.length,
+      'Successful updates': updateSuccessCount,
+      'Failed updates': updateErrors.length,
+      'New records': newRecords.length,
+      'Successfully created': createSuccessCount,
+      'Failed creations': createErrors.length
+    });
+    
+    await logToHistory('Employee roles sync completed');
+    console.log('Employee roles sync completed');
+    
+    return updateSuccessCount > 0 || createSuccessCount > 0;
+  }, 'sync_employee_roles');
 }
 
-module.exports = { syncEmployeeRoles };
+/**
+ * Get employee roles from PostgreSQL
+ */
+async function getEmployeeRolesFromPostgres() {
+  return tryCatch(async () => {
+    const query = `
+      WITH ranked_roles AS (
+        SELECT
+          er.employee_id,
+          r.name AS role_name,
+          d.name AS department_name,
+          er.active,
+          er.created_at,
+          ROW_NUMBER() OVER (
+            PARTITION BY er.employee_id, r.name, d.name
+            ORDER BY 
+              er.active DESC,
+              er.created_at DESC
+          ) AS row_num
+        FROM employee_roles er
+        JOIN roles r ON er.role_id = r.id
+        JOIN departments d ON r.department_id = d.id
+        JOIN employees e ON er.employee_id = e.id
+        WHERE e.email NOT LIKE '%test%'
+          AND e.email NOT LIKE '%example%'
+      )
+      SELECT
+        employee_id,
+        role_name,
+        department_name,
+        active,
+        created_at
+      FROM ranked_roles
+      WHERE row_num = 1
+      ORDER BY employee_id, department_name, role_name;
+    `;
+    
+    return await executeQuery(query);
+  }, 'get_employee_roles_from_postgres');
+}
+
+module.exports = {
+  syncEmployeeRoles
+};

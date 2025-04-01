@@ -1,17 +1,20 @@
-
 # Node modules
 node_modules/
 
 # Environment variables
 .env
 
-# Report files
+# Generated files
 src/reports/
-src/reports/*.json
-
-# Logs
+*.json
+!package.json
+!package-lock.json
 *.log
 
 # IDE specific files
 .vscode/
-.idea/src/sync/temp.js
+.idea/
+
+# Temporary files
+*.tmp
+*.temp

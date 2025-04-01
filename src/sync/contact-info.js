@@ -8,10 +8,11 @@ const tableName = process.env.AIRTABLE_TABLE_NAME || 'Employees_dev';
 const pgEmailsTable = process.env.PG_TABLE_NAME_2 || 'emails'; // Default to 'emails' if not set
 const pgEmployeesTable = process.env.PG_TABLE_NAME_3 || 'employees';
 
-async function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
+/**
+ * writeEmailMatchReport
+ * @param {any} matches - Description of parameters
+ * @returns {Promise<any>} - Description of return value
+ */
 function writeEmailMatchReport(matches) {
   const report = matches.map(match => ({
     airtableId: match.airtableId,
@@ -27,7 +28,12 @@ function writeEmailMatchReport(matches) {
   console.log('Email match report saved to email_match_report.json');
 }
 
-async function getEmailsFromPostgres() {
+/**
+ * getEmailsFromPostgres
+ * @param {any} ...args - Description of parameters
+ * @returns {Promise<any>} - Description of return value
+ */
+async function getEmailsFromPostgres(...args) {
   try {
     const result = await pool.query(`
       WITH RankedEmails AS (
@@ -53,12 +59,17 @@ async function getEmailsFromPostgres() {
     console.log(`Fetched ${result.rows.length} email records from Postgres`);
     return result.rows;
   } catch (error) {
-    console.error('Error querying Postgres emails:', error);
+    handleError(error, 'Error querying Postgres emails:');
     throw error;
   }
 }
 
-async function getPhoneNumbersFromPostgres() {
+/**
+ * getPhoneNumbersFromPostgres
+ * @param {any} ...args - Description of parameters
+ * @returns {Promise<any>} - Description of return value
+ */
+async function getPhoneNumbersFromPostgres(...args) {
   try {
     const result = await pool.query(`
       WITH RankedPhones AS (
@@ -84,13 +95,20 @@ async function getPhoneNumbersFromPostgres() {
     console.log(`Fetched ${result.rows.length} phone records from Postgres`);
     return result.rows;
   } catch (error) {
-    console.error('Error querying Postgres phones:', error);
+    handleError(error, 'Error querying Postgres phones:');
     throw error;
   }
 }
 
 // Modify the getAirtableRecords function to fetch both fields
-async function getAirtableRecords() {
+/**
+ * getAirtableRecords
+ * @param {any} ...args - Description of parameters
+ * @returns {Promise<any>} - Description of return value
+ */
+async function getAirtableRecords(...args) {
+  return tryCatch(async () => {
+    
   const records = [];
   try {
     await base(tableName)
@@ -103,12 +121,17 @@ async function getAirtableRecords() {
       });
     return records;
   } catch (error) {
-    console.error('Error fetching Airtable data:', error);
+    handleError(error, 'Error fetching Airtable data:');
     throw error;
   }
-}
+})
 
 // Helper function to determine what needs updating
+/**
+ * determineUpdates
+ * @param {any} airtableFields, pgRecord - Description of parameters
+ * @returns {Promise<any>} - Description of return value
+ */
 function determineUpdates(airtableFields, pgRecord) {
   return {
     needsEmpId: !airtableFields['RSC Emp ID'],
@@ -120,19 +143,11 @@ function determineUpdates(airtableFields, pgRecord) {
   };
 }
 
-// Add at the top with other functions
-async function updateWithRetry(recordId, fields) {
-  try {
-    await updateAirtableRecord(recordId, fields);
-    await sleep(250); // Rate limit between updates
-    return true;
-  } catch (error) {
-    console.error(`Failed to update record ${recordId}:`, error);
-    return false;
-  }
-}
-
-// Helper function to standardize date format (add at top of file)
+/**
+ * formatDateToString
+ * @param {any} date - Description of parameters
+ * @returns {Promise<any>} - Description of return value
+ */
 function formatDateToString(date) {
   if (!date) return '';
   // Ensure we're working with a date object
@@ -141,9 +156,26 @@ function formatDateToString(date) {
   return `${(d.getUTCMonth() + 1).toString().padStart(2, '0')}/${d.getUTCDate().toString().padStart(2, '0')}/${d.getUTCFullYear()}`;
 }
 
+// Add this helper function to determine which record to use
+function determinePreferredRecord(records) {
+  // Sort records by priority:
+  // 1. Active status
+  // 2. Most recent created_at date
+  return records.sort((a, b) => {
+    if (a.active && !b.active) return -1;
+    if (!a.active && b.active) return 1;
+    return new Date(b.created_at) - new Date(a.created_at);
+  })[0];
+}
+
 // Update the matchAndUpdateEmails function
+/**
+ * matchAndUpdateEmails
+ * @param {any} ...args - Description of parameters
+ * @returns {Promise<any>} - Description of return value
+ */
 async function matchAndUpdateEmails() {
-  try {
+  return tryCatch(async () => {
     // Clear previous files
     console.log('Clearing previous data files...');
     clearReportFiles([
@@ -168,30 +200,45 @@ async function matchAndUpdateEmails() {
     let blankEmpIdCount = 0;
     let emailMatchCount = 0;
 
-    // Create lookup object for PG emails - only keep the most recent record for each email
+    // Modify the pgEmailMap creation in matchAndUpdateEmails
     const pgEmailMap = pgEmails.reduce((acc, row) => {
       const email = row.address.toLowerCase();
-      if (!acc[email] || new Date(row.created_at) > new Date(acc[email].created_at)) {
-        acc[email] = {
-          emailable_id: row.emailable_id,
-          mobile_phone: row.mobile_phone,
-          active: row.active,
-          created_at: row.created_at
-        };
+      if (!acc[email]) {
+        acc[email] = [];
       }
+      acc[email].push({
+        emailable_id: row.emailable_id,
+        mobile_phone: row.mobile_phone,
+        active: row.active,
+        created_at: row.created_at
+      });
       return acc;
     }, {});
 
-    // Modified match processing
+    // Then modify the email matching logic
     for (const record of airtableRecords) {
       const airtableEmail = record.fields['Email']?.toLowerCase();
       
       if (airtableEmail && pgEmailMap[airtableEmail]) {
+        emailMatchCount++;
         const pgRecord = pgEmailMap[airtableEmail];
+        
+        // Check if this email belongs to a different employee ID
+        const existingRecordWithId = airtableRecords.find(r => 
+          r.fields['RSC Emp ID'] === pgRecord.emailable_id.toString() &&
+          r.id !== record.id
+        );
+
+        if (existingRecordWithId) {
+          console.log(`Skipping update for ${airtableEmail} - already exists with RSC Emp ID ${pgRecord.emailable_id}`);
+          continue;
+        }
+
         const updates = determineUpdates(record.fields, pgRecord);
         
-        if (Object.values(updates).some(Boolean)) {
-          emailMatchCount++;
+        // Only update if the new data is from an active record or the existing record is blank
+        if (Object.values(updates).some(Boolean) && 
+            (pgRecord.active || !record.fields['RSC Emp ID'])) {
           matches.push({
             airtableId: record.id,
             airtableEmail: airtableEmail,
@@ -246,7 +293,7 @@ async function matchAndUpdateEmails() {
           }
         }
       } catch (error) {
-        console.error(`Failed to update record for email ${match.airtableEmail}:`, error);
+        handleError(error, 'Failed to update record for email ${match.airtableEmail}:');
         errors.push({
           email: match.airtableEmail,
           error: error.message
@@ -264,13 +311,15 @@ async function matchAndUpdateEmails() {
       console.log('Error details saved to reports/email_sync_errors.json');
     }
 
-  } catch (error) {
-    console.error('Error in email matching process:', error);
-    throw error;
-  }
+  });
 }
 
 // Helper function to standardize phone number format
+/**
+ * standardizePhoneNumber
+ * @param {any} phone - Description of parameters
+ * @returns {Promise<any>} - Description of return value
+ */
 function standardizePhoneNumber(phone) {
   if (!phone) return null;
   // Remove all non-numeric characters
@@ -278,8 +327,13 @@ function standardizePhoneNumber(phone) {
 }
 
 // Update the matchAndUpdatePhones function similarly
+/**
+ * matchAndUpdatePhones
+ * @param {any} ...args - Description of parameters
+ * @returns {Promise<any>} - Description of return value
+ */
 async function matchAndUpdatePhones() {
-  try {
+  return tryCatch(async () => {
     console.log('Clearing previous phone match files...');
     clearReportFiles([
       'phone_match_report.json',
@@ -299,32 +353,45 @@ async function matchAndUpdatePhones() {
     const matches = [];
     let phoneMatchCount = 0;
 
-    // Create lookup object for PG phones - only keep the most recent record for each phone
+    // Similarly modify the phone matching logic
     const pgPhoneMap = pgPhones.reduce((acc, row) => {
       const standardizedPhone = standardizePhoneNumber(row.mobile_phone);
       if (standardizedPhone) {
-        if (!acc[standardizedPhone] || new Date(row.created_at) > new Date(acc[standardizedPhone].created_at)) {
-          acc[standardizedPhone] = {
-            id: row.id,
-            email: row.email,
-            active: row.active,
-            created_at: row.created_at
-          };
+        if (!acc[standardizedPhone]) {
+          acc[standardizedPhone] = [];
         }
+        acc[standardizedPhone].push({
+          id: row.id,
+          email: row.email,
+          active: row.active,
+          created_at: row.created_at
+        });
       }
       return acc;
     }, {});
 
-    // Modified match processing
+    // And update the phone matching loop similarly
     for (const record of airtableRecords) {
       const airtablePhone = standardizePhoneNumber(record.fields['Phone']);
       
       if (airtablePhone && pgPhoneMap[airtablePhone]) {
+        phoneMatchCount++;
         const pgRecord = pgPhoneMap[airtablePhone];
+        
+        // Check if this phone belongs to a different employee ID
+        const existingRecordWithId = airtableRecords.find(r => 
+          r.fields['RSC Emp ID'] === pgRecord.id.toString() &&
+          r.id !== record.id
+        );
+
+        if (existingRecordWithId) {
+          console.log(`Skipping update for phone ${airtablePhone} - already exists with RSC Emp ID ${pgRecord.id}`);
+          continue;
+        }
+
         const updates = determineUpdates(record.fields, pgRecord);
         
         if (Object.values(updates).some(Boolean)) {
-          phoneMatchCount++;
           matches.push({
             airtableId: record.id,
             airtablePhone: record.fields['Phone'],
@@ -365,7 +432,7 @@ async function matchAndUpdatePhones() {
           console.log(`Updated record ${match.airtableId} with fields:`, updateFields);
         }
       } catch (error) {
-        console.error(`Failed to update record for phone ${match.airtablePhone}:`, error);
+        handleError(error, 'Failed to update record for phone ${match.airtablePhone}:');
         errors.push({
           phone: match.airtablePhone,
           error: error.message
@@ -383,12 +450,14 @@ async function matchAndUpdatePhones() {
       console.log('Error details saved to reports/phone_sync_errors.json');
     }
 
-  } catch (error) {
-    console.error('Error in phone matching process:', error);
-    throw error;
-  }
+  });
 }
 
+/**
+ * getTenantState
+ * @param {any} tenantId - Description of parameters
+ * @returns {Promise<any>} - Description of return value
+ */
 function getTenantState(tenantId) {
   const stateMap = {
     '2': 'CA',
@@ -401,7 +470,12 @@ function getTenantState(tenantId) {
   return stateMap[tenantId.toString()] || 'Unknown';
 }
 
-async function addNewEmployees() {
+/**
+ * addNewEmployees
+ * @param {any} ...args - Description of parameters
+ * @returns {Promise<any>} - Description of return value
+ */
+async function addNewEmployees(...args) {
   try {
     console.log('Fetching active employees from Postgres...');
     const result = await pool.query(`
@@ -496,7 +570,7 @@ async function addNewEmployees() {
         successCount++;
         console.log(`Added new employee: ${emp.name} (${emp.employee_id})`);
       } catch (error) {
-        console.error(`Failed to add employee ${emp.employee_id}:`, error);
+        handleError(error, 'Failed to add employee ${emp.employee_id}:');
         errors.push({
           employeeId: emp.employee_id,
           name: emp.name,
@@ -515,42 +589,61 @@ async function addNewEmployees() {
 
     return successCount > 0;
   } catch (error) {
-    console.error('Error in addNewEmployees:', error);
+    handleError(error, 'Error in addNewEmployees:');
     throw error;
   }
-}
+})
 
+/**
+ * Synchronize employee data between PostgreSQL and Airtable
+ * @returns {Promise<boolean>} - Success status
+ */
 async function syncEmployeeData() {
   try {
+    await logToHistory('Starting employeedata sync...');
+    console.log('Starting employeedata sync...');
+    logSyncStart('employeedata sync');
+    
     console.log('Starting employee data sync...');
     
-    // 1. Get all active employees from PG
+    // 1. Get all employees from PG with proper ranking for active/inactive status
     const pgEmployees = await pool.query(`
-      SELECT 
-        emp.id as employee_id,
-        emp.first_name || ' ' || emp.last_name as name,
-        emp.tenant_id,
-        emp.active,
-        emp.mobile_phone,
-        emp.hire_date,
-        emp.last_name,
-        e.address as email
-      FROM ${pgEmployeesTable} emp
-      LEFT JOIN ${pgEmailsTable} e ON emp.id = e.emailable_id 
-      AND e.emailable_type = 'Employee' 
-      AND e."primary" = true
-      WHERE emp.active = true
-      AND NOT (
-        emp.first_name ILIKE ANY(ARRAY[
-          'SER-N-%', 'SER-D-%', 'ESP-D-%', 'ESP-N-%',
-          'PRONE-D-%', 'DF-D-%', 'ULT-N-%', 'ULT-D-%',
-          'SS-N-%', 'SS-D-%', 'AVS-N-%', 'AVS-D-%',
-          'DF-N-%', 'East%', 'Eastern', 'Mountain', 'Central'
-        ])
-        OR emp.last_name = 'SUB'
-        OR emp.last_name ILIKE '%Tester%'
-        OR emp.last_name ILIKE '%test%'
+      WITH RankedEmployees AS (
+        SELECT 
+          emp.id as employee_id,
+          emp.first_name || ' ' || emp.last_name as name,
+          emp.tenant_id,
+          emp.active,
+          emp.mobile_phone,
+          emp.hire_date,
+          emp.last_name,
+          e.address as email,
+          ROW_NUMBER() OVER (
+            PARTITION BY emp.first_name || ' ' || emp.last_name  -- Partition by full name to catch duplicates
+            ORDER BY 
+              emp.active DESC,  -- Active records first
+              emp.updated_at DESC,  -- Most recently updated
+              emp.created_at DESC  -- Most recently created
+          ) as rn
+        FROM ${pgEmployeesTable} emp
+        LEFT JOIN ${pgEmailsTable} e ON emp.id = e.emailable_id 
+        AND e.emailable_type = 'Employee' 
+        AND e."primary" = true
+        WHERE NOT (
+          emp.first_name ILIKE ANY(ARRAY[
+            'SER-N-%', 'SER-D-%', 'ESP-D-%', 'ESP-N-%',
+            'PRONE-D-%', 'DF-D-%', 'ULT-N-%', 'ULT-D-%',
+            'SS-N-%', 'SS-D-%', 'AVS-N-%', 'AVS-D-%',
+            'DF-N-%', 'East%', 'Eastern', 'Mountain', 'Central'
+          ])
+          OR emp.last_name = 'SUB'
+          OR emp.last_name ILIKE '%Tester%'
+          OR emp.last_name ILIKE '%test%'
+        )
       )
+      SELECT * FROM RankedEmployees 
+      WHERE rn = 1  -- Only take the best record for each employee
+      ORDER BY employee_id
     `);
 
     // 2. Get all Airtable records
@@ -592,15 +685,32 @@ async function syncEmployeeData() {
       if (pgMatch) {
         const updateFields = {};
         
+        // Add explicit status checking
+        const currentStatusRSPG = record.fields['Status-RSPG'];
+        const currentStatus = record.fields['Status'];
+        const shouldBeActive = pgMatch.active;
+        
+        // Always update status if it doesn't match PostgreSQL
+        if (shouldBeActive) {
+          if (currentStatusRSPG !== 'Active') updateFields['Status-RSPG'] = 'Active';
+          if (currentStatus !== 'Hired') updateFields['Status'] = 'Hired';
+        } else {
+          if (currentStatusRSPG !== 'Inactive') updateFields['Status-RSPG'] = 'Inactive';
+          if (currentStatus !== 'Separated') updateFields['Status'] = 'Separated';
+        }
+        
+        // Log status changes for debugging
+        if (updateFields['Status-RSPG'] || updateFields['Status']) {
+          console.log(`Status update for ${record.fields['Name']}:`, {
+            current: { statusRSPG: currentStatusRSPG, status: currentStatus },
+            new: { statusRSPG: updateFields['Status-RSPG'] || currentStatusRSPG, status: updateFields['Status'] || currentStatus },
+            pgActive: shouldBeActive
+          });
+        }
+        
         // Compare and add fields that need updating
         if (record.fields['Name'] !== pgMatch.name) {
           updateFields['Name'] = pgMatch.name;
-        }
-        if (record.fields['Status-RSPG'] !== (pgMatch.active ? 'Active' : 'Inactive')) {
-          updateFields['Status-RSPG'] = pgMatch.active ? 'Active' : 'Inactive';
-        }
-        if (record.fields['Status'] !== (pgMatch.active ? 'Hired' : 'Separated')) {
-          updateFields['Status'] = pgMatch.active ? 'Hired' : 'Separated';
         }
         
         // Only update hire date if it's different or missing
@@ -620,7 +730,6 @@ async function syncEmployeeData() {
                 pg: pgDate,
                 airtable: airtableDate
               }
-            });
             
             // Only add to updateFields if truly different
             if (pgDate !== airtableDate) {
@@ -650,7 +759,7 @@ async function syncEmployeeData() {
         successCount++;
         console.log(`Updated record ${update.recordId}:`, update.fields);
       } catch (error) {
-        console.error(`Failed to update record ${update.recordId}:`, error);
+        console.error(`Failed to update record ${update.recordId}:`, error.message);
         errors.push({
           recordId: update.recordId,
           error: error.message
@@ -668,10 +777,22 @@ async function syncEmployeeData() {
     if (errors.length > 0) {
       writeJsonReport('sync_errors.json', errors);
     }
-
+    
+    logSyncEnd('employeedata sync', {
+      'Total records': airtableRecords.length,
+      'Updates needed': updates.length,
+      'Successful updates': successCount,
+      'Failed updates': errors.length
+    });
+    
+    await logToHistory('Employeedata sync completed');
+    console.log('Employeedata sync completed');
+    
+    return true;
   } catch (error) {
-    console.error('Error in employee sync:', error);
-    throw error;
+    console.error('Error in employee sync:', error.message);
+    if (error.stack) console.error(error.stack);
+    return false;
   }
 }
 

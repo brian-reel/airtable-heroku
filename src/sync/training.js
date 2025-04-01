@@ -1,11 +1,23 @@
 require('dotenv').config();
 const axios = require('axios');
 const { base, AIRTABLE_TABLE } = require('../config/database');
+const { executeQuery } = require('../services/postgres');
+const { getAirtableRecords, updateAirtableRecord, createAirtableRecord } = require('../services/airtable');
+const { clearReportFiles, writeJsonReport, logSyncStart, logSyncEnd, logToHistory } = require('../utils/logging');
+const { formatDate } = require('../utils/formatters');
+const { validateUpdateFields } = require('../utils/validation');
+const { handleError, tryCatch } = require('../utils/error-handler');
+const config = require('../config/config');
+const { AIRTABLE_TRAINING_TABLE } = require('../config/database');
 
 const LMS_API_URL_USERS = process.env.LMS_API_URL_USERS; // e.g., https://reel.talentlms.com/api/v1/users
 const LMS_API_URL_USERS_COURSES_BASE = process.env.LMS_API_URL_USERS_COURSES; // e.g., https://reel.talentlms.com/api/v1/users
 const LMS_API_KEY = process.env.LMS_API_KEY; // Your API key
 
+/**
+ * Fetch L M S Users
+ * @returns {Promise<any>} - Description of return value
+ */
 async function fetchLMSUsers() {
   try {
     const auth = Buffer.from(`${LMS_API_KEY}:`).toString('base64');
@@ -16,11 +28,15 @@ async function fetchLMSUsers() {
     });
     return response.data; // Assuming the data is an array of users
   } catch (error) {
-    console.error('Error fetching LMS users:', error.message);
+    handleError(error.message, 'Error fetching LMS users:');
     throw error;
   }
 }
 
+/**
+ * Fetch Airtable Records
+ * @returns {Promise<any>} - Description of return value
+ */
 async function fetchAirtableRecords() {
   const records = [];
   try {
@@ -34,11 +50,16 @@ async function fetchAirtableRecords() {
       });
     return records;
   } catch (error) {
-    console.error('Error fetching Airtable data:', error);
+    handleError(error, 'Error fetching Airtable data:');
     throw error;
   }
 }
 
+/**
+ * Fetch User Courses
+ * @param {any} lmsUserId - Description of lmsUserId
+ * @returns {Promise<any>} - Description of return value
+ */
 async function fetchUserCourses(lmsUserId) {
   try {
     const auth = Buffer.from(`${LMS_API_KEY}:`).toString('base64');
@@ -50,11 +71,16 @@ async function fetchUserCourses(lmsUserId) {
     });
     return response.data.courses; // Assuming the courses are in the "courses" section of the response
   } catch (error) {
-    console.error(`Error fetching courses for LMS user ID ${lmsUserId}:`, error.message);
+    handleError(error.message, 'Error fetching courses for LMS user ID ${lmsUserId}:');
     return null; // Return null if there's an error
   }
 }
 
+/**
+ * Format Course Data
+ * @param {any} courses - Description of courses
+ * @returns {Promise<any>} - Description of return value
+ */
 function formatCourseData(courses) {
   if (!courses || courses.length === 0) {
     return 'No courses enrolled';
@@ -100,20 +126,32 @@ function formatCourseData(courses) {
   });
 }
 
-async function updateAirtableRecord(recordId, lmsCourseData) {
-  try {
-    const formattedCourseData = formatCourseData(lmsCourseData); // Format the course data
-    const updatedRecord = await base(AIRTABLE_TABLE).update(recordId, {
-      'LMS_course_data': JSON.stringify(formattedCourseData, null, 2) // Properly stringify the JSON data
-    });
-    return updatedRecord;
-  } catch (error) {
-    console.error(`Error updating Airtable record ${recordId}:`, error);
-    throw error;
-  }
+/**
+ * Update an Airtable record with LMS course data
+ * @param {String} recordId - Airtable record ID
+ * @param {Object} lmsCourseData - LMS course data
+ * @returns {Promise<Object>} - Updated record
+ */
+async function updateAirtableTrainingRecord(recordId, lmsCourseData) {
+  return tryCatch(async () => {
+    const fields = {
+      'LMS User ID': lmsCourseData.userId.toString(),
+      'Courses Completed': lmsCourseData.completedCourses,
+      'Last Course Date': lmsCourseData.lastCourseDate,
+      'Total Courses': lmsCourseData.totalCourses.toString()
+    };
+    
+    return await updateAirtableRecord(AIRTABLE_TRAINING_TABLE, recordId, fields);
+  }, 'update_airtable_training_record', { recordId });
 }
 
 // Add this function to check if update is needed
+/**
+ * Needs Update
+ * @param {any} existingData - Description of existingData
+ * @param {any} newData - Description of newData
+ * @returns {Promise<any>} - Description of return value
+ */
 function needsUpdate(existingData, newData) {
   if (!existingData || existingData === 'No courses enrolled') {
     return true;
@@ -147,12 +185,18 @@ function needsUpdate(existingData, newData) {
 
     return false;
   } catch (error) {
-    console.error('Error parsing existing course data:', error);
+    handleError(error, 'Error parsing existing course data:');
     return true; // If we can't parse the existing data, update it
   }
 }
 
 // Add this function to match and set LMS IDs
+/**
+ * Match And Set L M S Ids
+ * @param {any} lmsUsers - Description of lmsUsers
+ * @param {any} airtableRecords - Description of airtableRecords
+ * @returns {Promise<any>} - Description of return value
+ */
 async function matchAndSetLMSIds(lmsUsers, airtableRecords) {
   console.log('Matching LMS users to Airtable records...');
   let updateCount = 0;
@@ -181,7 +225,7 @@ async function matchAndSetLMSIds(lmsUsers, airtableRecords) {
           updateCount++;
           console.log(`Updated LMS_id for record ${record.id} (${airtableEmail})`);
         } catch (error) {
-          console.error(`Failed to update LMS_id for record ${record.id}:`, error);
+          handleError(error, 'Failed to update LMS_id for record ${record.id}:');
         }
       } else {
         skippedCount++;
@@ -195,68 +239,268 @@ async function matchAndSetLMSIds(lmsUsers, airtableRecords) {
   console.log(`Total processed: ${updateCount + skippedCount} records`);
 }
 
+/**
+ * Sync Training Data
+ * @returns {Promise<any>} - Description of return value
+ */
 async function syncTrainingData() {
-  try {
-    console.log('Starting LMS training sync...');
+  return tryCatch(async () => {
+    await logToHistory('Starting training data sync...');
+    console.log('Starting training data sync...');
     
-    // Step 1: Fetch all data
-    console.log('\nFetching data...');
-    const [lmsUsers, airtableRecords] = await Promise.all([
-      fetchLMSUsers(),
-      fetchAirtableRecords()
+    // Clear previous report files
+    clearReportFiles([
+      'training_sync.json',
+      'training_errors.json'
     ]);
-    console.log(`- Fetched ${lmsUsers.length} LMS users`);
-    console.log(`- Fetched ${airtableRecords.length} Airtable records`);
-
-    // Step 2: Match and set LMS IDs
-    console.log('\nMatching LMS users to Airtable records...');
-    await matchAndSetLMSIds(lmsUsers, airtableRecords);
-
-    // Step 3: Fetch fresh Airtable data to get updated LMS IDs
-    console.log('\nFetching updated Airtable records...');
-    const updatedAirtableRecords = await fetchAirtableRecords();
-    console.log(`Fetched ${updatedAirtableRecords.length} updated records`);
-
-    // Step 4: Update course data for matched records
-    console.log('\nUpdating course data...');
-    let courseUpdateCount = 0;
-    let courseSkippedCount = 0;
-
-    // Process records that have an LMS_id
-    const recordsWithLmsId = updatedAirtableRecords.filter(record => record.fields['LMS_id']);
-    console.log(`Found ${recordsWithLmsId.length} records with LMS IDs`);
-
-    for (const record of recordsWithLmsId) {
-      const lmsUserId = record.fields['LMS_id'];
-      try {
-        const lmsCourseData = await fetchUserCourses(lmsUserId);
-        if (lmsCourseData) {
-          const formattedData = formatCourseData(lmsCourseData);
-          if (needsUpdate(record.fields['LMS_course_data'], formattedData)) {
-            await updateAirtableRecord(record.id, lmsCourseData);
-            courseUpdateCount++;
-            console.log(`Updated course data for record ${record.id} (${record.fields['Email']})`);
-          } else {
-            courseSkippedCount++;
-            console.log(`Skipped course update for record ${record.id} - no changes needed`);
-          }
-        }
-      } catch (error) {
-        console.error(`Error processing course data for record ${record.id}:`, error);
+    
+    logSyncStart('training data sync');
+    
+    // 1. Get training data from PostgreSQL
+    const pgTrainingData = await getTrainingDataFromPostgres();
+    
+    // 2. Get training data from LMS API if configured
+    let lmsTrainingData = [];
+    if (config.lmsApi.url && config.lmsApi.key) {
+      lmsTrainingData = await getTrainingDataFromLMS();
+    }
+    
+    // 3. Combine training data
+    const combinedTrainingData = [...pgTrainingData];
+    
+    // Add LMS data that doesn't exist in PG data
+    for (const lmsTraining of lmsTrainingData) {
+      const existsInPg = pgTrainingData.some(pgTraining => 
+        pgTraining.employee_id === lmsTraining.employee_id && 
+        pgTraining.course_name === lmsTraining.course_name
+      );
+      
+      if (!existsInPg) {
+        combinedTrainingData.push(lmsTraining);
       }
     }
+    
+    // 4. Get existing Airtable records
+    const airtableRecords = await getAirtableRecords(AIRTABLE_TRAINING_TABLE, [
+      'RSC Emp ID', 'Course Name', 'Completion Date', 'Expiration Date', 'Status'
+    ]);
+    
+    // 5. Create lookup map for Airtable records
+    const airtableMap = {};
+    for (const record of airtableRecords) {
+      if (record.fields['RSC Emp ID'] && record.fields['Course Name']) {
+        const key = `${record.fields['RSC Emp ID']}-${record.fields['Course Name']}`;
+        airtableMap[key] = record;
+      }
+    }
+    
+    // 6. Process updates and new records
+    const updates = [];
+    const newRecords = [];
+    
+    for (const training of combinedTrainingData) {
+      const employeeId = training.employee_id.toString();
+      const key = `${employeeId}-${training.course_name}`;
+      const airtableRecord = airtableMap[key];
+      
+      if (airtableRecord) {
+        // Check if update is needed
+        const updateFields = {};
+        
+        if (training.completion_date) {
+          const pgCompletionDate = formatDate(training.completion_date);
+          const airtableCompletionDate = formatDate(airtableRecord.fields['Completion Date']);
+          
+          if (pgCompletionDate !== airtableCompletionDate) {
+            updateFields['Completion Date'] = pgCompletionDate;
+          }
+        }
+        
+        if (training.expiration_date) {
+          const pgExpirationDate = formatDate(training.expiration_date);
+          const airtableExpirationDate = formatDate(airtableRecord.fields['Expiration Date']);
+          
+          if (pgExpirationDate !== airtableExpirationDate) {
+            updateFields['Expiration Date'] = pgExpirationDate;
+          }
+        }
+        
+        // Update status if needed
+        const currentStatus = airtableRecord.fields['Status'];
+        const isExpired = training.expiration_date && new Date(training.expiration_date) < new Date();
+        const desiredStatus = isExpired ? 'Expired' : 'Active';
+        
+        if (currentStatus !== desiredStatus) {
+          updateFields['Status'] = desiredStatus;
+        }
+        
+        if (Object.keys(updateFields).length > 0) {
+          // Validate update fields
+          const validation = validateUpdateFields(updateFields);
+          if (validation.isValid) {
+            updates.push({
+              recordId: airtableRecord.id,
+              fields: updateFields
+            });
+          } else {
+            console.warn(`Skipping invalid update for ${airtableRecord.id}:`, validation.errors);
+          }
+        }
+      } else {
+        // Create new record
+        const isExpired = training.expiration_date && new Date(training.expiration_date) < new Date();
+        
+        newRecords.push({
+          'RSC Emp ID': employeeId,
+          'Course Name': training.course_name,
+          'Completion Date': formatDate(training.completion_date) || '',
+          'Expiration Date': formatDate(training.expiration_date) || '',
+          'Status': isExpired ? 'Expired' : 'Active'
+        });
+      }
+    }
+    
+    // 7. Perform updates
+    console.log(`Found ${updates.length} training records that need updating`);
+    let updateSuccessCount = 0;
+    const updateErrors = [];
+    
+    for (const update of updates) {
+      try {
+        await updateAirtableTrainingRecord(update.recordId, update.fields);
+        updateSuccessCount++;
+        console.log(`Updated training record ${update.recordId}`);
+      } catch (error) {
+        handleError(error, 'training_update', { recordId: update.recordId, fields: update.fields });
+        updateErrors.push({
+          recordId: update.recordId,
+          error: error.message
+        });
+      }
+    }
+    
+    // 8. Create new records
+    console.log(`Found ${newRecords.length} new training records to add`);
+    let createSuccessCount = 0;
+    const createErrors = [];
+    
+    for (const newRecord of newRecords) {
+      try {
+        await createAirtableRecord(AIRTABLE_TRAINING_TABLE, newRecord);
+        createSuccessCount++;
+        console.log(`Added new training record for employee ${newRecord['RSC Emp ID']}: ${newRecord['Course Name']}`);
+      } catch (error) {
+        handleError(error, 'training_create', { 
+          employeeId: newRecord['RSC Emp ID'], 
+          course: newRecord['Course Name'] 
+        });
+        createErrors.push({
+          employeeId: newRecord['RSC Emp ID'],
+          course: newRecord['Course Name'],
+          error: error.message
+        });
+      }
+    }
+    
+    // 9. Write reports
+    if (updateErrors.length > 0 || createErrors.length > 0) {
+      writeJsonReport('training_errors.json', {
+        updateErrors,
+        createErrors
+      });
+    }
+    
+    // 10. Log summary
+    logSyncEnd('training data sync', {
+      'Total training records processed': combinedTrainingData.length,
+      'Updates needed': updates.length,
+      'Successful updates': updateSuccessCount,
+      'Failed updates': updateErrors.length,
+      'New records': newRecords.length,
+      'Successfully created': createSuccessCount,
+      'Failed creations': createErrors.length
+    });
+    
+    await logToHistory('Training data sync completed');
+    console.log('Training data sync completed');
+    
+    return updateSuccessCount > 0 || createSuccessCount > 0;
+  }, 'sync_training_data');
+}
 
-    // Final Summary
-    console.log('\nSync Complete!');
-    console.log(`Course Data Updates:`);
-    console.log(`- Updated: ${courseUpdateCount} records`);
-    console.log(`- Skipped: ${courseSkippedCount} records`);
-    console.log(`- Total Processed: ${courseUpdateCount + courseSkippedCount} records`);
+/**
+ * Get training data from PostgreSQL
+ */
+async function getTrainingDataFromPostgres() {
+  return tryCatch(async () => {
+    const query = `
+      WITH ranked_training AS (
+        SELECT
+          t.employee_id,
+          c.name AS course_name,
+          t.completion_date,
+          t.expiration_date,
+          t.created_at,
+          ROW_NUMBER() OVER (
+            PARTITION BY t.employee_id, c.name
+            ORDER BY 
+              t.completion_date DESC,
+              t.created_at DESC
+          ) AS row_num
+        FROM training t
+        JOIN courses c ON t.course_id = c.id
+        JOIN employees e ON t.employee_id = e.id
+        WHERE e.email NOT LIKE '%test%'
+          AND e.email NOT LIKE '%example%'
+      )
+      SELECT
+        employee_id,
+        course_name,
+        completion_date,
+        expiration_date,
+        created_at
+      FROM ranked_training
+      WHERE row_num = 1
+      ORDER BY employee_id, course_name;
+    `;
+    
+    return await executeQuery(query);
+  }, 'get_training_data_from_postgres');
+}
 
-  } catch (error) {
-    console.error('Error in training sync:', error);
-    throw error;
-  }
+/**
+ * Get training data from LMS API
+ */
+async function getTrainingDataFromLMS() {
+  return tryCatch(async () => {
+    if (!config.lmsApi.url || !config.lmsApi.key) {
+      console.log('LMS API not configured, skipping');
+      return [];
+    }
+    
+    console.log('Fetching training data from LMS API...');
+    
+    const response = await axios.get(`${config.lmsApi.url}/training`, {
+      headers: {
+        'Authorization': `Bearer ${config.lmsApi.key}`,
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    if (!response.data || !Array.isArray(response.data)) {
+      console.warn('Invalid response from LMS API');
+      return [];
+    }
+    
+    // Transform LMS data to match our format
+    return response.data.map(item => ({
+      employee_id: item.employeeId,
+      course_name: item.courseName,
+      completion_date: item.completedDate,
+      expiration_date: item.expirationDate,
+      created_at: new Date().toISOString()
+    }));
+  }, 'get_training_data_from_lms');
 }
 
 // Update the execution block
@@ -265,7 +509,7 @@ if (require.main === module) {
     try {
       await syncTrainingData();
     } catch (error) {
-      console.error('Error running training sync:', error);
+      handleError(error, 'Error running training sync:');
       process.exit(1);
     }
   })();
