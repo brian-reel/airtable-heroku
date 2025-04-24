@@ -3,6 +3,31 @@ const fs = require('fs');
 // Import handleError if it's used in this file
 // const { handleError } = require('./error-handler');
 
+const LOG_LEVELS = {
+  ERROR: 0,
+  WARN: 1,
+  INFO: 2,
+  DEBUG: 3
+};
+
+const CURRENT_LOG_LEVEL = process.env.LOG_LEVEL ? 
+  LOG_LEVELS[process.env.LOG_LEVEL.toUpperCase()] : 
+  LOG_LEVELS.INFO;
+
+function shouldLog(level) {
+  return CURRENT_LOG_LEVEL >= LOG_LEVELS[level];
+}
+
+function log(level, message, data = null) {
+  if (!shouldLog(level)) return;
+  
+  const logMessage = data ? 
+    `${message} ${JSON.stringify(data)}` : 
+    message;
+    
+  console.log(logMessage);
+}
+
 /**
  * Get the path to a report file
  * @param {String} filename - Report filename

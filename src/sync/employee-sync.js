@@ -462,14 +462,200 @@ async function matchAndUpdateContactInfo() {
  * Match and update email information
  */
 async function matchAndUpdateEmails() {
-  // More organized version of the email sync logic
+  return tryCatch(async () => {
+    console.log('Fetching emails from PostgreSQL...');
+    const pgEmails = await getEmailsFromPostgres();
+    
+    console.log('Fetching records from Airtable...');
+    const airtableRecords = await getAirtableRecords(AIRTABLE_TABLE, [
+      'RSC Emp ID', 'Phone', 'Email', 'Status-RSPG', 'Status', 'Name', 'RSC Hire Date'
+    ]);
+    
+    const matches = [];
+    let emailMatchCount = 0;
+    
+    // Create lookup object for PG emails
+    const pgEmailMap = pgEmails.reduce((acc, row) => {
+      const email = row.address.toLowerCase();
+      acc[email] = {
+        emailable_id: row.emailable_id,
+        mobile_phone: row.mobile_phone,
+        active: row.active,
+        created_at: row.created_at
+      };
+      return acc;
+    }, {});
+    
+    // Find matches
+    for (const record of airtableRecords) {
+      const airtableEmail = record.fields['Email']?.toLowerCase();
+      
+      if (airtableEmail && pgEmailMap[airtableEmail]) {
+        emailMatchCount++;
+        const pgRecord = pgEmailMap[airtableEmail];
+        
+        // Determine if update is needed
+        const needsUpdate = 
+          (!record.fields['RSC Emp ID'] && pgRecord.emailable_id) ||
+          (!record.fields['Phone'] && pgRecord.mobile_phone) ||
+          (record.fields['Status-RSPG'] !== (pgRecord.active ? config.mappings.statusMapping.active.statusRSPG : config.mappings.statusMapping.inactive.statusRSPG)) ||
+          (record.fields['Status'] !== (pgRecord.active ? config.mappings.statusMapping.active.status : config.mappings.statusMapping.inactive.status));
+        
+        if (needsUpdate) {
+          matches.push({
+            airtableId: record.id,
+            airtableEmail: airtableEmail,
+            pgEmployeeId: pgRecord.emailable_id,
+            pgPhone: pgRecord.mobile_phone,
+            isActive: pgRecord.active
+          });
+        }
+      }
+    }
+    
+    // Write match report
+    writeJsonReport('email_match_report.json', {
+      totalMatches: emailMatchCount,
+      matchesRequiringUpdates: matches.length
+    }, 'contact_info');
+    
+    // Perform updates
+    console.log(`Found ${matches.length} email matches that need updating`);
+    let successCount = 0;
+    const errors = [];
+    
+    for (const match of matches) {
+      try {
+        const updateFields = {};
+        if (!match.airtableRscEmpId) updateFields['RSC Emp ID'] = match.pgEmployeeId.toString();
+        if (!match.airtablePhone && match.pgPhone) updateFields['Phone'] = match.pgPhone;
+        updateFields['Status-RSPG'] = match.isActive ? config.mappings.statusMapping.active.statusRSPG : config.mappings.statusMapping.inactive.statusRSPG;
+        updateFields['Status'] = match.isActive ? config.mappings.statusMapping.active.status : config.mappings.statusMapping.inactive.status;
+        
+        await updateAirtableRecord(AIRTABLE_TABLE, match.airtableId, updateFields);
+        successCount++;
+        console.log(`Updated record ${match.airtableId}`);
+      } catch (error) {
+        handleError(error, 'email_update', { airtableId: match.airtableId, email: match.airtableEmail });
+        errors.push({
+          email: match.airtableEmail,
+          error: error.message
+        });
+      }
+    }
+    
+    // Write error report
+    if (errors.length > 0) {
+      writeJsonReport('email_sync_errors.json', errors, 'contact_info');
+    }
+    
+    return {
+      matchCount: emailMatchCount,
+      updateCount: successCount,
+      errorCount: errors.length
+    };
+  }, 'match_and_update_emails');
 }
 
 /**
  * Match and update phone information
  */
 async function matchAndUpdatePhones() {
-  // More organized version of the phone sync logic
+  return tryCatch(async () => {
+    console.log('Fetching phone numbers from PostgreSQL...');
+    const pgPhones = await getPhoneNumbersFromPostgres();
+    
+    console.log('Fetching records from Airtable...');
+    const airtableRecords = await getAirtableRecords(AIRTABLE_TABLE, [
+      'RSC Emp ID', 'Phone', 'Email', 'Status-RSPG', 'Status', 'Name', 'RSC Hire Date'
+    ]);
+    
+    const matches = [];
+    let phoneMatchCount = 0;
+    
+    // Create lookup object for PG phones
+    const pgPhoneMap = pgPhones.reduce((acc, row) => {
+      const standardizedPhone = standardizePhoneNumber(row.mobile_phone);
+      if (standardizedPhone) {
+        acc[standardizedPhone] = {
+          id: row.id,
+          email: row.email,
+          active: row.active,
+          created_at: row.created_at
+        };
+      }
+      return acc;
+    }, {});
+    
+    // Find matches
+    for (const record of airtableRecords) {
+      const airtablePhone = standardizePhoneNumber(record.fields['Phone']);
+      
+      if (airtablePhone && pgPhoneMap[airtablePhone]) {
+        phoneMatchCount++;
+        const pgRecord = pgPhoneMap[airtablePhone];
+        
+        // Determine if update is needed
+        const needsUpdate = 
+          (!record.fields['RSC Emp ID'] && pgRecord.id) ||
+          (!record.fields['Email'] && pgRecord.email) ||
+          (record.fields['Status-RSPG'] !== (pgRecord.active ? config.mappings.statusMapping.active.statusRSPG : config.mappings.statusMapping.inactive.statusRSPG)) ||
+          (record.fields['Status'] !== (pgRecord.active ? config.mappings.statusMapping.active.status : config.mappings.statusMapping.inactive.status));
+        
+        if (needsUpdate) {
+          matches.push({
+            airtableId: record.id,
+            airtablePhone: record.fields['Phone'],
+            pgEmployeeId: pgRecord.id,
+            pgEmail: pgRecord.email,
+            isActive: pgRecord.active
+          });
+        }
+      }
+    }
+    
+    // Write match report
+    writeJsonReport('phone_match_report.json', {
+      totalMatches: phoneMatchCount,
+      matchesRequiringUpdates: matches.length
+    }, 'contact_info');
+    
+    // Perform updates
+    console.log(`Found ${matches.length} phone matches that need updating`);
+    let successCount = 0;
+    const errors = [];
+    
+    for (const match of matches) {
+      try {
+        const updateFields = {};
+        if (!match.airtableRscEmpId) updateFields['RSC Emp ID'] = match.pgEmployeeId.toString();
+        if (!match.airtableEmail && match.pgEmail) updateFields['Email'] = match.pgEmail;
+        updateFields['Status-RSPG'] = match.isActive ? config.mappings.statusMapping.active.statusRSPG : config.mappings.statusMapping.inactive.statusRSPG;
+        updateFields['Status'] = match.isActive ? config.mappings.statusMapping.active.status : config.mappings.statusMapping.inactive.status;
+        
+        await updateAirtableRecord(AIRTABLE_TABLE, match.airtableId, updateFields);
+        successCount++;
+        console.log(`Updated record ${match.airtableId}`);
+      } catch (error) {
+        handleError(error, 'phone_update', { airtableId: match.airtableId, phone: match.airtablePhone });
+        errors.push({
+          phone: match.airtablePhone,
+          error: error.message
+        });
+      }
+    }
+    
+    // Write error report
+    if (errors.length > 0) {
+      writeJsonReport('phone_sync_errors.json', errors, 'contact_info');
+    }
+    
+    return {
+      matchCount: phoneMatchCount,
+      updateCount: successCount,
+      errorCount: errors.length
+    };
+  }, 'match_and_update_phones');
 }
 
 module.exports = {
